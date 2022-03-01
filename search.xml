@@ -1,37 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>git常用的操作</title>
-    <url>/2022/03/01/git/</url>
-    <content><![CDATA[<p>本篇博客用于汇总git的常见操作以及相关知识</p>
-<span id="more"></span>
-
-<h1 id="git操作"><a href="#git操作" class="headerlink" title="git操作"></a>git操作</h1><h2 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h2><blockquote>
-<p><strong>未跟踪（untrack）</strong>：表示文件为新增加的。红色问号</p>
-<p><strong>已修改（modified）</strong>：表示修改了文件，但还没保存到git仓库中。</p>
-<p><strong>已暂存（staged）</strong>：表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。绿色A</p>
-<p><strong>已提交（committed）</strong>：表示文件已保存在git仓库中。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">以精简的方式显示文件状态git status -s</span><br><span class="line"></span><br><span class="line">跟踪文件/将文件添加到暂存区 git add</span><br><span class="line"></span><br><span class="line">将所有修改都加入暂存区 git add .</span><br><span class="line"></span><br><span class="line">提交暂存区到本地仓库 git commit -m&#x27;注释内容&#x27;</span><br><span class="line"></span><br><span class="line">撤销对文件的修改 git checkout -- `&lt;filename&gt;`</span><br><span class="line"></span><br><span class="line">从暂存区移除文件 git reset HEAD `&lt;file&gt;`</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="修改和提交"><a href="#修改和提交" class="headerlink" title="修改和提交"></a>修改和提交</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git status            # 查看状态</span><br><span class="line">git diff              # 查看变更内容</span><br><span class="line">git add .             # 跟踪所有改动过的文件</span><br><span class="line">git add               # 跟踪指定的文件</span><br><span class="line">git mv                # 文件改名</span><br><span class="line">git rm                # 删除文件</span><br><span class="line">git rm --cached       # 停止跟踪文件但不删除</span><br><span class="line">git commit -m “commit message”  # 提交所有更新过的文件</span><br><span class="line">git commit --amend              # 修改最后一次提交</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看历史"><a href="#查看历史" class="headerlink" title="查看历史"></a>查看历史</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log               # 查看提交历史</span><br><span class="line">git log -p            # 查看指定文件的提交历史</span><br><span class="line">git blame             # 以列表方式查看指定文件的提交</span><br></pre></td></tr></table></figure>
-
-<h2 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git reset --hard HEAD # 撤消工作目录中所有未提交文件的修改内容</span><br><span class="line">git reset --hard      # 撤销到某个特定版本</span><br><span class="line">git checkout HEAD     # 撤消指定的未提交文件的修改内容</span><br><span class="line">git checkout --       # 同上一个命令</span><br><span class="line">git revert            # 撤消指定的提交分支与标签</span><br></pre></td></tr></table></figure>
-
-<h2 id="分支与标签"><a href="#分支与标签" class="headerlink" title="分支与标签"></a>分支与标签</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch            # 显示所有本地分支</span><br><span class="line">git checkout          # 切换到指定分支或标签</span><br><span class="line">git branch            # 创建新分支</span><br><span class="line">git branch -d         # 删除本地分支</span><br><span class="line">git tag               # 列出所有本地标签</span><br><span class="line">git tag               # 基于最新提交创建标签</span><br><span class="line">git tag -a &quot;v1.0&quot; -m &quot;一些说明&quot;  # -a指定标签名称，-m指定标签说明</span><br><span class="line">git tag -d            # 删除标签</span><br><span class="line">git checkout dev      # 合并特定的commit到dev分支上</span><br></pre></td></tr></table></figure>
-
-<h2 id="合并与衍合"><a href="#合并与衍合" class="headerlink" title="合并与衍合"></a>合并与衍合</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git merge               # 合并指定分支到当前分支</span><br><span class="line">git merge --abort       # 取消当前合并，重建合并前状态</span><br><span class="line">git merge dev -Xtheirs  # 以合并dev分支到当前分支，有冲突则以dev分支为准</span><br><span class="line">git rebase              # 衍合指定分支到当前分支</span><br></pre></td></tr></table></figure>
-
-<h2 id="远程与本地合并"><a href="#远程与本地合并" class="headerlink" title="远程与本地合并"></a>远程与本地合并</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init                              # 初始化本地代码仓</span><br><span class="line">git add .                             # 添加本地代码</span><br><span class="line">git commit -m &quot;add local source&quot;      # 提交本地代码</span><br><span class="line">git pull origin master                # 下载远程代码</span><br><span class="line">git merge master                      # 合并master分支</span><br><span class="line">git push -u origin master             # 上传代码</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ajax</title>
     <url>/2022/03/01/Ajax/</url>
     <content><![CDATA[<h2 id="什么是-AJAX-？"><a href="#什么是-AJAX-？" class="headerlink" title="什么是 AJAX ？"></a>什么是 AJAX ？</h2><p>AJAX = 异步 JavaScript 和 XML。</p>
@@ -497,5 +466,45 @@
 <p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220228204104222.png" alt="image-20220228204104222"></p>
 <p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220228204122396.png" alt="image-20220228204122396"></p>
 ]]></content>
+      <categories>
+        <category>web前端学习笔记</category>
+      </categories>
+      <tags>
+        <tag>ajax 前后端交互</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git常用操作</title>
+    <url>/2022/03/01/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<p>本篇博客用于汇总git的常见操作以及相关知识</p>
+<span id="more"></span>
+
+<h1 id="git操作"><a href="#git操作" class="headerlink" title="git操作"></a>git操作</h1><h2 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h2><blockquote>
+<p><strong>未跟踪（untrack）</strong>：表示文件为新增加的。红色问号</p>
+<p><strong>已修改（modified）</strong>：表示修改了文件，但还没保存到git仓库中。</p>
+<p><strong>已暂存（staged）</strong>：表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。绿色A</p>
+<p><strong>已提交（committed）</strong>：表示文件已保存在git仓库中。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">以精简的方式显示文件状态git status -s</span><br><span class="line"></span><br><span class="line">跟踪文件/将文件添加到暂存区 git add</span><br><span class="line"></span><br><span class="line">将所有修改都加入暂存区 git add .</span><br><span class="line"></span><br><span class="line">提交暂存区到本地仓库 git commit -m&#x27;注释内容&#x27;</span><br><span class="line"></span><br><span class="line">撤销对文件的修改 git checkout -- `&lt;filename&gt;`</span><br><span class="line"></span><br><span class="line">从暂存区移除文件 git reset HEAD `&lt;file&gt;`</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="修改和提交"><a href="#修改和提交" class="headerlink" title="修改和提交"></a>修改和提交</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git status            # 查看状态</span><br><span class="line">git diff              # 查看变更内容</span><br><span class="line">git add .             # 跟踪所有改动过的文件</span><br><span class="line">git add               # 跟踪指定的文件</span><br><span class="line">git mv                # 文件改名</span><br><span class="line">git rm                # 删除文件</span><br><span class="line">git rm --cached       # 停止跟踪文件但不删除</span><br><span class="line">git commit -m “commit message”  # 提交所有更新过的文件</span><br><span class="line">git commit --amend              # 修改最后一次提交</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看历史"><a href="#查看历史" class="headerlink" title="查看历史"></a>查看历史</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log               # 查看提交历史</span><br><span class="line">git log -p            # 查看指定文件的提交历史</span><br><span class="line">git blame             # 以列表方式查看指定文件的提交</span><br></pre></td></tr></table></figure>
+
+<h2 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git reset --hard HEAD # 撤消工作目录中所有未提交文件的修改内容</span><br><span class="line">git reset --hard      # 撤销到某个特定版本</span><br><span class="line">git checkout HEAD     # 撤消指定的未提交文件的修改内容</span><br><span class="line">git checkout --       # 同上一个命令</span><br><span class="line">git revert            # 撤消指定的提交分支与标签</span><br></pre></td></tr></table></figure>
+
+<h2 id="分支与标签"><a href="#分支与标签" class="headerlink" title="分支与标签"></a>分支与标签</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch            # 显示所有本地分支</span><br><span class="line">git checkout          # 切换到指定分支或标签</span><br><span class="line">git branch            # 创建新分支</span><br><span class="line">git branch -d         # 删除本地分支</span><br><span class="line">git tag               # 列出所有本地标签</span><br><span class="line">git tag               # 基于最新提交创建标签</span><br><span class="line">git tag -a &quot;v1.0&quot; -m &quot;一些说明&quot;  # -a指定标签名称，-m指定标签说明</span><br><span class="line">git tag -d            # 删除标签</span><br><span class="line">git checkout dev      # 合并特定的commit到dev分支上</span><br></pre></td></tr></table></figure>
+
+<h2 id="合并与衍合"><a href="#合并与衍合" class="headerlink" title="合并与衍合"></a>合并与衍合</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git merge               # 合并指定分支到当前分支</span><br><span class="line">git merge --abort       # 取消当前合并，重建合并前状态</span><br><span class="line">git merge dev -Xtheirs  # 以合并dev分支到当前分支，有冲突则以dev分支为准</span><br><span class="line">git rebase              # 衍合指定分支到当前分支</span><br></pre></td></tr></table></figure>
+
+<h2 id="远程与本地合并"><a href="#远程与本地合并" class="headerlink" title="远程与本地合并"></a>远程与本地合并</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init                              # 初始化本地代码仓</span><br><span class="line">git add .                             # 添加本地代码</span><br><span class="line">git commit -m &quot;add local source&quot;      # 提交本地代码</span><br><span class="line">git pull origin master                # 下载远程代码</span><br><span class="line">git merge master                      # 合并master分支</span><br><span class="line">git push -u origin master             # 上传代码</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>works</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
   </entry>
 </search>
