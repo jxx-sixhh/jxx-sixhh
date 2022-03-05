@@ -1,481 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Ajax</title>
-    <url>/2022/03/01/Ajax/</url>
-    <content><![CDATA[<h2 id="什么是-AJAX-？"><a href="#什么是-AJAX-？" class="headerlink" title="什么是 AJAX ？"></a>什么是 AJAX ？</h2><p>AJAX = 异步 JavaScript 和 XML。</p>
-<p>AJAX 是一种用于创建快速动态网页的技术。</p>
-<p>通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
-<p>传统的网页（不使用 AJAX）如果需要更新内容，必需重载整个网页面。</p>
-<span id="more"></span>
-
-<h1 id="URL地址"><a href="#URL地址" class="headerlink" title="URL地址"></a><strong>URL</strong>地址</h1><h3 id="组成部分"><a href="#组成部分" class="headerlink" title="组成部分"></a>组成部分</h3><p>通信协议，存放该资源的服务器名称，存放位置</p>
-<p>客户端与服务器之间的通信过程，是 请求-处理-响应三个步骤</p>
-<p>那么如何请求数据？ –&gt;使用对象<code>XMLHttpRequest</code>,简称xhr，是浏览器提供的js成员，通过xhr可以请求服务器上的数据资源。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> xhrObj = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br></pre></td></tr></table></figure>
-
-<p>get是问服务器要资源，post是向服务器发送资源。</p>
-<h1 id="jquery中的ajax"><a href="#jquery中的ajax" class="headerlink" title="jquery中的ajax"></a>jquery中的ajax</h1><h2 id="get-函数的用法"><a href="#get-函数的用法" class="headerlink" title="$.get()函数的用法"></a><code>$.get()</code>函数的用法</h2><p><code>$.get(url,[data],[callback])</code>,其中url是必须有的，data和callback是可有可无的</p>
-<table>
-<thead>
-<tr>
-<th>参数名</th>
-<th>参数类型</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>url</td>
-<td>string</td>
-<td>请求的资源地址</td>
-</tr>
-<tr>
-<td>data</td>
-<td>object</td>
-<td>请求资源期间要携带的参数</td>
-</tr>
-<tr>
-<td>callback</td>
-<td>function</td>
-<td>请求成功时的回调函数</td>
-</tr>
-</tbody></table>
-<h3 id="发起不带参数的请求"><a href="#发起不带参数的请求" class="headerlink" title="发起不带参数的请求"></a>发起不带参数的请求</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&#x27;btn&#x27;</span>&gt;</span>发起不带参数的请求<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  $(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    $(<span class="string">&#x27;#btn&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      $.<span class="title function_">get</span>(<span class="string">&#x27;http://www.liulongbin.top:3006/api/getbooks&#x27;</span>, <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span></span><br><span class="line"><span class="language-javascript">      &#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">  &#125;)</span></span><br></pre></td></tr></table></figure>
-
-<p>打开网页后，用f12查看请求情况，切换到network栏，然后切换到xhr栏，查看。</p>
-<p>从headers可以看到请求的连接，以及请求的方式、请求的状态。</p>
-<p>从response可以看到无格式的请求到的内容，有格式的则在preview栏。</p>
-<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220129224727262.png" alt="image-20220129224727262"></p>
-<h3 id="发起带参数的请求"><a href="#发起带参数的请求" class="headerlink" title="发起带参数的请求"></a>发起带参数的请求</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>发起带参数的get请求<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    $(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      $(<span class="string">&#x27;#btn&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        $.<span class="title function_">get</span>(<span class="string">&#x27;http://www.liulongbin.top:3006/api/getbooks&#x27;</span>, &#123; <span class="attr">id</span>: <span class="number">1</span> &#125;, <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span></span><br><span class="line"><span class="language-javascript">        &#125;)</span></span><br><span class="line"><span class="language-javascript">      &#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="post-函数"><a href="#post-函数" class="headerlink" title="$.post()函数"></a><code>$.post()</code>函数</h2><p>和get相似。</p>
-<p><code>$.post(url,[data],[callback])</code>,其中url是必须有的，data和callback是可有可无的</p>
-<table>
-<thead>
-<tr>
-<th>参数名</th>
-<th>参数类型</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>url</td>
-<td>string</td>
-<td>提交数据的地址</td>
-</tr>
-<tr>
-<td>data</td>
-<td>object</td>
-<td>要提交的数据</td>
-</tr>
-<tr>
-<td>callback</td>
-<td>function</td>
-<td>数据提交成功时的回调函数</td>
-</tr>
-</tbody></table>
-<p>代码ex：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>用post提交数据<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    $(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      $(<span class="string">&#x27;#btn&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        $.<span class="title function_">post</span>(<span class="string">&#x27;http://www.liulongbin.top:3006/api/addbook&#x27;</span>,<span class="comment">//数据提交的url地址</span></span></span><br><span class="line"><span class="language-javascript">          &#123; <span class="attr">bookname</span>: <span class="string">&#x27;水浒传&#x27;</span>, <span class="attr">author</span>: <span class="string">&#x27;施耐庵&#x27;</span>, <span class="attr">publisher</span>: <span class="string">&#x27;上海图书出版社&#x27;</span> &#125;,<span class="comment">//要提交的数据</span></span></span><br><span class="line"><span class="language-javascript">          <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span></span><br><span class="line"><span class="language-javascript">          &#125;)</span></span><br><span class="line"><span class="language-javascript">      &#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="ajax-函数"><a href="#ajax-函数" class="headerlink" title="$.ajax()函数"></a><code>$.ajax()</code>函数</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">   <span class="attr">type</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 请求的方式，例如 GET 或 POST</span></span><br><span class="line">   <span class="attr">url</span>: <span class="string">&#x27;&#x27;</span>,  <span class="comment">// 请求的 URL 地址</span></span><br><span class="line">   <span class="attr">data</span>: &#123; &#125;,<span class="comment">// 这次请求要携带的数据</span></span><br><span class="line">   <span class="attr">success</span>: <span class="keyword">function</span>(<span class="params">res</span>) &#123; &#125; <span class="comment">// 请求成功之后的回调函数</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="发起get请求"><a href="#发起get请求" class="headerlink" title="发起get请求"></a>发起get请求</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">   <span class="attr">type</span>: <span class="string">&#x27;GET&#x27;</span>, <span class="comment">// 请求的方式</span></span><br><span class="line">   <span class="attr">url</span>: <span class="string">&#x27;http://www.liulongbin.top:3006/api/getbooks&#x27;</span>,  <span class="comment">// 请求的 URL 地址</span></span><br><span class="line">   <span class="attr">data</span>: &#123; <span class="attr">id</span>: <span class="number">1</span> &#125;,<span class="comment">// 这次请求要携带的数据</span></span><br><span class="line">   <span class="attr">success</span>: <span class="keyword">function</span>(<span class="params">res</span>) &#123; <span class="comment">// 请求成功之后的回调函数</span></span><br><span class="line">       <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="发起post请求"><a href="#发起post请求" class="headerlink" title="发起post请求"></a>发起post请求</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">   <span class="attr">type</span>: <span class="string">&#x27;post&#x27;</span>,</span><br><span class="line">   <span class="attr">url</span>: <span class="string">&#x27;http://www.liulongbin.top:3006/api/addbook&#x27;</span>,<span class="comment">//数据提交的url地址</span></span><br><span class="line">   <span class="attr">data</span>: &#123; <span class="attr">bookname</span>: <span class="string">&#x27;我也不想知道&#x27;</span>, <span class="attr">author</span>: <span class="string">&#x27;司马迁&#x27;</span>, <span class="attr">publisher</span>: <span class="string">&#x27;上海图书出版社&#x27;</span> &#125;,</span><br><span class="line">   <span class="attr">success</span>: <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
-
-<p>javascript <code>trim()</code>方法可以去除掉字符串头尾的空白符，其中空白符包括空格，tab，换行符等                                  </p>
-<h1 id="form表单使用"><a href="#form表单使用" class="headerlink" title="form表单使用"></a>form表单使用</h1><h2 id="form标签的属性"><a href="#form标签的属性" class="headerlink" title="form标签的属性"></a>form标签的属性</h2><table>
-<thead>
-<tr>
-<th align="center">属性</th>
-<th align="center">值</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">action</td>
-<td align="center">url地址</td>
-<td align="center">规定当提交表单时，向何处发送表单数据</td>
-</tr>
-<tr>
-<td align="center">method</td>
-<td align="center">get或post</td>
-<td align="center">规定以何种方式把表单数据提交到action URL</td>
-</tr>
-<tr>
-<td align="center">enctype</td>
-<td align="center">application/x-www-form-urlencoded multipart/form-data text/plain</td>
-<td align="center">规定在发送表单数据之前如何对其进行编码</td>
-</tr>
-<tr>
-<td align="center">target</td>
-<td align="center">_blank _self  _parent _top framename</td>
-<td align="center">规定在何处打开action URL</td>
-</tr>
-</tbody></table>
-<h3 id="action"><a href="#action" class="headerlink" title="action"></a>action</h3><p>action属性的值应该是由后端提供的一个url地址，这个url地址专门负责接收表单提交过来的数据。如果form表单没有指定action属性值，那么action的默认值就是当前页面的url地址。提交表单后，页面会立刻跳转到action属性指定的url地址</p>
-<h3 id="method"><a href="#method" class="headerlink" title="method"></a>method</h3><p>默认情况下，method 的值为 get</p>
-<p>get 方式适合用来提交少量的、简单的数据。<br>post 方式适合用来提交大量的、复杂的、或包含文件上传的数据。<br>在实际开发中，<code>&lt;form&gt;</code> 表单的 post 提交方式用的最多，很少用 get。例如登录、注册、添加数据等表单操作，都需要使用 post 方式来提交表单。                                                 </p>
-<h3 id="enctype"><a href="#enctype" class="headerlink" title="enctype"></a>enctype</h3><table>
-<thead>
-<tr>
-<th>值</th>
-<th>属性</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>application/x-www-form-urlencoded</td>
-<td>在发送前编码所有字符（默认）</td>
-</tr>
-</tbody></table>
-<p>| multipart/form-data               | 不对字符编码。<br>在使用包含文件上传控件的表单时，必须使用该值。 |<br>| text/plain                        | 空格转换为 “+” 加号，但不对特殊字符编码。（很少用）          |<br>不上传文件就直接不写这个属性就行</p>
-<h2 id="表单同步提交"><a href="#表单同步提交" class="headerlink" title="表单同步提交"></a>表单同步提交</h2><p>表单同步提交是指点击submit按钮后，页面会直接跳转到action URL。</p>
-<p>缺点是导致用户体验感差、页面之前的状态和数据都会丢失</p>
-<p>解决方法:表单只负责采集数据，ajax负责将数据提交到服务器</p>
-<h2 id="通过ajax提交表单数据"><a href="#通过ajax提交表单数据" class="headerlink" title="通过ajax提交表单数据"></a>通过ajax提交表单数据</h2><h3 id="监听表单提交事件"><a href="#监听表单提交事件" class="headerlink" title="监听表单提交事件"></a>监听表单提交事件</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&#x27;#form1&#x27;</span>).<span class="title function_">submit</span>(<span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">   <span class="title function_">alert</span>(<span class="string">&#x27;监听到了表单的提交事件&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">&#x27;#form1&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;submit&#x27;</span>, <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">   <span class="title function_">alert</span>(<span class="string">&#x27;监听到了表单的提交事件&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="阻止表单默认提交行为"><a href="#阻止表单默认提交行为" class="headerlink" title="阻止表单默认提交行为"></a>阻止表单默认提交行为</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&#x27;#form1&#x27;</span>).<span class="title function_">submit</span>(<span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">   <span class="comment">// 阻止表单的提交和页面的跳转</span></span><br><span class="line">   e.<span class="title function_">preventDefault</span>()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">&#x27;#form1&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;submit&#x27;</span>, <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">   <span class="comment">// 阻止表单的提交和页面的跳转</span></span><br><span class="line">   e.<span class="title function_">preventDefault</span>()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="快速获得表单中的数据"><a href="#快速获得表单中的数据" class="headerlink" title="快速获得表单中的数据"></a>快速获得表单中的数据</h3><p>serialize()函数</p>
-<figure class="highlight mm"><table><tr><td class="code"><pre><span class="line">$(selector).serialize()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>serialize()函数可以一次性获得表单中的所有数据                                     </p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;form1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>提交<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&#x27;#form1&#x27;</span>).<span class="title function_">serialize</span>()</span><br><span class="line"><span class="comment">// 调用的结果：</span></span><br><span class="line"><span class="comment">// username=用户名的值&amp;password=密码的值</span></span><br></pre></td></tr></table></figure>
-
-<p>注意：在使用 serialize() 函数快速获取表单数据时，必须为每个表单元素添加 name 属性。</p>
-<p>jquery对象转化为原生dom对象-&gt;使用 jquery对象[0]</p>
-<h1 id="模板引擎的使用"><a href="#模板引擎的使用" class="headerlink" title="模板引擎的使用"></a>模板引擎的使用</h1><p>当我们想要把某个ui结构渲染到页面上时，一般情况下会采用字符串拼接的方式。但是如果ui结构比较复杂，此时对于单引号的使用就要格外注意，而且需求一旦发生变化，修改起来也十分困难。由此我们引入了模板引擎来解决这一问题。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> rows = []</span><br><span class="line">$.<span class="title function_">each</span>(res.<span class="property">data</span>, <span class="keyword">function</span> (<span class="params">i, item</span>) &#123; <span class="comment">// 循环拼接字符串</span></span><br><span class="line">    rows.<span class="title function_">push</span>(<span class="string">&#x27;&lt;li class=&quot;list-group-item&quot;&gt;&#x27;</span>+ item.<span class="property">content</span> +<span class="string">&#x27;&lt;span class=&quot;badge cmt-date&quot;&gt;评论时间：&#x27;</span>+ item.<span class="property">time</span> +<span class="string">&#x27;&lt;/span&gt;&lt;span class=&quot;badge cmt-person&quot;&gt;评论人：&#x27;</span>+ item.<span class="property">username</span> +<span class="string">&#x27;&lt;/span&gt;&lt;/li&gt;&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line">$(<span class="string">&#x27;#cmt-list&#x27;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(rows.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)) <span class="comment">// 渲染列表的UI结构</span></span><br></pre></td></tr></table></figure>
-
-<p>模板引擎可以根据我们指定的模板结构和数据自动生成一个完整的html页面</p>
-<h2 id="模板引擎使用步骤："><a href="#模板引擎使用步骤：" class="headerlink" title="模板引擎使用步骤："></a>模板引擎使用步骤：</h2><p>1.导入模板引擎</p>
-<p>导入后，在windows全局，则多了一个函数，叫做<code>template(&quot;模板的id&quot;，需要渲染的数据对象)</code></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./lib/template-web.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>2.定义需要渲染的数据</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123; <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span> ,<span class="attr">age</span>:<span class="number">20</span>&#125;</span><br></pre></td></tr></table></figure>
-
-<p>3.定义模板</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 3.1 模板的 HTML 结构，必须定义到 script 中 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/html&quot;</span> <span class="attr">id</span>=<span class="string">&quot;tpl-user&quot;</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><span class="template-variable">&#123;&#123;<span class="name">name</span>&#125;&#125;</span><span class="language-xml">    ------    </span><span class="template-variable">&#123;&#123;<span class="name">age</span>&#125;&#125;</span><span class="language-xml"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">  </span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>4.调用template函数</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> htmlStr = <span class="title function_">template</span>(<span class="string">&#x27;tpl-user&#x27;</span>, data)</span><br></pre></td></tr></table></figure>
-
-<p>5.渲染html结构</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&#x27;#container&#x27;</span>).<span class="title function_">html</span>(htmlStr)</span><br></pre></td></tr></table></figure>
-
-<p>全部代码:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 1. 导入模板引擎 --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 在 window 全局，多一个函数，叫做 template(&#x27;模板的Id&#x27;, 需要渲染的数据对象) --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./lib/template-web.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./lib/jquery.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;container&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- 3. 定义模板 --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 3.1 模板的 HTML 结构，必须定义到 script 中 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/html&quot;</span> <span class="attr">id</span>=<span class="string">&quot;tpl-user&quot;</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><span class="template-variable">&#123;&#123;<span class="name">name</span>&#125;&#125;</span><span class="language-xml">    ------    </span><span class="template-variable">&#123;&#123;<span class="name">age</span>&#125;&#125;</span><span class="language-xml"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">  </span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 2. 定义需要渲染的数据</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> data = &#123; <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>, <span class="attr">age</span>: <span class="number">20</span>, <span class="attr">test</span>: <span class="string">&#x27;&lt;h3&gt;测试原文输出&lt;/h3&gt;&#x27;</span>, <span class="attr">flag</span>: <span class="number">1</span>, <span class="attr">hobby</span>: [<span class="string">&#x27;吃饭&#x27;</span>, <span class="string">&#x27;睡觉&#x27;</span>, <span class="string">&#x27;写代码&#x27;</span>], <span class="attr">regTime</span>: <span class="keyword">new</span> <span class="title class_">Date</span>() &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 4. 调用 template 函数</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> htmlStr = <span class="title function_">template</span>(<span class="string">&#x27;tpl-user&#x27;</span>, data)</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(htmlStr)</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 5. 渲染HTML结构</span></span></span><br><span class="line"><span class="language-javascript">    $(<span class="string">&#x27;#container&#x27;</span>).<span class="title function_">html</span>(htmlStr)</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="标准语法"><a href="#标准语法" class="headerlink" title="标准语法"></a>标准语法</h2><h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;&#123;value&#125;&#125;<span class="comment">//变量的输出</span></span><br><span class="line">&#123;&#123;obj.<span class="property">key</span>&#125;&#125;<span class="comment">//对象属性</span></span><br><span class="line">&#123;&#123;obj[<span class="string">&#x27;key&#x27;</span>]&#125;&#125;</span><br><span class="line">&#123;&#123;a ? b : c&#125;&#125;<span class="comment">//三元表达式</span></span><br><span class="line">&#123;&#123;a || b&#125;&#125;<span class="comment">//逻辑</span></span><br><span class="line">&#123;&#123;a + b&#125;&#125;<span class="comment">//加减乘除等表达式</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="原文输出"><a href="#原文输出" class="headerlink" title="原文输出"></a>原文输出</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;&#123;@ value &#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果要输出的 value 值中，包含了 HTML 标签结构，则需要使用原文输出语法，才能保证 HTML 标签被正常渲染</p>
-<h3 id="条件输出"><a href="#条件输出" class="headerlink" title="条件输出"></a>条件输出</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;&#123;if value&#125;&#125; 按需输出的内容 &#123;&#123;/if&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&#123;if v1&#125;&#125; 按需输出的内容 &#123;&#123;else if v2&#125;&#125; 按需输出的内容 &#123;&#123;/if&#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="循环输出"><a href="#循环输出" class="headerlink" title="循环输出"></a>循环输出</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;&#123;each arr&#125;&#125;</span><br><span class="line">    &#123;&#123;$index&#125;&#125; &#123;&#123;$value&#125;&#125;</span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p><code>&#123;&#123;value | filterName&#125;&#125;</code></p>
-<p>定义过滤器的基本语法：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">template.<span class="property">defaults</span>.<span class="property">imports</span>.<span class="property">filterName</span> = <span class="keyword">function</span>(<span class="params">value</span>)&#123;</span><br><span class="line"> <span class="comment">// return处理的结果</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>ex:格式化时间过滤器</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;container&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/html&quot;</span> <span class="attr">id</span>=<span class="string">&quot;tpl-user&quot;</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"><span class="tag">&lt;<span class="name">h3</span>&gt;</span></span><span class="template-variable">&#123;&#123;<span class="name">regTime</span> | dateFormat&#125;&#125;</span><span class="language-xml"><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  template.<span class="property">defaults</span>.<span class="property">imports</span>.<span class="property">dateFormat</span> = <span class="keyword">function</span> (<span class="params">date</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> y = date.<span class="title function_">getFullYear</span>()</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> m = date.<span class="title function_">getMonth</span>() + <span class="number">1</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> d = date.<span class="title function_">getDate</span>()</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">return</span> y + <span class="string">&#x27;-&#x27;</span> + m + <span class="string">&#x27;-&#x27;</span> + d</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> data = &#123;  <span class="attr">regTime</span>: <span class="keyword">new</span> <span class="title class_">Date</span>() &#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> html = <span class="title function_">template</span>(<span class="string">&#x27;tpl-user&#x27;</span>, data)</span></span><br><span class="line"><span class="language-javascript">  $(<span class="string">&#x27;#container&#x27;</span>).<span class="title function_">html</span>(html)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="正则与字符串操作"><a href="#正则与字符串操作" class="headerlink" title="正则与字符串操作"></a>正则与字符串操作</h1><p>exec函数用于检索字符串中的正则表达式的匹配，如果字符串中有匹配的值，则返回一个数组，其中存储匹配的结果，否则返回null</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RegExpObject.exec(string)</span><br></pre></td></tr></table></figure>
-
-<p>下面以此例来解释exec函数返回的数组的内容</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;hello&#x27;</span></span><br><span class="line"><span class="keyword">var</span> pattern = <span class="regexp">/o/</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(pattern.<span class="title function_">exec</span>(str)) </span><br></pre></td></tr></table></figure>
-
-<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220225171203791.png" alt="image-20220225171203791"></p>
-<blockquote>
-<ol>
-<li><strong>0</strong>: “o”   与正则表达式相匹配的文本</li>
-<li><strong>groups</strong>: undefined  存储着所有的命名捕获组。</li>
-<li><strong>index</strong>: 4  index <strong>属性声明的是匹配文本的第一个字符的位置</strong></li>
-<li><strong>input</strong>: “hello” 存放的是被检索的字符串 string</li>
-<li><strong>length</strong>: 1 数组长度</li>
-</ol>
-</blockquote>
-<h1 id="xhr的使用"><a href="#xhr的使用" class="headerlink" title="xhr的使用"></a>xhr的使用</h1><h2 id="发起get请求-1"><a href="#发起get请求-1" class="headerlink" title="发起get请求"></a>发起get请求</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//创建xhr对象</span></span><br><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line"><span class="comment">//调用open函数，指定请求方式与url地址</span></span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;get&#x27;</span>, <span class="string">&#x27;http://www.liulongbin.top:3006/api/getbooks?publisher=北京图书出版社&#x27;</span>)<span class="comment">//?后面是带的参数 这种在 URL 地址后面拼接的参数，叫做查询字符串。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//调用send函数，发起ajax请求</span></span><br><span class="line">xhr.<span class="title function_">send</span>()</span><br><span class="line"><span class="comment">//监听</span></span><br><span class="line">xhr.<span class="property">onreadystatechange</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 监听 xhr 对象的请求状态 readyState ；与服务器响应的状态 status</span></span><br><span class="line">  <span class="keyword">if</span> (xhr.<span class="property">readyState</span> === <span class="number">4</span> &amp;&amp; xhr.<span class="property">status</span> === <span class="number">200</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(xhr.<span class="property">responseText</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> xhr.<span class="property">responseText</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(xhr.<span class="property">responseText</span>));<span class="comment">//将json字符串转换成JavaScript对象</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>readyState属性</p>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>状态</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>0</td>
-<td>unsent</td>
-<td>XmlHttpRequest对象已被创建，但尚未调用open方法</td>
-</tr>
-<tr>
-<td>1</td>
-<td>opened</td>
-<td>open方法已经被调用</td>
-</tr>
-<tr>
-<td>2</td>
-<td>headers_received</td>
-<td>send方法已经被调用</td>
-</tr>
-<tr>
-<td>3</td>
-<td>loading</td>
-<td>数据接收中，此时 response 属性中已经包含部分数据。</td>
-</tr>
-<tr>
-<td>4</td>
-<td>done</td>
-<td>Ajax 请求完成，这意味着数据传输已经彻底完成或失败。</td>
-</tr>
-</tbody></table>
-<h3 id="url编码"><a href="#url编码" class="headerlink" title="url编码"></a>url编码</h3><p>url地址中不允许出现中文字符，如果url中需要包含中文字符，那么必须对其进行编码。</p>
-<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220226200650842.png" alt="image-20220226200650842"></p>
-<p>浏览器提供了 URL 编码与解码的 API，分别是：<br>encodeURI()  编码的函数<br>decodeURI()  解码的函数</p>
-<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220226201140495.png" alt="image-20220226201140495"></p>
-<h2 id="发起post请求-1"><a href="#发起post请求-1" class="headerlink" title="发起post请求"></a>发起post请求</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1. 创建 xhr 对象</span></span><br><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line"><span class="comment">// 2. 调用 open()</span></span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;POST&#x27;</span>, <span class="string">&#x27;http://www.liulongbin.top:3006/api/addbook&#x27;</span>)</span><br><span class="line"><span class="comment">// 3. 设置 Content-Type 属性（固定写法）</span></span><br><span class="line">xhr.<span class="title function_">setRequestHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>)</span><br><span class="line"><span class="comment">// 4. 调用 send()，同时将数据以查询字符串的形式，提交给服务器</span></span><br><span class="line">xhr.<span class="title function_">send</span>(<span class="string">&#x27;bookname=水浒传&amp;author=施耐庵&amp;publisher=天津图书出版社&#x27;</span>)</span><br><span class="line"><span class="comment">// 5. 监听 onreadystatechange 事件</span></span><br><span class="line">xhr.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.<span class="property">readyState</span> === <span class="number">4</span> &amp;&amp; xhr.<span class="property">status</span> === <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(xhr.<span class="property">responseText</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="xhr-level2"><a href="#xhr-level2" class="headerlink" title="xhr level2"></a>xhr level2</h2><p>新功能</p>
-<ul>
-<li>可以设置 HTTP 请求的时限</li>
-<li>可以使用 FormData 对象管理表单数据</li>
-<li>可以上传文件</li>
-<li>可以获得数据传输的进度信息</li>
-</ul>
-<h3 id="设置HTTP请求时限"><a href="#设置HTTP请求时限" class="headerlink" title="设置HTTP请求时限"></a>设置HTTP请求时限</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">xhr.timeout = <span class="number">3000</span><span class="comment">//设置http请求的时限为3000毫秒</span></span><br><span class="line">xhr.ontimeout = function(event)<span class="punctuation">&#123;</span></span><br><span class="line">alert(&#x27;请求超时！&#x27;)</span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="FormData对象管理表单数据"><a href="#FormData对象管理表单数据" class="headerlink" title="FormData对象管理表单数据"></a>FormData对象管理表单数据</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">      <span class="comment">// 1. 新建 FormData 对象</span></span><br><span class="line">      <span class="keyword">var</span> fd = <span class="keyword">new</span> <span class="title class_">FormData</span>()</span><br><span class="line">      <span class="comment">// 2. 为 FormData 添加表单项</span></span><br><span class="line">      fd.<span class="title function_">append</span>(<span class="string">&#x27;uname&#x27;</span>, <span class="string">&#x27;zs&#x27;</span>)</span><br><span class="line">      fd.<span class="title function_">append</span>(<span class="string">&#x27;upwd&#x27;</span>, <span class="string">&#x27;123456&#x27;</span>)</span><br><span class="line">      <span class="comment">// 3. 创建 XHR 对象</span></span><br><span class="line">      <span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line">      <span class="comment">// 4. 指定请求类型与URL地址</span></span><br><span class="line">      xhr.<span class="title function_">open</span>(<span class="string">&#x27;POST&#x27;</span>, <span class="string">&#x27;http://www.liulongbin.top:3006/api/formdata&#x27;</span>)</span><br><span class="line">      <span class="comment">// 5. 直接提交 FormData 对象，这与提交网页表单的效果，完全一样</span></span><br><span class="line">      xhr.<span class="title function_">send</span>(fd)</span><br><span class="line">xhr.<span class="property">onreadystatechange</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">   <span class="keyword">if</span> (xhr.<span class="property">readyState</span> === <span class="number">4</span> &amp;&amp; xhr.<span class="property">status</span> === <span class="number">200</span>) 		&#123;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(xhr.<span class="property">responseText</span>));</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>获取表单元素：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> form = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#form1&#x27;</span>)</span><br><span class="line">form.<span class="title function_">addEventListener</span>(<span class="string">&#x27;submit&#x27;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">  e.<span class="title function_">preventDefault</span>()<span class="comment">//阻止默认提交行为</span></span><br><span class="line">  <span class="comment">// 创建formdata，快速获得表单中的数据</span></span><br><span class="line">  <span class="keyword">var</span> fd = <span class="keyword">new</span> <span class="title class_">FormData</span>(form)</span><br><span class="line">  <span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line">  xhr.<span class="title function_">open</span>(<span class="string">&#x27;post&#x27;</span>, <span class="string">&#x27;http://www.liulongbin.top:3006/api/formdata&#x27;</span>)</span><br><span class="line">  xhr.<span class="title function_">setRequestHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>)</span><br><span class="line">  xhr.<span class="title function_">send</span>(fd)</span><br><span class="line">  xhr.<span class="property">onreadystatechange</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.<span class="property">readyState</span> === <span class="number">4</span> &amp;&amp; xhr.<span class="property">status</span> === <span class="number">200</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(xhr.<span class="property">responseText</span>));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h3><p>实现步骤</p>
-<ol>
-<li>定义ui结构</li>
-<li>验证是否选择了文件</li>
-<li>向Formdata中追加文件</li>
-<li>发起上传文件的请求</li>
-<li>监听onreadystatechange事件</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> btnUpload = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#btnUpload&#x27;</span>)</span><br><span class="line">btnUpload.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">//获取到选择的列表</span></span><br><span class="line">  <span class="keyword">var</span> files = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#file1&#x27;</span>).<span class="property">files</span></span><br><span class="line">  <span class="keyword">if</span> (files.<span class="property">length</span> &lt;= <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">alert</span>(<span class="string">&#x27;请选择要上传的文件！&#x27;</span>)</span><br><span class="line">  <span class="keyword">var</span> fd = <span class="keyword">new</span> <span class="title class_">FormData</span>()</span><br><span class="line">  fd.<span class="title function_">append</span>(<span class="string">&#x27;avatar&#x27;</span>, files[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 1. 创建 xhr 对象</span></span><br><span class="line">  <span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line">  <span class="comment">// 显示文件的上传进度</span></span><br><span class="line">  xhr.<span class="property">upload</span>.<span class="property">onprogress</span> = <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (e.<span class="property">lengthComputable</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> percentComplete = <span class="title class_">Math</span>.<span class="title function_">ceil</span>((e.<span class="property">loaded</span> / e.<span class="property">total</span>) * <span class="number">100</span>)</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(percentComplete)</span><br><span class="line">      $(<span class="string">&#x27;#percent&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;style&#x27;</span>, <span class="string">&#x27;width:&#x27;</span> + percentComplete + <span class="string">&#x27;%&#x27;</span>)</span><br><span class="line">        <span class="comment">// 3. 显示当前的上传进度百分比</span></span><br><span class="line">        .<span class="title function_">html</span>(percentComplete + <span class="string">&#x27;%&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//进度条完成以后设置样式</span></span><br><span class="line">  xhr.<span class="property">upload</span>.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    $(<span class="string">&#x27;#percent&#x27;</span>)</span><br><span class="line">      <span class="comment">// 移除上传中的类样式</span></span><br><span class="line">      .<span class="title function_">removeClass</span>()</span><br><span class="line">      <span class="comment">// 添加上传完成的类样式</span></span><br><span class="line">      .<span class="title function_">addClass</span>(<span class="string">&#x27;progress-bar progress-bar-success&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 2. 调用 open 函数，指定请求类型与URL地址。其中，请求类型必须为 POST</span></span><br><span class="line">  xhr.<span class="title function_">open</span>(<span class="string">&#x27;POST&#x27;</span>, <span class="string">&#x27;http://www.liulongbin.top:3006/api/upload/avatar&#x27;</span>)</span><br><span class="line">  <span class="comment">// 3. 发起请求</span></span><br><span class="line">  xhr.<span class="title function_">send</span>(fd)</span><br><span class="line"></span><br><span class="line">  xhr.<span class="property">onreadystatechange</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.<span class="property">readyState</span> === <span class="number">4</span> &amp;&amp; xhr.<span class="property">status</span> === <span class="number">200</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> data = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(xhr.<span class="property">responseText</span>)</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (data.<span class="property">status</span> === <span class="number">200</span>) &#123; <span class="comment">// 上传文件成功</span></span><br><span class="line">        <span class="comment">// 将服务器返回的图片地址，设置为 &lt;img&gt; 标签的 src 属性</span></span><br><span class="line">        <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#img&#x27;</span>).<span class="property">src</span> = <span class="string">&#x27;http://www.liulongbin.top:3006&#x27;</span> + data.<span class="property">url</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123; <span class="comment">// 上传文件失败</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(data.<span class="property">message</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h1><blockquote>
-<p>概念：axios是专注网络数据请求的库，相比于XHR对象，axios简单易用</p>
-</blockquote>
-<h2 id="发起get请求-2"><a href="#发起get请求-2" class="headerlink" title="发起get请求"></a>发起get请求</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;url&#x27;</span>, &#123; <span class="attr">params</span>: &#123; <span class="comment">/*参数*/</span> &#125; &#125;).<span class="title function_">then</span>(callback)</span><br></pre></td></tr></table></figure>
-
-<p>ex:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 请求的 URL 地址</span></span><br><span class="line"><span class="keyword">var</span> url = <span class="string">&#x27;http://www.liulongbin.top:3006/api/get&#x27;</span></span><br><span class="line"><span class="comment">// 请求的参数对象</span></span><br><span class="line"><span class="keyword">var</span> paramsObj = &#123; <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;</span><br><span class="line"><span class="comment">// 调用 axios.get() 发起 GET 请求</span></span><br><span class="line">axios.<span class="title function_">get</span>(url, &#123; <span class="attr">params</span>: paramsObj &#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">    <span class="comment">// res.data 是服务器返回的数据</span></span><br><span class="line">    <span class="keyword">var</span> result = res.<span class="property">data</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="发起post请求-2"><a href="#发起post请求-2" class="headerlink" title="发起post请求"></a>发起post请求</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">axios.<span class="title function_">post</span>(<span class="string">&#x27;url&#x27;</span>, &#123; <span class="comment">/*参数*/</span> &#125;).<span class="title function_">then</span>(callback)</span><br></pre></td></tr></table></figure>
-
-<p>ex:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 请求的 URL 地址</span></span><br><span class="line"><span class="keyword">var</span> url = <span class="string">&#x27;http://www.liulongbin.top:3006/api/post&#x27;</span></span><br><span class="line"><span class="comment">// 要提交到服务器的数据</span></span><br><span class="line"><span class="keyword">var</span> dataObj = &#123; <span class="attr">location</span>: <span class="string">&#x27;北京&#x27;</span>, <span class="attr">address</span>: <span class="string">&#x27;顺义&#x27;</span> &#125;</span><br><span class="line"><span class="comment">// 调用 axios.post() 发起 POST 请求</span></span><br><span class="line">axios.<span class="title function_">post</span>(url, dataObj).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">    <span class="comment">// res.data 是服务器返回的数据</span></span><br><span class="line">    <span class="keyword">var</span> result = res.<span class="property">data</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(result)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="直接使用axios发起请求"><a href="#直接使用axios发起请求" class="headerlink" title="直接使用axios发起请求"></a>直接使用axios发起请求</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">  <span class="comment">//get</span></span><br><span class="line"><span class="title function_">axios</span>(&#123;</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;GET&#x27;</span>,</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;http://www.liulongbin.top:3006/api/get&#x27;</span>,</span><br><span class="line">    <span class="attr">params</span>: &#123; <span class="comment">// GET 参数要通过 params 属性提供</span></span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>,</span><br><span class="line">         <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="title function_">axios</span>(&#123;</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;http://www.liulongbin.top:3006/api/post&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123; <span class="comment">// POST 数据要通过 data 属性提供</span></span><br><span class="line">        <span class="attr">bookname</span>: <span class="string">&#x27;程序员的自我修养&#x27;</span>,</span><br><span class="line">         <span class="attr">price</span>: <span class="number">666</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><blockquote>
-<p>概念：JSON 的英文全称是 JavaScript Object Notation，即“JavaScript 对象表示法”。简单来讲，JSON 就是 Javascript 对象和数组的字符串表示法，它使用文本表示一个 JS 对象或数组的信息，因此，JSON 的本质是字符串。</p>
-</blockquote>
-<h2 id="json的对象结构"><a href="#json的对象结构" class="headerlink" title="json的对象结构"></a>json的对象结构</h2><p><code>&#123;key:value,key:value,·····&#125;  </code>其中属性名必须是使用英文的双引号包裹的字符串，如果属性值也是字符串类型的，则必须也用双引号包裹</p>
-<p>ex：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;zs&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">20</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;gender&quot;</span><span class="punctuation">:</span> <span class="string">&quot;男&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;address&quot;</span><span class="punctuation">:</span> <span class="keyword">null</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hobby&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;吃饭&quot;</span><span class="punctuation">,</span> <span class="string">&quot;睡觉&quot;</span><span class="punctuation">,</span> <span class="string">&quot;打豆豆&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="json的数组结构"><a href="#json的数组结构" class="headerlink" title="json的数组结构"></a>json的数组结构</h2><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span> <span class="string">&quot;java&quot;</span><span class="punctuation">,</span> <span class="string">&quot;python&quot;</span><span class="punctuation">,</span> <span class="string">&quot;php&quot;</span> <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">[</span> <span class="number">100</span><span class="punctuation">,</span> <span class="number">200</span><span class="punctuation">,</span> <span class="number">300.5</span> <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">[</span> <span class="keyword">true</span><span class="punctuation">,</span> <span class="keyword">false</span><span class="punctuation">,</span> <span class="keyword">null</span> <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">[</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;zs&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">20</span><span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ls&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">30</span><span class="punctuation">&#125;</span> <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">[</span> <span class="punctuation">[</span> <span class="string">&quot;苹果&quot;</span><span class="punctuation">,</span> <span class="string">&quot;榴莲&quot;</span><span class="punctuation">,</span> <span class="string">&quot;椰子&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span> <span class="punctuation">[</span> <span class="number">4</span><span class="punctuation">,</span> <span class="number">50</span><span class="punctuation">,</span> <span class="number">5</span> <span class="punctuation">]</span> <span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-
-<p>注意:</p>
-<ul>
-<li>json中不能写注释</li>
-<li>json的最外层必须是对象或者数组格式</li>
-<li>不能使用undefined或函数作为json的值</li>
-</ul>
-<p>json用于在计算机与网络之间存储和传输数据</p>
-<p>json的本质是用字符串来表达JavaScript对象/数组数据                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </p>
-<h2 id="json和js对象的互转"><a href="#json和js对象的互转" class="headerlink" title="json和js对象的互转"></a>json和js对象的互转</h2><p>json转js -&gt;JSON.parse() 又称为json反序列化</p>
-<p>js转json -&gt;JSON.stringify() 又称为json序列化</p>
-<h1 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h1><blockquote>
-<p> 同源: 如果两个页面的协议、域名、端口都相同，则称两个页面具有相同的源          </p>
-<p> 同源策略是浏览器提供的一个安全功能，它规定A网站的JavaScript不允许和非同源的网站B之间 进行交互。                              </p>
-<ol>
-<li>无法读取非同源网页的 Cookie、LocalStorage 和 IndexedDB</li>
-<li>无法接触非同源网页的 DOM</li>
-<li>无法向非同源地址发送 Ajax 请求</li>
-</ol>
-<p> 浏览器允许发起跨域请求，但是，跨域请求回来的数据，会被浏览器拦截，无法被页面获取到</p>
-</blockquote>
-<p>那么如何实现跨域请求？有两种解决方案，JSONP和CORS</p>
-<blockquote>
-<p>JSONP：出现的早，兼容性好（兼容低版本IE）。是前端程序员为了解决跨域问题，被迫想出来的一种临时解决方案。缺点是只支持 GET 请求，不支持 POST 请求。<br>CORS：出现的较晚，它是 W3C 标准，属于跨域 Ajax 请求的根本解决方案。支持 GET 和 POST 请求。缺点是不兼容某些低版本的浏览器。</p>
-</blockquote>
-<h1 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h1><p>JSONP是JSON的一种使用方式，可用通过来解决主流浏览器的跨域数据访问问题</p>
-<p>实现原理：</p>
-<blockquote>
-<p>因为浏览器受同源策略的影响，网页无法通过ajax请求非同源的接口数据。但是script标签不受浏览器同源策略影响，因此可以通过src属性，来请求非同源的js脚本。</p>
-<p>所以JSONP就是利用这个src属性，来请求跨域的数据接口，共通过函数调用的形式，接收跨域接口响应回来的数据</p>
-</blockquote>
-<p>缺点:jsonp只支持get请求，不支持post请求</p>
-<p>jsonp和ajax之间没有任何关系，不能把jsonp请求数据的方式叫做Ajax。因为jsonp并没有使用xhr对象</p>
-<h2 id="jquery中的jsonp"><a href="#jquery中的jsonp" class="headerlink" title="jquery中的jsonp"></a>jquery中的jsonp</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">  <span class="attr">url</span>: <span class="string">&#x27;http://ajax.frontend.itheima.net:3006/api/jsonp?name=zs&amp;age=20&#x27;</span>,</span><br><span class="line">   <span class="comment">// 如果要使用 $.ajax() 发起 JSONP 请求，必须指定 datatype 为 jsonp</span></span><br><span class="line">   <span class="attr">dataType</span>: <span class="string">&#x27;jsonp&#x27;</span>,</span><br><span class="line">   <span class="attr">success</span>: <span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>默认情况下，使用 jQuery 发起 JSONP 请求，会自动携带一个callback=jQueryxxx 的参数，jQueryxxx 是随机生成的一个回调函数名称。</p>
-<p>jsonp的参数和回调函数的名称是可以自定义的</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;http://ajax.frontend.itheima.net:3006/api/jsonp?name=zs&amp;age=20&#x27;</span>,</span><br><span class="line">    <span class="attr">dataType</span>: <span class="string">&#x27;jsonp&#x27;</span>,</span><br><span class="line">    <span class="comment">// 发送到服务端的参数名称，默认值为 callback</span></span><br><span class="line">    <span class="attr">jsonp</span>: <span class="string">&#x27;callback&#x27;</span>,</span><br><span class="line">    <span class="comment">// 自定义的回调函数名称，默认值为 jQueryxxx 格式</span></span><br><span class="line">    <span class="attr">jsonpCallback</span>: <span class="string">&#x27;abc&#x27;</span>,</span><br><span class="line">    <span class="attr">success</span>: <span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">       <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>jQuery 中的 JSONP，也是通过 <code>&lt;script&gt;</code> 标签的 src 属性实现跨域数据访问的，只不过，jQuery 采用的是动态创建和移除 <code>&lt;script&gt;</code> 标签的方式，来发起 JSONP 数据请求。<br>在发起 JSONP 请求的时候，动态向<code> &lt;header&gt;</code> 中 append 一个<code> &lt;script&gt;</code> 标签；<br>在 JSONP 请求成功以后，动态从<code>&lt;header&gt;</code>中移除刚才 append 进去的 <code>&lt;script&gt;</code> 标签；</p>
-</blockquote>
-<h1 id="案例-淘宝搜索建议栏"><a href="#案例-淘宝搜索建议栏" class="headerlink" title="案例-淘宝搜索建议栏"></a>案例-淘宝搜索建议栏</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Logo --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./images/taobao_logo.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;logo&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- tab 栏 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tabs&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tab-active&quot;</span>&gt;</span>宝贝<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span>店铺<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 搜索区域（搜索框和搜索按钮） --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;search-box&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ipt&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入要搜索的内容&quot;</span> <span class="attr">id</span>=<span class="string">&quot;ipt&quot;</span> /&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;btnSearch&quot;</span>&gt;</span></span><br><span class="line">          搜索</span><br><span class="line">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 搜索建议列表 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;suggest-list&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 模板结构 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/html&quot;</span> <span class="attr">id</span>=<span class="string">&quot;tpl-suggestList&quot;</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    </span><span class="template-variable">&#123;&#123;<span class="name"><span class="built_in">each</span></span> result&#125;&#125;</span><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;suggest-item&quot;</span>&gt;</span></span><span class="template-variable">&#123;&#123;<span class="name">$value</span>[0]&#125;&#125;</span><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    </span><span class="template-tag">&#123;&#123;/<span class="name"><span class="built_in">each</span></span>&#125;&#125;</span><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">  </span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 防抖</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> timer = <span class="literal">null</span><span class="comment">//定义延时器</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> catchobj = &#123;&#125;<span class="comment">//全局缓存对象</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">debance</span>(<span class="params">keywords</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">getSuggestList</span>(keywords)</span></span><br><span class="line"><span class="language-javascript">      &#125;, <span class="number">300</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//获取用户输入的搜索关键词</span></span></span><br><span class="line"><span class="language-javascript">    $(<span class="string">&#x27;#ipt&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;keyup&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="built_in">clearTimeout</span>(timer)</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> keywords = $(<span class="variable language_">this</span>).<span class="title function_">val</span>().<span class="title function_">trim</span>()</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//搜索关键词为空时隐藏搜索建议列表</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span> (keywords.<span class="property">length</span> &lt;= <span class="number">0</span>)</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">return</span> $(<span class="string">&#x27;#suggest-list&#x27;</span>).<span class="title function_">empty</span>().<span class="title function_">hide</span>()</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//先判断缓存中是否有数据</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span> (catchobj[keywords]) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">return</span> <span class="title function_">renderSuggestList</span>(catchobj[keywords])</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// getSuggestList(keywords)</span></span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">debance</span>(keywords)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//获取搜索建议列表</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">getSuggestList</span>(<span class="params">kw</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      $.<span class="title function_">ajax</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">url</span>: <span class="string">&quot;https://suggest.taobao.com/sug?q=&quot;</span> + kw,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">dataType</span>: <span class="string">&quot;jsonp&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">success</span>: <span class="keyword">function</span> (<span class="params">response</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="title function_">renderSuggestList</span>(response);</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">      &#125;);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 渲染ui结构</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">renderSuggestList</span>(<span class="params">res</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span> (res.<span class="property">result</span>.<span class="property">length</span> &lt;= <span class="number">0</span>)</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">return</span> $(<span class="string">&#x27;#suggest-list&#x27;</span>).<span class="title function_">empty</span>().<span class="title function_">hide</span>()</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> htmlstr = <span class="title function_">template</span>(<span class="string">&#x27;tpl-suggestList&#x27;</span>, res)</span></span><br><span class="line"><span class="language-javascript">      $(<span class="string">&#x27;#suggest-list&#x27;</span>).<span class="title function_">html</span>(htmlstr).<span class="title function_">show</span>()</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//获取用户输入的内容当作键</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> k = $(<span class="string">&#x27;#ipt&#x27;</span>).<span class="title function_">val</span>().<span class="title function_">trim</span>()</span></span><br><span class="line"><span class="language-javascript">      catchobj[k] = res</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><h2 id="请求消息"><a href="#请求消息" class="headerlink" title="请求消息"></a>请求消息</h2><p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220227220215896.png" alt="image-20220227220215896"></p>
-<h3 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h3><p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220228190738149.png" alt="image-20220228190738149"></p>
-<h3 id="请求头部"><a href="#请求头部" class="headerlink" title="请求头部"></a>请求头部</h3><blockquote>
-<p>请求头部用于描述客户端的基本信息，从而把这些信息告诉服务器。</p>
-</blockquote>
-<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220228191558813.png" alt="image-20220228191558813"></p>
-<table>
-<thead>
-<tr>
-<th>头部字段</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Host</td>
-<td>要请求的服务器域名</td>
-</tr>
-<tr>
-<td>Connection</td>
-<td>客户端与服务器的连接方式(close 或 keep-alive)</td>
-</tr>
-<tr>
-<td>Conten-Length</td>
-<td>用来描述请求体的大小</td>
-</tr>
-<tr>
-<td><strong>Accept</strong></td>
-<td>客户端能接收什么类型的返回内容</td>
-</tr>
-<tr>
-<td><strong>User-Agent</strong></td>
-<td>产生请求的浏览器类型</td>
-</tr>
-<tr>
-<td><strong>Content-type</strong></td>
-<td>客户端告诉服务器实际发送的数据类型</td>
-</tr>
-<tr>
-<td>Accept-Encoding</td>
-<td>客户端可接收的内容压缩编码形式</td>
-</tr>
-<tr>
-<td><strong>Accept-Language</strong></td>
-<td>用户期望接收哪种人类语言的文本内容</td>
-</tr>
-</tbody></table>
-<h3 id="请求体"><a href="#请求体" class="headerlink" title="请求体"></a>请求体</h3><p>请求体中存放的，是要通过 POST 方式提交到服务器的数据。</p>
-<p>注意：只有 POST 请求才有请求体，GET 请求没有请求体！</p>
-<h2 id="响应消息"><a href="#响应消息" class="headerlink" title="响应消息"></a>响应消息</h2><h3 id="状态行"><a href="#状态行" class="headerlink" title="状态行"></a>状态行</h3><p>状态行由 http协议版本，状态码，状态码的描述文本三部分组成</p>
-<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220228193336520.png" alt="image-20220228193336520"></p>
-<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220228200026862.png" alt="image-20220228200026862"></p>
-<h2 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h2><table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>GET</td>
-<td>(查询)发送请求来获得服务器上的资源，请求体中不会包含请求数据，请求数据放在协议头中</td>
-</tr>
-<tr>
-<td>POST</td>
-<td>(新增)向服务器提交资源（例如提交表单或上传文件）。数据被包含在请求体中提交给服务器</td>
-</tr>
-<tr>
-<td>PUT</td>
-<td>(修改)向服务器提交资源，并使用提交的新资源，替换掉服务器对应的旧资源</td>
-</tr>
-<tr>
-<td>DELETE</td>
-<td>(删除)请求服务器删除指定的资源</td>
-</tr>
-<tr>
-<td>HEAD</td>
-<td>(新增)向服务器提交资源（例如提交表单或上传文件）。数据被包含在请求体中提交给服务器</td>
-</tr>
-<tr>
-<td>OPTIONS</td>
-<td>获取http服务器支持的http请求方法，允许客户端查看服务器的性能，比如ajax跨域时的预检等</td>
-</tr>
-<tr>
-<td>CONNECT</td>
-<td>建立一个到由目标资源标识的服务器的隧道</td>
-</tr>
-<tr>
-<td>TRACE</td>
-<td>沿着到目标资源的路径执行一个消息环回测试，主要用于测试或诊断</td>
-</tr>
-<tr>
-<td>PATCH</td>
-<td>是对 PUT 方法的补充，用来对已知资源进行局部更新</td>
-</tr>
-</tbody></table>
-<h2 id="响应状态码"><a href="#响应状态码" class="headerlink" title="响应状态码"></a>响应状态码</h2><p><code>https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status</code></p>
-<p>状态码由三位数组成，第一位数决定了状态码的类型</p>
-<table>
-<thead>
-<tr>
-<th>分类</th>
-<th>分类描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1**</td>
-<td>信息，服务器收到请求，需要请求者继续执行操作</td>
-</tr>
-<tr>
-<td>2**</td>
-<td>成功，操作被成功接受并处理</td>
-</tr>
-<tr>
-<td>3**</td>
-<td>重定向，需要进一步的操作以完成请求</td>
-</tr>
-<tr>
-<td>4**</td>
-<td>客户端错误 ，请求包含语义错误或无法完成请求</td>
-</tr>
-<tr>
-<td>5**</td>
-<td>服务器错误，服务器在处理请求的过程中发生了错误</td>
-</tr>
-</tbody></table>
-<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220228204029316.png" alt="image-20220228204029316"></p>
-<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220228204104222.png" alt="image-20220228204104222"></p>
-<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220228204122396.png" alt="image-20220228204122396"></p>
-]]></content>
-      <categories>
-        <category>web前端学习笔记</category>
-      </categories>
-      <tags>
-        <tag>ajax 前后端交互</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git常用操作</title>
     <url>/2022/03/01/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<p>本篇博客用于汇总git的常见操作以及相关知识</p>
@@ -1291,11 +816,7 @@
   <entry>
     <title>Promise</title>
     <url>/2022/03/03/Promise/</url>
-    <content><![CDATA[<span id="more"></span>
-
-
-
-<h1 id="第-1-章：Promise-的理解和使用"><a href="#第-1-章：Promise-的理解和使用" class="headerlink" title="第 1 章：Promise 的理解和使用"></a><strong>第</strong> <strong>1</strong> <strong>章：</strong>Promise <strong>的理解和使用</strong></h1><h2 id="1-1-Promise-是什么"><a href="#1-1-Promise-是什么" class="headerlink" title="1.1. Promise 是什么?"></a><strong>1.1. Promise</strong> <strong>是什么</strong>?</h2><h3 id="1-1-1-理解"><a href="#1-1-1-理解" class="headerlink" title="1.1.1. 理解"></a><strong>1.1.1.</strong> <strong>理解</strong></h3><ol>
+    <content><![CDATA[<h1 id="第-1-章：Promise-的理解和使用"><a href="#第-1-章：Promise-的理解和使用" class="headerlink" title="第 1 章：Promise 的理解和使用"></a><strong>第</strong> <strong>1</strong> <strong>章：</strong>Promise <strong>的理解和使用</strong></h1><h2 id="1-1-Promise-是什么"><a href="#1-1-Promise-是什么" class="headerlink" title="1.1. Promise 是什么?"></a><strong>1.1. Promise</strong> <strong>是什么</strong>?</h2><h3 id="1-1-1-理解"><a href="#1-1-1-理解" class="headerlink" title="1.1.1. 理解"></a><strong>1.1.1.</strong> <strong>理解</strong></h3><ol>
 <li><p>抽象表达: </p>
 <ol>
 <li><p>Promise 是一门新的技术(ES6 规范)</p>
@@ -1314,6 +835,8 @@
 </ol>
 </li>
 </ol>
+<span id="more"></span>
+
 <h3 id="1-1-2-promise-的状态改变"><a href="#1-1-2-promise-的状态改变" class="headerlink" title="1.1.2. promise 的状态改变"></a><strong>1.1.2. promise</strong> <strong>的状态改变</strong></h3><ol>
 <li><p>pending 变为 resolved</p>
 </li>
@@ -1454,6 +977,478 @@
 <li><p>如果 await 的 promise 失败了, 就会抛出异常, 需要通过 try…catch 捕获处理</p>
 </li>
 </ol>
+]]></content>
+      <categories>
+        <category>web前端学习笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Ajax</title>
+    <url>/2022/03/01/Ajax-1/</url>
+    <content><![CDATA[<h1 id="什么是-AJAX-？"><a href="#什么是-AJAX-？" class="headerlink" title="什么是 AJAX ？"></a>什么是 AJAX ？</h1><p>AJAX = 异步 JavaScript 和 XML。</p>
+<p>AJAX 是一种用于创建快速动态网页的技术。</p>
+<p>通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
+<p>传统的网页（不使用 AJAX）如果需要更新内容，必需重载整个网页面。</p>
+<span id="more"></span>
+
+<h1 id="URL地址"><a href="#URL地址" class="headerlink" title="URL地址"></a><strong>URL</strong>地址</h1><h3 id="组成部分"><a href="#组成部分" class="headerlink" title="组成部分"></a>组成部分</h3><p>通信协议，存放该资源的服务器名称，存放位置</p>
+<p>客户端与服务器之间的通信过程，是 请求-处理-响应三个步骤</p>
+<p>那么如何请求数据？ –&gt;使用对象<code>XMLHttpRequest</code>,简称xhr，是浏览器提供的js成员，通过xhr可以请求服务器上的数据资源。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> xhrObj = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br></pre></td></tr></table></figure>
+
+<p>get是问服务器要资源，post是向服务器发送资源。</p>
+<h1 id="jquery中的ajax"><a href="#jquery中的ajax" class="headerlink" title="jquery中的ajax"></a>jquery中的ajax</h1><h2 id="get-函数的用法"><a href="#get-函数的用法" class="headerlink" title="$.get()函数的用法"></a><code>$.get()</code>函数的用法</h2><p><code>$.get(url,[data],[callback])</code>,其中url是必须有的，data和callback是可有可无的</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>url</td>
+<td>string</td>
+<td>请求的资源地址</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>请求资源期间要携带的参数</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function</td>
+<td>请求成功时的回调函数</td>
+</tr>
+</tbody></table>
+<h3 id="发起不带参数的请求"><a href="#发起不带参数的请求" class="headerlink" title="发起不带参数的请求"></a>发起不带参数的请求</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&#x27;btn&#x27;</span>&gt;</span>发起不带参数的请求<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  $(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    $(<span class="string">&#x27;#btn&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      $.<span class="title function_">get</span>(<span class="string">&#x27;http://www.liulongbin.top:3006/api/getbooks&#x27;</span>, <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span></span><br><span class="line"><span class="language-javascript">      &#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">  &#125;)</span></span><br></pre></td></tr></table></figure>
+
+<p>打开网页后，用f12查看请求情况，切换到network栏，然后切换到xhr栏，查看。</p>
+<p>从headers可以看到请求的连接，以及请求的方式、请求的状态。</p>
+<p>从response可以看到无格式的请求到的内容，有格式的则在preview栏。</p>
+<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220129224727262.png" alt="image-20220129224727262"></p>
+<h3 id="发起带参数的请求"><a href="#发起带参数的请求" class="headerlink" title="发起带参数的请求"></a>发起带参数的请求</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>发起带参数的get请求<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    $(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      $(<span class="string">&#x27;#btn&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        $.<span class="title function_">get</span>(<span class="string">&#x27;http://www.liulongbin.top:3006/api/getbooks&#x27;</span>, &#123; <span class="attr">id</span>: <span class="number">1</span> &#125;, <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span></span><br><span class="line"><span class="language-javascript">        &#125;)</span></span><br><span class="line"><span class="language-javascript">      &#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="post-函数"><a href="#post-函数" class="headerlink" title="$.post()函数"></a><code>$.post()</code>函数</h2><p>和get相似。</p>
+<p><code>$.post(url,[data],[callback])</code>,其中url是必须有的，data和callback是可有可无的</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>url</td>
+<td>string</td>
+<td>提交数据的地址</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>要提交的数据</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function</td>
+<td>数据提交成功时的回调函数</td>
+</tr>
+</tbody></table>
+<p>代码ex：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>用post提交数据<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    $(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      $(<span class="string">&#x27;#btn&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        $.<span class="title function_">post</span>(<span class="string">&#x27;http://www.liulongbin.top:3006/api/addbook&#x27;</span>,<span class="comment">//数据提交的url地址</span></span></span><br><span class="line"><span class="language-javascript">          &#123; <span class="attr">bookname</span>: <span class="string">&#x27;水浒传&#x27;</span>, <span class="attr">author</span>: <span class="string">&#x27;施耐庵&#x27;</span>, <span class="attr">publisher</span>: <span class="string">&#x27;上海图书出版社&#x27;</span> &#125;,<span class="comment">//要提交的数据</span></span></span><br><span class="line"><span class="language-javascript">          <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span></span><br><span class="line"><span class="language-javascript">          &#125;)</span></span><br><span class="line"><span class="language-javascript">      &#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="ajax-函数"><a href="#ajax-函数" class="headerlink" title="$.ajax()函数"></a><code>$.ajax()</code>函数</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">   <span class="attr">type</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 请求的方式，例如 GET 或 POST</span></span><br><span class="line">   <span class="attr">url</span>: <span class="string">&#x27;&#x27;</span>,  <span class="comment">// 请求的 URL 地址</span></span><br><span class="line">   <span class="attr">data</span>: &#123; &#125;,<span class="comment">// 这次请求要携带的数据</span></span><br><span class="line">   <span class="attr">success</span>: <span class="keyword">function</span>(<span class="params">res</span>) &#123; &#125; <span class="comment">// 请求成功之后的回调函数</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="发起get请求"><a href="#发起get请求" class="headerlink" title="发起get请求"></a>发起get请求</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">   <span class="attr">type</span>: <span class="string">&#x27;GET&#x27;</span>, <span class="comment">// 请求的方式</span></span><br><span class="line">   <span class="attr">url</span>: <span class="string">&#x27;http://www.liulongbin.top:3006/api/getbooks&#x27;</span>,  <span class="comment">// 请求的 URL 地址</span></span><br><span class="line">   <span class="attr">data</span>: &#123; <span class="attr">id</span>: <span class="number">1</span> &#125;,<span class="comment">// 这次请求要携带的数据</span></span><br><span class="line">   <span class="attr">success</span>: <span class="keyword">function</span>(<span class="params">res</span>) &#123; <span class="comment">// 请求成功之后的回调函数</span></span><br><span class="line">       <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="发起post请求"><a href="#发起post请求" class="headerlink" title="发起post请求"></a>发起post请求</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">   <span class="attr">type</span>: <span class="string">&#x27;post&#x27;</span>,</span><br><span class="line">   <span class="attr">url</span>: <span class="string">&#x27;http://www.liulongbin.top:3006/api/addbook&#x27;</span>,<span class="comment">//数据提交的url地址</span></span><br><span class="line">   <span class="attr">data</span>: &#123; <span class="attr">bookname</span>: <span class="string">&#x27;我也不想知道&#x27;</span>, <span class="attr">author</span>: <span class="string">&#x27;司马迁&#x27;</span>, <span class="attr">publisher</span>: <span class="string">&#x27;上海图书出版社&#x27;</span> &#125;,</span><br><span class="line">   <span class="attr">success</span>: <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>javascript <code>trim()</code>方法可以去除掉字符串头尾的空白符，其中空白符包括空格，tab，换行符等                                  </p>
+<h1 id="form表单使用"><a href="#form表单使用" class="headerlink" title="form表单使用"></a>form表单使用</h1><h2 id="form标签的属性"><a href="#form标签的属性" class="headerlink" title="form标签的属性"></a>form标签的属性</h2><table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">action</td>
+<td align="center">url地址</td>
+<td align="center">规定当提交表单时，向何处发送表单数据</td>
+</tr>
+<tr>
+<td align="center">method</td>
+<td align="center">get或post</td>
+<td align="center">规定以何种方式把表单数据提交到action URL</td>
+</tr>
+<tr>
+<td align="center">enctype</td>
+<td align="center">application/x-www-form-urlencoded multipart/form-data text/plain</td>
+<td align="center">规定在发送表单数据之前如何对其进行编码</td>
+</tr>
+<tr>
+<td align="center">target</td>
+<td align="center">_blank _self  _parent _top framename</td>
+<td align="center">规定在何处打开action URL</td>
+</tr>
+</tbody></table>
+<h3 id="action"><a href="#action" class="headerlink" title="action"></a>action</h3><p>action属性的值应该是由后端提供的一个url地址，这个url地址专门负责接收表单提交过来的数据。如果form表单没有指定action属性值，那么action的默认值就是当前页面的url地址。提交表单后，页面会立刻跳转到action属性指定的url地址</p>
+<h3 id="method"><a href="#method" class="headerlink" title="method"></a>method</h3><p>默认情况下，method 的值为 get</p>
+<p>get 方式适合用来提交少量的、简单的数据。<br>post 方式适合用来提交大量的、复杂的、或包含文件上传的数据。<br>在实际开发中，<code>&lt;form&gt;</code> 表单的 post 提交方式用的最多，很少用 get。例如登录、注册、添加数据等表单操作，都需要使用 post 方式来提交表单。                                                 </p>
+<h3 id="enctype"><a href="#enctype" class="headerlink" title="enctype"></a>enctype</h3><table>
+<thead>
+<tr>
+<th>值</th>
+<th>属性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>application/x-www-form-urlencoded</td>
+<td>在发送前编码所有字符（默认）</td>
+</tr>
+</tbody></table>
+<p>| multipart/form-data               | 不对字符编码。<br>在使用包含文件上传控件的表单时，必须使用该值。 |<br>| text/plain                        | 空格转换为 “+” 加号，但不对特殊字符编码。（很少用）          |<br>不上传文件就直接不写这个属性就行</p>
+<h2 id="表单同步提交"><a href="#表单同步提交" class="headerlink" title="表单同步提交"></a>表单同步提交</h2><p>表单同步提交是指点击submit按钮后，页面会直接跳转到action URL。</p>
+<p>缺点是导致用户体验感差、页面之前的状态和数据都会丢失</p>
+<p>解决方法:表单只负责采集数据，ajax负责将数据提交到服务器</p>
+<h2 id="通过ajax提交表单数据"><a href="#通过ajax提交表单数据" class="headerlink" title="通过ajax提交表单数据"></a>通过ajax提交表单数据</h2><h3 id="监听表单提交事件"><a href="#监听表单提交事件" class="headerlink" title="监听表单提交事件"></a>监听表单提交事件</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&#x27;#form1&#x27;</span>).<span class="title function_">submit</span>(<span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">   <span class="title function_">alert</span>(<span class="string">&#x27;监听到了表单的提交事件&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">&#x27;#form1&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;submit&#x27;</span>, <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">   <span class="title function_">alert</span>(<span class="string">&#x27;监听到了表单的提交事件&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="阻止表单默认提交行为"><a href="#阻止表单默认提交行为" class="headerlink" title="阻止表单默认提交行为"></a>阻止表单默认提交行为</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&#x27;#form1&#x27;</span>).<span class="title function_">submit</span>(<span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">   <span class="comment">// 阻止表单的提交和页面的跳转</span></span><br><span class="line">   e.<span class="title function_">preventDefault</span>()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">&#x27;#form1&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;submit&#x27;</span>, <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">   <span class="comment">// 阻止表单的提交和页面的跳转</span></span><br><span class="line">   e.<span class="title function_">preventDefault</span>()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="快速获得表单中的数据"><a href="#快速获得表单中的数据" class="headerlink" title="快速获得表单中的数据"></a>快速获得表单中的数据</h3><p>serialize()函数</p>
+<figure class="highlight mm"><table><tr><td class="code"><pre><span class="line">$(selector).serialize()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>serialize()函数可以一次性获得表单中的所有数据                                     </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;form1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>提交<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&#x27;#form1&#x27;</span>).<span class="title function_">serialize</span>()</span><br><span class="line"><span class="comment">// 调用的结果：</span></span><br><span class="line"><span class="comment">// username=用户名的值&amp;password=密码的值</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：在使用 serialize() 函数快速获取表单数据时，必须为每个表单元素添加 name 属性。</p>
+<p>jquery对象转化为原生dom对象-&gt;使用 jquery对象[0]</p>
+<h1 id="模板引擎的使用"><a href="#模板引擎的使用" class="headerlink" title="模板引擎的使用"></a>模板引擎的使用</h1><p>当我们想要把某个ui结构渲染到页面上时，一般情况下会采用字符串拼接的方式。但是如果ui结构比较复杂，此时对于单引号的使用就要格外注意，而且需求一旦发生变化，修改起来也十分困难。由此我们引入了模板引擎来解决这一问题。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> rows = []</span><br><span class="line">$.<span class="title function_">each</span>(res.<span class="property">data</span>, <span class="keyword">function</span> (<span class="params">i, item</span>) &#123; <span class="comment">// 循环拼接字符串</span></span><br><span class="line">    rows.<span class="title function_">push</span>(<span class="string">&#x27;&lt;li class=&quot;list-group-item&quot;&gt;&#x27;</span>+ item.<span class="property">content</span> +<span class="string">&#x27;&lt;span class=&quot;badge cmt-date&quot;&gt;评论时间：&#x27;</span>+ item.<span class="property">time</span> +<span class="string">&#x27;&lt;/span&gt;&lt;span class=&quot;badge cmt-person&quot;&gt;评论人：&#x27;</span>+ item.<span class="property">username</span> +<span class="string">&#x27;&lt;/span&gt;&lt;/li&gt;&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line">$(<span class="string">&#x27;#cmt-list&#x27;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(rows.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)) <span class="comment">// 渲染列表的UI结构</span></span><br></pre></td></tr></table></figure>
+
+<p>模板引擎可以根据我们指定的模板结构和数据自动生成一个完整的html页面</p>
+<h2 id="模板引擎使用步骤："><a href="#模板引擎使用步骤：" class="headerlink" title="模板引擎使用步骤："></a>模板引擎使用步骤：</h2><p>1.导入模板引擎</p>
+<p>导入后，在windows全局，则多了一个函数，叫做<code>template(&quot;模板的id&quot;，需要渲染的数据对象)</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./lib/template-web.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.定义需要渲染的数据</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123; <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span> ,<span class="attr">age</span>:<span class="number">20</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.定义模板</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 3.1 模板的 HTML 结构，必须定义到 script 中 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/html&quot;</span> <span class="attr">id</span>=<span class="string">&quot;tpl-user&quot;</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><span class="template-variable">&#123;&#123;<span class="name">name</span>&#125;&#125;</span><span class="language-xml">    ------    </span><span class="template-variable">&#123;&#123;<span class="name">age</span>&#125;&#125;</span><span class="language-xml"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">  </span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>4.调用template函数</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> htmlStr = <span class="title function_">template</span>(<span class="string">&#x27;tpl-user&#x27;</span>, data)</span><br></pre></td></tr></table></figure>
+
+<p>5.渲染html结构</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&#x27;#container&#x27;</span>).<span class="title function_">html</span>(htmlStr)</span><br></pre></td></tr></table></figure>
+
+<p>全部代码:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 1. 导入模板引擎 --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 在 window 全局，多一个函数，叫做 template(&#x27;模板的Id&#x27;, 需要渲染的数据对象) --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./lib/template-web.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./lib/jquery.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;container&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- 3. 定义模板 --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 3.1 模板的 HTML 结构，必须定义到 script 中 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/html&quot;</span> <span class="attr">id</span>=<span class="string">&quot;tpl-user&quot;</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><span class="template-variable">&#123;&#123;<span class="name">name</span>&#125;&#125;</span><span class="language-xml">    ------    </span><span class="template-variable">&#123;&#123;<span class="name">age</span>&#125;&#125;</span><span class="language-xml"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">  </span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 2. 定义需要渲染的数据</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> data = &#123; <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>, <span class="attr">age</span>: <span class="number">20</span>, <span class="attr">test</span>: <span class="string">&#x27;&lt;h3&gt;测试原文输出&lt;/h3&gt;&#x27;</span>, <span class="attr">flag</span>: <span class="number">1</span>, <span class="attr">hobby</span>: [<span class="string">&#x27;吃饭&#x27;</span>, <span class="string">&#x27;睡觉&#x27;</span>, <span class="string">&#x27;写代码&#x27;</span>], <span class="attr">regTime</span>: <span class="keyword">new</span> <span class="title class_">Date</span>() &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 4. 调用 template 函数</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> htmlStr = <span class="title function_">template</span>(<span class="string">&#x27;tpl-user&#x27;</span>, data)</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(htmlStr)</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 5. 渲染HTML结构</span></span></span><br><span class="line"><span class="language-javascript">    $(<span class="string">&#x27;#container&#x27;</span>).<span class="title function_">html</span>(htmlStr)</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="标准语法"><a href="#标准语法" class="headerlink" title="标准语法"></a>标准语法</h2><h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;&#123;value&#125;&#125;<span class="comment">//变量的输出</span></span><br><span class="line">&#123;&#123;obj.<span class="property">key</span>&#125;&#125;<span class="comment">//对象属性</span></span><br><span class="line">&#123;&#123;obj[<span class="string">&#x27;key&#x27;</span>]&#125;&#125;</span><br><span class="line">&#123;&#123;a ? b : c&#125;&#125;<span class="comment">//三元表达式</span></span><br><span class="line">&#123;&#123;a || b&#125;&#125;<span class="comment">//逻辑</span></span><br><span class="line">&#123;&#123;a + b&#125;&#125;<span class="comment">//加减乘除等表达式</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="原文输出"><a href="#原文输出" class="headerlink" title="原文输出"></a>原文输出</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;&#123;@ value &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果要输出的 value 值中，包含了 HTML 标签结构，则需要使用原文输出语法，才能保证 HTML 标签被正常渲染</p>
+<h3 id="条件输出"><a href="#条件输出" class="headerlink" title="条件输出"></a>条件输出</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;&#123;if value&#125;&#125; 按需输出的内容 &#123;&#123;/if&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&#123;if v1&#125;&#125; 按需输出的内容 &#123;&#123;else if v2&#125;&#125; 按需输出的内容 &#123;&#123;/if&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="循环输出"><a href="#循环输出" class="headerlink" title="循环输出"></a>循环输出</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;&#123;each arr&#125;&#125;</span><br><span class="line">    &#123;&#123;$index&#125;&#125; &#123;&#123;$value&#125;&#125;</span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p><code>&#123;&#123;value | filterName&#125;&#125;</code></p>
+<p>定义过滤器的基本语法：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">template.<span class="property">defaults</span>.<span class="property">imports</span>.<span class="property">filterName</span> = <span class="keyword">function</span>(<span class="params">value</span>)&#123;</span><br><span class="line"> <span class="comment">// return处理的结果</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ex:格式化时间过滤器</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;container&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/html&quot;</span> <span class="attr">id</span>=<span class="string">&quot;tpl-user&quot;</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"><span class="tag">&lt;<span class="name">h3</span>&gt;</span></span><span class="template-variable">&#123;&#123;<span class="name">regTime</span> | dateFormat&#125;&#125;</span><span class="language-xml"><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  template.<span class="property">defaults</span>.<span class="property">imports</span>.<span class="property">dateFormat</span> = <span class="keyword">function</span> (<span class="params">date</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> y = date.<span class="title function_">getFullYear</span>()</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> m = date.<span class="title function_">getMonth</span>() + <span class="number">1</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> d = date.<span class="title function_">getDate</span>()</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">return</span> y + <span class="string">&#x27;-&#x27;</span> + m + <span class="string">&#x27;-&#x27;</span> + d</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> data = &#123;  <span class="attr">regTime</span>: <span class="keyword">new</span> <span class="title class_">Date</span>() &#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> html = <span class="title function_">template</span>(<span class="string">&#x27;tpl-user&#x27;</span>, data)</span></span><br><span class="line"><span class="language-javascript">  $(<span class="string">&#x27;#container&#x27;</span>).<span class="title function_">html</span>(html)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="正则与字符串操作"><a href="#正则与字符串操作" class="headerlink" title="正则与字符串操作"></a>正则与字符串操作</h1><p>exec函数用于检索字符串中的正则表达式的匹配，如果字符串中有匹配的值，则返回一个数组，其中存储匹配的结果，否则返回null</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RegExpObject.exec(string)</span><br></pre></td></tr></table></figure>
+
+<p>下面以此例来解释exec函数返回的数组的内容</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;hello&#x27;</span></span><br><span class="line"><span class="keyword">var</span> pattern = <span class="regexp">/o/</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(pattern.<span class="title function_">exec</span>(str)) </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220225171203791.png" alt="image-20220225171203791"></p>
+<blockquote>
+<ol>
+<li><strong>0</strong>: “o”   与正则表达式相匹配的文本</li>
+<li><strong>groups</strong>: undefined  存储着所有的命名捕获组。</li>
+<li><strong>index</strong>: 4  index <strong>属性声明的是匹配文本的第一个字符的位置</strong></li>
+<li><strong>input</strong>: “hello” 存放的是被检索的字符串 string</li>
+<li><strong>length</strong>: 1 数组长度</li>
+</ol>
+</blockquote>
+<h1 id="xhr的使用"><a href="#xhr的使用" class="headerlink" title="xhr的使用"></a>xhr的使用</h1><h2 id="发起get请求-1"><a href="#发起get请求-1" class="headerlink" title="发起get请求"></a>发起get请求</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//创建xhr对象</span></span><br><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line"><span class="comment">//调用open函数，指定请求方式与url地址</span></span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;get&#x27;</span>, <span class="string">&#x27;http://www.liulongbin.top:3006/api/getbooks?publisher=北京图书出版社&#x27;</span>)<span class="comment">//?后面是带的参数 这种在 URL 地址后面拼接的参数，叫做查询字符串。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//调用send函数，发起ajax请求</span></span><br><span class="line">xhr.<span class="title function_">send</span>()</span><br><span class="line"><span class="comment">//监听</span></span><br><span class="line">xhr.<span class="property">onreadystatechange</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 监听 xhr 对象的请求状态 readyState ；与服务器响应的状态 status</span></span><br><span class="line">  <span class="keyword">if</span> (xhr.<span class="property">readyState</span> === <span class="number">4</span> &amp;&amp; xhr.<span class="property">status</span> === <span class="number">200</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(xhr.<span class="property">responseText</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> xhr.<span class="property">responseText</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(xhr.<span class="property">responseText</span>));<span class="comment">//将json字符串转换成JavaScript对象</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>readyState属性</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>状态</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>unsent</td>
+<td>XmlHttpRequest对象已被创建，但尚未调用open方法</td>
+</tr>
+<tr>
+<td>1</td>
+<td>opened</td>
+<td>open方法已经被调用</td>
+</tr>
+<tr>
+<td>2</td>
+<td>headers_received</td>
+<td>send方法已经被调用</td>
+</tr>
+<tr>
+<td>3</td>
+<td>loading</td>
+<td>数据接收中，此时 response 属性中已经包含部分数据。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>done</td>
+<td>Ajax 请求完成，这意味着数据传输已经彻底完成或失败。</td>
+</tr>
+</tbody></table>
+<h3 id="url编码"><a href="#url编码" class="headerlink" title="url编码"></a>url编码</h3><p>url地址中不允许出现中文字符，如果url中需要包含中文字符，那么必须对其进行编码。</p>
+<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220226200650842.png" alt="image-20220226200650842"></p>
+<p>浏览器提供了 URL 编码与解码的 API，分别是：<br>encodeURI()  编码的函数<br>decodeURI()  解码的函数</p>
+<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220226201140495.png" alt="image-20220226201140495"></p>
+<h2 id="发起post请求-1"><a href="#发起post请求-1" class="headerlink" title="发起post请求"></a>发起post请求</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1. 创建 xhr 对象</span></span><br><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line"><span class="comment">// 2. 调用 open()</span></span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;POST&#x27;</span>, <span class="string">&#x27;http://www.liulongbin.top:3006/api/addbook&#x27;</span>)</span><br><span class="line"><span class="comment">// 3. 设置 Content-Type 属性（固定写法）</span></span><br><span class="line">xhr.<span class="title function_">setRequestHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>)</span><br><span class="line"><span class="comment">// 4. 调用 send()，同时将数据以查询字符串的形式，提交给服务器</span></span><br><span class="line">xhr.<span class="title function_">send</span>(<span class="string">&#x27;bookname=水浒传&amp;author=施耐庵&amp;publisher=天津图书出版社&#x27;</span>)</span><br><span class="line"><span class="comment">// 5. 监听 onreadystatechange 事件</span></span><br><span class="line">xhr.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.<span class="property">readyState</span> === <span class="number">4</span> &amp;&amp; xhr.<span class="property">status</span> === <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(xhr.<span class="property">responseText</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="xhr-level2"><a href="#xhr-level2" class="headerlink" title="xhr level2"></a>xhr level2</h2><p>新功能</p>
+<ul>
+<li>可以设置 HTTP 请求的时限</li>
+<li>可以使用 FormData 对象管理表单数据</li>
+<li>可以上传文件</li>
+<li>可以获得数据传输的进度信息</li>
+</ul>
+<h3 id="设置HTTP请求时限"><a href="#设置HTTP请求时限" class="headerlink" title="设置HTTP请求时限"></a>设置HTTP请求时限</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">xhr.timeout = <span class="number">3000</span><span class="comment">//设置http请求的时限为3000毫秒</span></span><br><span class="line">xhr.ontimeout = function(event)<span class="punctuation">&#123;</span></span><br><span class="line">alert(&#x27;请求超时！&#x27;)</span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="FormData对象管理表单数据"><a href="#FormData对象管理表单数据" class="headerlink" title="FormData对象管理表单数据"></a>FormData对象管理表单数据</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">      <span class="comment">// 1. 新建 FormData 对象</span></span><br><span class="line">      <span class="keyword">var</span> fd = <span class="keyword">new</span> <span class="title class_">FormData</span>()</span><br><span class="line">      <span class="comment">// 2. 为 FormData 添加表单项</span></span><br><span class="line">      fd.<span class="title function_">append</span>(<span class="string">&#x27;uname&#x27;</span>, <span class="string">&#x27;zs&#x27;</span>)</span><br><span class="line">      fd.<span class="title function_">append</span>(<span class="string">&#x27;upwd&#x27;</span>, <span class="string">&#x27;123456&#x27;</span>)</span><br><span class="line">      <span class="comment">// 3. 创建 XHR 对象</span></span><br><span class="line">      <span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line">      <span class="comment">// 4. 指定请求类型与URL地址</span></span><br><span class="line">      xhr.<span class="title function_">open</span>(<span class="string">&#x27;POST&#x27;</span>, <span class="string">&#x27;http://www.liulongbin.top:3006/api/formdata&#x27;</span>)</span><br><span class="line">      <span class="comment">// 5. 直接提交 FormData 对象，这与提交网页表单的效果，完全一样</span></span><br><span class="line">      xhr.<span class="title function_">send</span>(fd)</span><br><span class="line">xhr.<span class="property">onreadystatechange</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">   <span class="keyword">if</span> (xhr.<span class="property">readyState</span> === <span class="number">4</span> &amp;&amp; xhr.<span class="property">status</span> === <span class="number">200</span>) 		&#123;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(xhr.<span class="property">responseText</span>));</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>获取表单元素：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> form = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#form1&#x27;</span>)</span><br><span class="line">form.<span class="title function_">addEventListener</span>(<span class="string">&#x27;submit&#x27;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">  e.<span class="title function_">preventDefault</span>()<span class="comment">//阻止默认提交行为</span></span><br><span class="line">  <span class="comment">// 创建formdata，快速获得表单中的数据</span></span><br><span class="line">  <span class="keyword">var</span> fd = <span class="keyword">new</span> <span class="title class_">FormData</span>(form)</span><br><span class="line">  <span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line">  xhr.<span class="title function_">open</span>(<span class="string">&#x27;post&#x27;</span>, <span class="string">&#x27;http://www.liulongbin.top:3006/api/formdata&#x27;</span>)</span><br><span class="line">  xhr.<span class="title function_">setRequestHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>)</span><br><span class="line">  xhr.<span class="title function_">send</span>(fd)</span><br><span class="line">  xhr.<span class="property">onreadystatechange</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.<span class="property">readyState</span> === <span class="number">4</span> &amp;&amp; xhr.<span class="property">status</span> === <span class="number">200</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(xhr.<span class="property">responseText</span>));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h3><p>实现步骤</p>
+<ol>
+<li>定义ui结构</li>
+<li>验证是否选择了文件</li>
+<li>向Formdata中追加文件</li>
+<li>发起上传文件的请求</li>
+<li>监听onreadystatechange事件</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> btnUpload = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#btnUpload&#x27;</span>)</span><br><span class="line">btnUpload.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">//获取到选择的列表</span></span><br><span class="line">  <span class="keyword">var</span> files = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#file1&#x27;</span>).<span class="property">files</span></span><br><span class="line">  <span class="keyword">if</span> (files.<span class="property">length</span> &lt;= <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">alert</span>(<span class="string">&#x27;请选择要上传的文件！&#x27;</span>)</span><br><span class="line">  <span class="keyword">var</span> fd = <span class="keyword">new</span> <span class="title class_">FormData</span>()</span><br><span class="line">  fd.<span class="title function_">append</span>(<span class="string">&#x27;avatar&#x27;</span>, files[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 1. 创建 xhr 对象</span></span><br><span class="line">  <span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line">  <span class="comment">// 显示文件的上传进度</span></span><br><span class="line">  xhr.<span class="property">upload</span>.<span class="property">onprogress</span> = <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (e.<span class="property">lengthComputable</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> percentComplete = <span class="title class_">Math</span>.<span class="title function_">ceil</span>((e.<span class="property">loaded</span> / e.<span class="property">total</span>) * <span class="number">100</span>)</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(percentComplete)</span><br><span class="line">      $(<span class="string">&#x27;#percent&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;style&#x27;</span>, <span class="string">&#x27;width:&#x27;</span> + percentComplete + <span class="string">&#x27;%&#x27;</span>)</span><br><span class="line">        <span class="comment">// 3. 显示当前的上传进度百分比</span></span><br><span class="line">        .<span class="title function_">html</span>(percentComplete + <span class="string">&#x27;%&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//进度条完成以后设置样式</span></span><br><span class="line">  xhr.<span class="property">upload</span>.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    $(<span class="string">&#x27;#percent&#x27;</span>)</span><br><span class="line">      <span class="comment">// 移除上传中的类样式</span></span><br><span class="line">      .<span class="title function_">removeClass</span>()</span><br><span class="line">      <span class="comment">// 添加上传完成的类样式</span></span><br><span class="line">      .<span class="title function_">addClass</span>(<span class="string">&#x27;progress-bar progress-bar-success&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 2. 调用 open 函数，指定请求类型与URL地址。其中，请求类型必须为 POST</span></span><br><span class="line">  xhr.<span class="title function_">open</span>(<span class="string">&#x27;POST&#x27;</span>, <span class="string">&#x27;http://www.liulongbin.top:3006/api/upload/avatar&#x27;</span>)</span><br><span class="line">  <span class="comment">// 3. 发起请求</span></span><br><span class="line">  xhr.<span class="title function_">send</span>(fd)</span><br><span class="line"></span><br><span class="line">  xhr.<span class="property">onreadystatechange</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.<span class="property">readyState</span> === <span class="number">4</span> &amp;&amp; xhr.<span class="property">status</span> === <span class="number">200</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> data = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(xhr.<span class="property">responseText</span>)</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (data.<span class="property">status</span> === <span class="number">200</span>) &#123; <span class="comment">// 上传文件成功</span></span><br><span class="line">        <span class="comment">// 将服务器返回的图片地址，设置为 &lt;img&gt; 标签的 src 属性</span></span><br><span class="line">        <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#img&#x27;</span>).<span class="property">src</span> = <span class="string">&#x27;http://www.liulongbin.top:3006&#x27;</span> + data.<span class="property">url</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123; <span class="comment">// 上传文件失败</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(data.<span class="property">message</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h1><blockquote>
+<p>概念：axios是专注网络数据请求的库，相比于XHR对象，axios简单易用</p>
+</blockquote>
+<h2 id="发起get请求-2"><a href="#发起get请求-2" class="headerlink" title="发起get请求"></a>发起get请求</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;url&#x27;</span>, &#123; <span class="attr">params</span>: &#123; <span class="comment">/*参数*/</span> &#125; &#125;).<span class="title function_">then</span>(callback)</span><br></pre></td></tr></table></figure>
+
+<p>ex:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 请求的 URL 地址</span></span><br><span class="line"><span class="keyword">var</span> url = <span class="string">&#x27;http://www.liulongbin.top:3006/api/get&#x27;</span></span><br><span class="line"><span class="comment">// 请求的参数对象</span></span><br><span class="line"><span class="keyword">var</span> paramsObj = &#123; <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;</span><br><span class="line"><span class="comment">// 调用 axios.get() 发起 GET 请求</span></span><br><span class="line">axios.<span class="title function_">get</span>(url, &#123; <span class="attr">params</span>: paramsObj &#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">    <span class="comment">// res.data 是服务器返回的数据</span></span><br><span class="line">    <span class="keyword">var</span> result = res.<span class="property">data</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="发起post请求-2"><a href="#发起post请求-2" class="headerlink" title="发起post请求"></a>发起post请求</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">axios.<span class="title function_">post</span>(<span class="string">&#x27;url&#x27;</span>, &#123; <span class="comment">/*参数*/</span> &#125;).<span class="title function_">then</span>(callback)</span><br></pre></td></tr></table></figure>
+
+<p>ex:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 请求的 URL 地址</span></span><br><span class="line"><span class="keyword">var</span> url = <span class="string">&#x27;http://www.liulongbin.top:3006/api/post&#x27;</span></span><br><span class="line"><span class="comment">// 要提交到服务器的数据</span></span><br><span class="line"><span class="keyword">var</span> dataObj = &#123; <span class="attr">location</span>: <span class="string">&#x27;北京&#x27;</span>, <span class="attr">address</span>: <span class="string">&#x27;顺义&#x27;</span> &#125;</span><br><span class="line"><span class="comment">// 调用 axios.post() 发起 POST 请求</span></span><br><span class="line">axios.<span class="title function_">post</span>(url, dataObj).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">    <span class="comment">// res.data 是服务器返回的数据</span></span><br><span class="line">    <span class="keyword">var</span> result = res.<span class="property">data</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(result)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="直接使用axios发起请求"><a href="#直接使用axios发起请求" class="headerlink" title="直接使用axios发起请求"></a>直接使用axios发起请求</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">  <span class="comment">//get</span></span><br><span class="line"><span class="title function_">axios</span>(&#123;</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;GET&#x27;</span>,</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;http://www.liulongbin.top:3006/api/get&#x27;</span>,</span><br><span class="line">    <span class="attr">params</span>: &#123; <span class="comment">// GET 参数要通过 params 属性提供</span></span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>,</span><br><span class="line">         <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="title function_">axios</span>(&#123;</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;http://www.liulongbin.top:3006/api/post&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123; <span class="comment">// POST 数据要通过 data 属性提供</span></span><br><span class="line">        <span class="attr">bookname</span>: <span class="string">&#x27;程序员的自我修养&#x27;</span>,</span><br><span class="line">         <span class="attr">price</span>: <span class="number">666</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><blockquote>
+<p>概念：JSON 的英文全称是 JavaScript Object Notation，即“JavaScript 对象表示法”。简单来讲，JSON 就是 Javascript 对象和数组的字符串表示法，它使用文本表示一个 JS 对象或数组的信息，因此，JSON 的本质是字符串。</p>
+</blockquote>
+<h2 id="json的对象结构"><a href="#json的对象结构" class="headerlink" title="json的对象结构"></a>json的对象结构</h2><p><code>&#123;key:value,key:value,·····&#125;  </code>其中属性名必须是使用英文的双引号包裹的字符串，如果属性值也是字符串类型的，则必须也用双引号包裹</p>
+<p>ex：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;zs&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">20</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;gender&quot;</span><span class="punctuation">:</span> <span class="string">&quot;男&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;address&quot;</span><span class="punctuation">:</span> <span class="keyword">null</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hobby&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;吃饭&quot;</span><span class="punctuation">,</span> <span class="string">&quot;睡觉&quot;</span><span class="punctuation">,</span> <span class="string">&quot;打豆豆&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="json的数组结构"><a href="#json的数组结构" class="headerlink" title="json的数组结构"></a>json的数组结构</h2><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span> <span class="string">&quot;java&quot;</span><span class="punctuation">,</span> <span class="string">&quot;python&quot;</span><span class="punctuation">,</span> <span class="string">&quot;php&quot;</span> <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">[</span> <span class="number">100</span><span class="punctuation">,</span> <span class="number">200</span><span class="punctuation">,</span> <span class="number">300.5</span> <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">[</span> <span class="keyword">true</span><span class="punctuation">,</span> <span class="keyword">false</span><span class="punctuation">,</span> <span class="keyword">null</span> <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">[</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;zs&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">20</span><span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ls&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">30</span><span class="punctuation">&#125;</span> <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">[</span> <span class="punctuation">[</span> <span class="string">&quot;苹果&quot;</span><span class="punctuation">,</span> <span class="string">&quot;榴莲&quot;</span><span class="punctuation">,</span> <span class="string">&quot;椰子&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span> <span class="punctuation">[</span> <span class="number">4</span><span class="punctuation">,</span> <span class="number">50</span><span class="punctuation">,</span> <span class="number">5</span> <span class="punctuation">]</span> <span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<p>注意:</p>
+<ul>
+<li>json中不能写注释</li>
+<li>json的最外层必须是对象或者数组格式</li>
+<li>不能使用undefined或函数作为json的值</li>
+</ul>
+<p>json用于在计算机与网络之间存储和传输数据</p>
+<p>json的本质是用字符串来表达JavaScript对象/数组数据                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </p>
+<h2 id="json和js对象的互转"><a href="#json和js对象的互转" class="headerlink" title="json和js对象的互转"></a>json和js对象的互转</h2><p>json转js -&gt;JSON.parse() 又称为json反序列化</p>
+<p>js转json -&gt;JSON.stringify() 又称为json序列化</p>
+<h1 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h1><blockquote>
+<p> 同源: 如果两个页面的协议、域名、端口都相同，则称两个页面具有相同的源          </p>
+<p> 同源策略是浏览器提供的一个安全功能，它规定A网站的JavaScript不允许和非同源的网站B之间 进行交互。                              </p>
+<ol>
+<li>无法读取非同源网页的 Cookie、LocalStorage 和 IndexedDB</li>
+<li>无法接触非同源网页的 DOM</li>
+<li>无法向非同源地址发送 Ajax 请求</li>
+</ol>
+<p> 浏览器允许发起跨域请求，但是，跨域请求回来的数据，会被浏览器拦截，无法被页面获取到</p>
+</blockquote>
+<p>那么如何实现跨域请求？有两种解决方案，JSONP和CORS</p>
+<blockquote>
+<p>JSONP：出现的早，兼容性好（兼容低版本IE）。是前端程序员为了解决跨域问题，被迫想出来的一种临时解决方案。缺点是只支持 GET 请求，不支持 POST 请求。<br>CORS：出现的较晚，它是 W3C 标准，属于跨域 Ajax 请求的根本解决方案。支持 GET 和 POST 请求。缺点是不兼容某些低版本的浏览器。</p>
+</blockquote>
+<h1 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h1><p>JSONP是JSON的一种使用方式，可用通过来解决主流浏览器的跨域数据访问问题</p>
+<p>实现原理：</p>
+<blockquote>
+<p>因为浏览器受同源策略的影响，网页无法通过ajax请求非同源的接口数据。但是script标签不受浏览器同源策略影响，因此可以通过src属性，来请求非同源的js脚本。</p>
+<p>所以JSONP就是利用这个src属性，来请求跨域的数据接口，共通过函数调用的形式，接收跨域接口响应回来的数据</p>
+</blockquote>
+<p>缺点:jsonp只支持get请求，不支持post请求</p>
+<p>jsonp和ajax之间没有任何关系，不能把jsonp请求数据的方式叫做Ajax。因为jsonp并没有使用xhr对象</p>
+<h2 id="jquery中的jsonp"><a href="#jquery中的jsonp" class="headerlink" title="jquery中的jsonp"></a>jquery中的jsonp</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">  <span class="attr">url</span>: <span class="string">&#x27;http://ajax.frontend.itheima.net:3006/api/jsonp?name=zs&amp;age=20&#x27;</span>,</span><br><span class="line">   <span class="comment">// 如果要使用 $.ajax() 发起 JSONP 请求，必须指定 datatype 为 jsonp</span></span><br><span class="line">   <span class="attr">dataType</span>: <span class="string">&#x27;jsonp&#x27;</span>,</span><br><span class="line">   <span class="attr">success</span>: <span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，使用 jQuery 发起 JSONP 请求，会自动携带一个callback=jQueryxxx 的参数，jQueryxxx 是随机生成的一个回调函数名称。</p>
+<p>jsonp的参数和回调函数的名称是可以自定义的</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;http://ajax.frontend.itheima.net:3006/api/jsonp?name=zs&amp;age=20&#x27;</span>,</span><br><span class="line">    <span class="attr">dataType</span>: <span class="string">&#x27;jsonp&#x27;</span>,</span><br><span class="line">    <span class="comment">// 发送到服务端的参数名称，默认值为 callback</span></span><br><span class="line">    <span class="attr">jsonp</span>: <span class="string">&#x27;callback&#x27;</span>,</span><br><span class="line">    <span class="comment">// 自定义的回调函数名称，默认值为 jQueryxxx 格式</span></span><br><span class="line">    <span class="attr">jsonpCallback</span>: <span class="string">&#x27;abc&#x27;</span>,</span><br><span class="line">    <span class="attr">success</span>: <span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">       <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>jQuery 中的 JSONP，也是通过 <code>&lt;script&gt;</code> 标签的 src 属性实现跨域数据访问的，只不过，jQuery 采用的是动态创建和移除 <code>&lt;script&gt;</code> 标签的方式，来发起 JSONP 数据请求。<br>在发起 JSONP 请求的时候，动态向<code> &lt;header&gt;</code> 中 append 一个<code> &lt;script&gt;</code> 标签；<br>在 JSONP 请求成功以后，动态从<code>&lt;header&gt;</code>中移除刚才 append 进去的 <code>&lt;script&gt;</code> 标签；</p>
+</blockquote>
+<h1 id="案例-淘宝搜索建议栏"><a href="#案例-淘宝搜索建议栏" class="headerlink" title="案例-淘宝搜索建议栏"></a>案例-淘宝搜索建议栏</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Logo --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./images/taobao_logo.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;logo&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- tab 栏 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tabs&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tab-active&quot;</span>&gt;</span>宝贝<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span>店铺<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 搜索区域（搜索框和搜索按钮） --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;search-box&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ipt&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入要搜索的内容&quot;</span> <span class="attr">id</span>=<span class="string">&quot;ipt&quot;</span> /&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;btnSearch&quot;</span>&gt;</span></span><br><span class="line">          搜索</span><br><span class="line">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 搜索建议列表 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;suggest-list&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 模板结构 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/html&quot;</span> <span class="attr">id</span>=<span class="string">&quot;tpl-suggestList&quot;</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    </span><span class="template-variable">&#123;&#123;<span class="name"><span class="built_in">each</span></span> result&#125;&#125;</span><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;suggest-item&quot;</span>&gt;</span></span><span class="template-variable">&#123;&#123;<span class="name">$value</span>[0]&#125;&#125;</span><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    </span><span class="template-tag">&#123;&#123;/<span class="name"><span class="built_in">each</span></span>&#125;&#125;</span><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">  </span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 防抖</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> timer = <span class="literal">null</span><span class="comment">//定义延时器</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> catchobj = &#123;&#125;<span class="comment">//全局缓存对象</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">debance</span>(<span class="params">keywords</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">getSuggestList</span>(keywords)</span></span><br><span class="line"><span class="language-javascript">      &#125;, <span class="number">300</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//获取用户输入的搜索关键词</span></span></span><br><span class="line"><span class="language-javascript">    $(<span class="string">&#x27;#ipt&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;keyup&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="built_in">clearTimeout</span>(timer)</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> keywords = $(<span class="variable language_">this</span>).<span class="title function_">val</span>().<span class="title function_">trim</span>()</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//搜索关键词为空时隐藏搜索建议列表</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span> (keywords.<span class="property">length</span> &lt;= <span class="number">0</span>)</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">return</span> $(<span class="string">&#x27;#suggest-list&#x27;</span>).<span class="title function_">empty</span>().<span class="title function_">hide</span>()</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//先判断缓存中是否有数据</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span> (catchobj[keywords]) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">return</span> <span class="title function_">renderSuggestList</span>(catchobj[keywords])</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// getSuggestList(keywords)</span></span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">debance</span>(keywords)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//获取搜索建议列表</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">getSuggestList</span>(<span class="params">kw</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      $.<span class="title function_">ajax</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">url</span>: <span class="string">&quot;https://suggest.taobao.com/sug?q=&quot;</span> + kw,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">dataType</span>: <span class="string">&quot;jsonp&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">success</span>: <span class="keyword">function</span> (<span class="params">response</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="title function_">renderSuggestList</span>(response);</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">      &#125;);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 渲染ui结构</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">renderSuggestList</span>(<span class="params">res</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span> (res.<span class="property">result</span>.<span class="property">length</span> &lt;= <span class="number">0</span>)</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">return</span> $(<span class="string">&#x27;#suggest-list&#x27;</span>).<span class="title function_">empty</span>().<span class="title function_">hide</span>()</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> htmlstr = <span class="title function_">template</span>(<span class="string">&#x27;tpl-suggestList&#x27;</span>, res)</span></span><br><span class="line"><span class="language-javascript">      $(<span class="string">&#x27;#suggest-list&#x27;</span>).<span class="title function_">html</span>(htmlstr).<span class="title function_">show</span>()</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//获取用户输入的内容当作键</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> k = $(<span class="string">&#x27;#ipt&#x27;</span>).<span class="title function_">val</span>().<span class="title function_">trim</span>()</span></span><br><span class="line"><span class="language-javascript">      catchobj[k] = res</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><h2 id="请求消息"><a href="#请求消息" class="headerlink" title="请求消息"></a>请求消息</h2><p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220227220215896.png" alt="image-20220227220215896"></p>
+<h3 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h3><p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220228190738149.png" alt="image-20220228190738149"></p>
+<h3 id="请求头部"><a href="#请求头部" class="headerlink" title="请求头部"></a>请求头部</h3><blockquote>
+<p>请求头部用于描述客户端的基本信息，从而把这些信息告诉服务器。</p>
+</blockquote>
+<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220228191558813.png" alt="image-20220228191558813"></p>
+<table>
+<thead>
+<tr>
+<th>头部字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Host</td>
+<td>要请求的服务器域名</td>
+</tr>
+<tr>
+<td>Connection</td>
+<td>客户端与服务器的连接方式(close 或 keep-alive)</td>
+</tr>
+<tr>
+<td>Conten-Length</td>
+<td>用来描述请求体的大小</td>
+</tr>
+<tr>
+<td><strong>Accept</strong></td>
+<td>客户端能接收什么类型的返回内容</td>
+</tr>
+<tr>
+<td><strong>User-Agent</strong></td>
+<td>产生请求的浏览器类型</td>
+</tr>
+<tr>
+<td><strong>Content-type</strong></td>
+<td>客户端告诉服务器实际发送的数据类型</td>
+</tr>
+<tr>
+<td>Accept-Encoding</td>
+<td>客户端可接收的内容压缩编码形式</td>
+</tr>
+<tr>
+<td><strong>Accept-Language</strong></td>
+<td>用户期望接收哪种人类语言的文本内容</td>
+</tr>
+</tbody></table>
+<h3 id="请求体"><a href="#请求体" class="headerlink" title="请求体"></a>请求体</h3><p>请求体中存放的，是要通过 POST 方式提交到服务器的数据。</p>
+<p>注意：只有 POST 请求才有请求体，GET 请求没有请求体！</p>
+<h2 id="响应消息"><a href="#响应消息" class="headerlink" title="响应消息"></a>响应消息</h2><h3 id="状态行"><a href="#状态行" class="headerlink" title="状态行"></a>状态行</h3><p>状态行由 http协议版本，状态码，状态码的描述文本三部分组成</p>
+<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220228193336520.png" alt="image-20220228193336520"></p>
+<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220228200026862.png" alt="image-20220228200026862"></p>
+<h2 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>(查询)发送请求来获得服务器上的资源，请求体中不会包含请求数据，请求数据放在协议头中</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>(新增)向服务器提交资源（例如提交表单或上传文件）。数据被包含在请求体中提交给服务器</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>(修改)向服务器提交资源，并使用提交的新资源，替换掉服务器对应的旧资源</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>(删除)请求服务器删除指定的资源</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>(新增)向服务器提交资源（例如提交表单或上传文件）。数据被包含在请求体中提交给服务器</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>获取http服务器支持的http请求方法，允许客户端查看服务器的性能，比如ajax跨域时的预检等</td>
+</tr>
+<tr>
+<td>CONNECT</td>
+<td>建立一个到由目标资源标识的服务器的隧道</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td>沿着到目标资源的路径执行一个消息环回测试，主要用于测试或诊断</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>是对 PUT 方法的补充，用来对已知资源进行局部更新</td>
+</tr>
+</tbody></table>
+<h2 id="响应状态码"><a href="#响应状态码" class="headerlink" title="响应状态码"></a>响应状态码</h2><p><code>https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status</code></p>
+<p>状态码由三位数组成，第一位数决定了状态码的类型</p>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>分类描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1**</td>
+<td>信息，服务器收到请求，需要请求者继续执行操作</td>
+</tr>
+<tr>
+<td>2**</td>
+<td>成功，操作被成功接受并处理</td>
+</tr>
+<tr>
+<td>3**</td>
+<td>重定向，需要进一步的操作以完成请求</td>
+</tr>
+<tr>
+<td>4**</td>
+<td>客户端错误 ，请求包含语义错误或无法完成请求</td>
+</tr>
+<tr>
+<td>5**</td>
+<td>服务器错误，服务器在处理请求的过程中发生了错误</td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220228204029316.png" alt="image-20220228204029316"></p>
+<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220228204104222.png" alt="image-20220228204104222"></p>
+<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220228204122396.png" alt="image-20220228204122396"></p>
 ]]></content>
       <categories>
         <category>web前端学习笔记</category>
