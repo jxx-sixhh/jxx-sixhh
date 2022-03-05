@@ -99,7 +99,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">4.2k</span>
+            <span class="post-count">2.7k</span>
         </span>
     </span>
 
@@ -108,7 +108,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">18 分钟</span>
+            <span class="post-count">11 分钟</span>
         </span>
     </span>
 </div>
@@ -128,8 +128,7 @@
 
 
 <h1 id="第-1-章：Promise-的理解和使用"><a href="#第-1-章：Promise-的理解和使用" class="headerlink" title="第 1 章：Promise 的理解和使用"></a><strong>第</strong> <strong>1</strong> <strong>章：</strong>Promise <strong>的理解和使用</strong></h1><h2 id="1-1-Promise-是什么"><a href="#1-1-Promise-是什么" class="headerlink" title="1.1. Promise 是什么?"></a><strong>1.1. Promise</strong> <strong>是什么</strong>?</h2><h3 id="1-1-1-理解"><a href="#1-1-1-理解" class="headerlink" title="1.1.1. 理解"></a><strong>1.1.1.</strong> <strong>理解</strong></h3><ol>
-<li>抽象表达: </li>
-</ol>
+<li><p>抽象表达: </p>
 <ol>
 <li><p>Promise 是一门新的技术(ES6 规范)</p>
 </li>
@@ -137,16 +136,16 @@
 </li>
 </ol>
 <p>备注：旧方案是单纯使用回调函数</p>
-<ol start="2">
-<li>具体表达:</li>
-</ol>
+</li>
+<li><p>具体表达:</p>
 <ol>
 <li><p>从语法上来说: Promise 是一个构造函数</p>
 </li>
-<li><p>从功能上来说: promise 对象用来封装一个异步操作并可以获取其成功/</p>
+<li><p>从功能上来说: promise 对象用来封装一个异步操作并可以获取其成功/失败的结果值</p>
 </li>
 </ol>
-<p>失败的结果值</p>
+</li>
+</ol>
 <h3 id="1-1-2-promise-的状态改变"><a href="#1-1-2-promise-的状态改变" class="headerlink" title="1.1.2. promise 的状态改变"></a><strong>1.1.2. promise</strong> <strong>的状态改变</strong></h3><ol>
 <li><p>pending 变为 resolved</p>
 </li>
@@ -156,841 +155,116 @@
 <p>说明: 只有这 2 种, 且一个 promise 对象只能改变一次</p>
 <p> 无论变为成功还是失败, 都会有一个结果数据</p>
 <p> 成功的结果数据一般称为 value, 失败的结果数据一般称为 reason </p>
-<h3 id="1-1-3-promise-的基本流程"><a href="#1-1-3-promise-的基本流程" class="headerlink" title="1.1.3. promise 的基本流程"></a><strong>1.1.3. promise</strong> <strong>的基本流程</strong></h3><h3 id="1-1-4-promise-的基本使用"><a href="#1-1-4-promise-的基本使用" class="headerlink" title="1.1.4. promise 的基本使用"></a><strong>1.1.4. promise</strong> <strong>的基本使用</strong></h3><ol>
+<h3 id="1-1-3-promise-的基本流程"><a href="#1-1-3-promise-的基本流程" class="headerlink" title="1.1.3. promise 的基本流程"></a><strong>1.1.3. promise</strong> <strong>的基本流程</strong></h3><p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220304121039515.png" alt="image-20220304121039515"></p>
+<h3 id="1-1-4-promise-的基本使用"><a href="#1-1-4-promise-的基本使用" class="headerlink" title="1.1.4. promise 的基本使用"></a><strong>1.1.4. promise</strong> <strong>的基本使用</strong></h3><ol>
 <li>使用 1: 基本编码流程</li>
 </ol>
-<script>
-
-// 1) 创建 promise 对象(pending 状态), 指定执行器函数
-
-const p = new Promise((resolve, reject) => {
-
-// 2) 在执行器函数中启动异步任务
-
-setTimeout(() => {
-
-const time = Date.now()
-
-// 3) 根据结果做不同处理
-
-// 3.1) 如果成功了, 调用 resolve(), 指定成功的 value, 变为 resolved 状态
-
-if (time%2===1) {
-
-resolve('成功的值 '+ time) 
-
-} else { // 3.2) 如果失败了, 调用 reject(), 指定失败的 reason, 变为
-
-rejected 状态
-
-reject('失败的值' + time) 
-
-}
-
-}, 2000)
-
-}) 
-
-
-
-// 4) 能 promise 指定成功或失败的回调函数来获取成功的 vlaue 或失败的 reason
-
-p.then(
-
-value => { // 成功的回调函数 onResolved, 得到成功的 vlaue
-
-console.log('成功的 value: ', value)
-
-},
-
-reason => { // 失败的回调函数 onRejected, 得到失败的 reason
-
-console.log('失败的 reason: ', reason) 
-
-} 
-
-)
-
-</script>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 1) 创建 promise 对象(pending 状态), 指定执行器函数</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 2) 在执行器函数中启动异步任务</span></span></span><br><span class="line"><span class="language-javascript">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> time = <span class="title class_">Date</span>.<span class="title function_">now</span>()</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 3) 根据结果做不同处理</span></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 3.1) 如果成功了, 调用 resolve(), 指定成功的 value, 变为 resolved 状 态</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span> (time % <span class="number">2</span> === <span class="number">1</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">resolve</span>(<span class="string">&#x27;成功的值 &#x27;</span> + time)</span></span><br><span class="line"><span class="language-javascript">      &#125; <span class="keyword">else</span> &#123; <span class="comment">// 3.2) 如果失败了, 调用 reject(), 指定失败的 reason, 变为rejected 状态</span></span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">reject</span>(<span class="string">&#x27;失败的值&#x27;</span> + time)</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;, <span class="number">2000</span>)</span></span><br><span class="line"><span class="language-javascript">  &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ol start="2">
 <li>使用 2: 使用 promise 封装基于定时器的异步</li>
 </ol>
-<script>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">function</span> <span class="title function_">doDelay</span>(<span class="params">time</span>) &#123; <span class="comment">// 1. 创建 promise 对象</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 2. 启动异步任务</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;启动异步任务&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">      <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;延迟任务开始执行...&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> time = <span class="title class_">Date</span>.<span class="title function_">now</span>() <span class="comment">// 假设: 时间为奇数代表成功, 为偶数代表失败</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (time % <span class="number">2</span> === <span class="number">1</span>) &#123; <span class="comment">// 成功了</span></span></span><br><span class="line"><span class="language-javascript">          <span class="comment">// 3. 1. 如果成功了, 调用 resolve()并传入成功的 value</span></span></span><br><span class="line"><span class="language-javascript">          <span class="title function_">resolve</span>(<span class="string">&#x27;成功的数据 &#x27;</span> + time)</span></span><br><span class="line"><span class="language-javascript">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// 失败了</span></span></span><br><span class="line"><span class="language-javascript">          <span class="comment">// 3.2. 如果失败了, 调用 reject()并传入失败的 reason</span></span></span><br><span class="line"><span class="language-javascript">          <span class="title function_">reject</span>(<span class="string">&#x27;失败的数据 &#x27;</span> + time)</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">      &#125;, time)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> promise = <span class="title function_">doDelay</span>(<span class="number">2000</span>)</span></span><br><span class="line"><span class="language-javascript">  promise.<span class="title function_">then</span>(</span></span><br><span class="line"><span class="language-javascript">    <span class="function"><span class="params">value</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;成功的 value: &#x27;</span>, value)</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="function"><span class="params">reason</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;失败的 reason: &#x27;</span>, reason)</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">  )</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-function doDelay(time) {
 
-// 1. 创建 promise 对象
-
-return new Promise((resolve, reject) => {
-
-// 2. 启动异步任务
-
-console.log('启动异步任务')
-
-setTimeout(() => {
-
-console.log('延迟任务开始执行...')
-
-const time = Date.now() // 假设: 时间为奇数代表成功, 为偶数代表失败
-
-if (time %2=== 1) { // 成功了
-
-// 3. 1. 如果成功了, 调用 resolve()并传入成功的 value
-
-resolve('成功的数据 ' + time) 
-
-} else { // 失败了
-
-// 3.2. 如果失败了, 调用 reject()并传入失败的 reason
-
-reject('失败的数据 ' + time) 
-
-}
-
-}, time)
-
-})
-
-}
-
-const promise = doDelay(2000)
-
-promise.then(
-
-value => {
-
-console.log('成功的 value: ', value)
-
-},
-
-reason => {
-
-console.log('失败的 reason: ', reason)
-
-},
-
-)
-
-</script>
 
 <ol start="3">
 <li>使用 3: 使用 promise 封装 ajax 异步请求</li>
 </ol>
-<script>
-
-/*
-
-可复用的发 ajax 请求的函数: xhr + promise
-
-*/
-
-function promiseAjax(url) {
-
-return new Promise((resolve, reject) => {
-
-const xhr = new XMLHttpRequest()
-
-xhr.onreadystatechange = () => {
-
-if (xhr.readyState!==4) return
-
-const {status, response} = xhr
-
-// 请求成功, 调用 resolve(value)
-
-if (status>=200 && status<300) {
-
-resolve(JSON.parse(response))
-
-} else { // 请求失败, 调用 reject(reason)
-
-reject(new Error('请求失败: status: ' + status))
-
-} 
-
-}
-
-xhr.open("GET", url)
-
-xhr.send()
-
-}) 
-
-}
-
-promiseAjax('https://api.apiopen.top2/getJoke?page=1&count=2&type=video').then(
-
-data => {
-
-console.log('显示成功数据', data)
-
-},
-
-error => {
-
-alert(error.message) 
-
-} 
-
-)
-
-</script> 
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  可复用的发 ajax 请求的函数: xhr + promise</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  */</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">function</span> <span class="title function_">promiseAjax</span>(<span class="params">url</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span></span><br><span class="line"><span class="language-javascript">      xhr.<span class="property">onreadystatechange</span> = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (xhr.<span class="property">readyState</span> !== <span class="number">4</span>) <span class="keyword">return</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> &#123; status, response &#125; = xhr</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 请求成功, 调用 resolve(value)</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (status &gt;= <span class="number">200</span> &amp;&amp; status &lt; <span class="number">300</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="title function_">resolve</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(response))</span></span><br><span class="line"><span class="language-javascript">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// 请求失败, 调用 reject(reason)</span></span></span><br><span class="line"><span class="language-javascript">          <span class="title function_">reject</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;请求失败: status: &#x27;</span> + status))</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">      xhr.<span class="title function_">open</span>(<span class="string">&quot;GET&quot;</span>, url)</span></span><br><span class="line"><span class="language-javascript">      xhr.<span class="title function_">send</span>()</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">promiseAjax</span>(<span class="string">&#x27;https://api.apiopen.top2/getJoke?page=1&amp;count=2&amp;type=video&#x27;</span>).<span class="title function_">then</span>(</span></span><br><span class="line"><span class="language-javascript">    <span class="function"><span class="params">data</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;显示成功数据&#x27;</span>, data)</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="function"><span class="params">error</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">alert</span>(error.<span class="property">message</span>)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="1-2-为什么要用-Promise"><a href="#1-2-为什么要用-Promise" class="headerlink" title="1.2. 为什么要用 Promise?"></a><strong>1.2.</strong> <strong>为什么要用</strong> <strong>Promise?</strong></h2><h3 id="1-2-1-指定回调函数的方式更加灵活"><a href="#1-2-1-指定回调函数的方式更加灵活" class="headerlink" title="1.2.1. 指定回调函数的方式更加灵活"></a><strong>1.2.1.</strong> <strong>指定回调函数的方式更加灵活</strong></h3><ol>
 <li><p>旧的: 必须在启动异步任务前指定</p>
 </li>
-<li><p>promise: 启动异步任务 =&gt; 返回promie对象 =&gt; 给promise对象绑定回调函</p>
+<li><p>promise: 启动异步任务 =&gt; 返回promie对象 =&gt; 给promise对象绑定回调函数(甚至可以在异步任务结束后指定/多个) </p>
 </li>
 </ol>
-<p>数(甚至可以在异步任务结束后指定/多个) </p>
-<h3 id="1-2-2-支持链式调用-可以解决回调地狱问题"><a href="#1-2-2-支持链式调用-可以解决回调地狱问题" class="headerlink" title="1.2.2. 支持链式调用, 可以解决回调地狱问题"></a><strong>1.2.2.</strong> <strong>支持链式调用</strong><strong>,</strong> <strong>可以解决回调地狱问题</strong></h3><ol>
-<li>什么是回调地狱? </li>
-</ol>
+<h3 id="1-2-2-支持链式调用-可以解决回调地狱问题"><a href="#1-2-2-支持链式调用-可以解决回调地狱问题" class="headerlink" title="1.2.2. 支持链式调用,可以解决回调地狱问题"></a><strong>1.2.2.</strong> 支持链式调用,可以解决回调地狱问题</h3><ol>
+<li><p>什么是回调地狱? </p>
 <p>回调函数嵌套调用, 外部回调函数异步执行的结果是嵌套的回调执行的条件</p>
-<ol start="2">
-<li>回调地狱的缺点? </li>
-</ol>
+</li>
+<li><p>回调地狱的缺点? </p>
 <p>不便于阅读</p>
 <p>不便于异常处理</p>
-<ol start="3">
-<li>解决方案?</li>
-</ol>
+</li>
+<li><p>解决方案?</p>
 <p>promise 链式调用</p>
-<ol start="4">
-<li>终极解决方案?</li>
-</ol>
+</li>
+<li><p>终极解决方案?</p>
 <p>async/await</p>
-<script>
-
-/*
-
- 1. 指定回调函数的方式更加灵活:
-
-旧的: 必须在启动异步任务前指定
-
-promise: 启动异步任务 => 返回 promie 对象 => 给 promise 对象绑定回调函数
-
-(甚至可以在异步任务结束后指定)
-
- 2. 支持链式调用, 可以解决回调地狱问题
-
-什么是回调地狱? 回调函数嵌套调用, 外部回调函数异步执行的结果是嵌套的回调函
-
-数执行的条件
-
-回调地狱的缺点? 不便于阅读 / 不便于异常处理
-
-解决方案? promise 链式调用
-
-终极解决方案? async/await
-
-*/
-
-// 成功的回调函数
-
-function successCallback(result) {
-
-console.log("声音文件创建成功: " + result);
-
-}
-
-// 失败的回调函数
-
-function failureCallback(error) {
-
-console.log("声音文件创建失败: " + error);
-
-}
-
-/* 1.1 使用纯回调函数 */
-
-createAudioFileAsync(audioSettings, successCallback, failureCallback)
-
-/* 1.2. 使用 Promise */
-
-const promise = createAudioFileAsync(audioSettings); // 2
-
-setTimeout(() => {
-
-promise.then(successCallback, failureCallback);
-
-}, 3000);
-
-/*
-
-2.1. 回调地狱
-
-*/
-
-doSomething(function(result) {
-
-doSomethingElse(result, function(newResult) {
-
-doThirdThing(newResult, function(finalResult) {
-
-console.log('Got the final result: ' + finalResult)
-
-}, failureCallback)
-
-}, failureCallback)
-
-}, failureCallback)
-
-/*
-
-2.2. 使用 promise 的链式调用解决回调地狱
-
-*/
-
-doSomething().then(function(result) {
-
-return doSomethingElse(result)
-
-})
-
-.then(function(newResult) {
-
-return doThirdThing(newResult)
-
-})
-
-.then(function(finalResult) {
-
-console.log('Got the final result: ' + finalResult)
-
-})
-
-.catch(failureCallback)
-
-/*
-
-2.3. async/await: 回调地狱的终极解决方案
-
-*/
-
-async function request() { 
-
-try {
-
-const result = await doSomething()
-
-const newResult = await doSomethingElse(result)
-
-const finalResult = await doThirdThing(newResult)
-
-console.log('Got the final result: ' + finalResult) 
-
-} catch (error) {
-
-failureCallback(error) 
-
-} 
-
-}
-
-</script> 
-
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  1. 指定回调函数的方式更加灵活:</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  旧的: 必须在启动异步任务前指定</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  promise: 启动异步任务 =&gt; 返回 promie 对象 =&gt; 给 promise 对象绑定回调函数</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  (甚至可以在异步任务结束后指定)</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  2. 支持链式调用, 可以解决回调地狱问题</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  什么是回调地狱? 回调函数嵌套调用, 外部回调函数异步执行的结果是嵌套的回调函</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  数执行的条件</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  回调地狱的缺点? 不便于阅读 / 不便于异常处理</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  解决方案? promise 链式调用</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  终极解决方案? async/await</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  */</span></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 成功的回调函数</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">function</span> <span class="title function_">successCallback</span>(<span class="params">result</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;声音文件创建成功: &quot;</span> + result);</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 失败的回调函数</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">function</span> <span class="title function_">failureCallback</span>(<span class="params">error</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;声音文件创建失败: &quot;</span> + error);</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">/* 1.1 使用纯回调函数 */</span></span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">createAudioFileAsync</span>(audioSettings, successCallback, failureCallback)</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">/* 1.2. 使用 Promise */</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> promise = <span class="title function_">createAudioFileAsync</span>(audioSettings); <span class="comment">// 2</span></span></span><br><span class="line"><span class="language-javascript">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    promise.<span class="title function_">then</span>(successCallback, failureCallback);</span></span><br><span class="line"><span class="language-javascript">  &#125;, <span class="number">3000</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  2.1. 回调地狱</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  */</span></span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">doSomething</span>(<span class="keyword">function</span> (<span class="params">result</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">doSomethingElse</span>(result, <span class="keyword">function</span> (<span class="params">newResult</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">doThirdThing</span>(newResult, <span class="keyword">function</span> (<span class="params">finalResult</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Got the final result: &#x27;</span> + finalResult)</span></span><br><span class="line"><span class="language-javascript">      &#125;, failureCallback)</span></span><br><span class="line"><span class="language-javascript">    &#125;, failureCallback)</span></span><br><span class="line"><span class="language-javascript">  &#125;, failureCallback)</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  2.2. 使用 promise 的链式调用解决回调地狱</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  */</span></span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">doSomething</span>().<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">result</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">return</span> <span class="title function_">doSomethingElse</span>(result)</span></span><br><span class="line"><span class="language-javascript">  &#125;)</span></span><br><span class="line"><span class="language-javascript">    .<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">newResult</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">return</span> <span class="title function_">doThirdThing</span>(newResult)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">    .<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">finalResult</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Got the final result: &#x27;</span> + finalResult)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">    .<span class="title function_">catch</span>(failureCallback)</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  2.3. async/await: 回调地狱的终极解决方案</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  */</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">request</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">try</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> result = <span class="keyword">await</span> <span class="title function_">doSomething</span>()</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> newResult = <span class="keyword">await</span> <span class="title function_">doSomethingElse</span>(result)</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> finalResult = <span class="keyword">await</span> <span class="title function_">doThirdThing</span>(newResult)</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Got the final result: &#x27;</span> + finalResult)</span></span><br><span class="line"><span class="language-javascript">    &#125; <span class="keyword">catch</span> (error) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">failureCallback</span>(error)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
 <h2 id="1-3-如何使用-Promise"><a href="#1-3-如何使用-Promise" class="headerlink" title="1.3. 如何使用 Promise?"></a><strong>1.3.</strong> <strong>如何使用</strong> <strong>Promise?</strong></h2><h3 id="1-3-1-API"><a href="#1-3-1-API" class="headerlink" title="1.3.1. API"></a><strong>1.3.1. API</strong></h3><ol>
-<li>Promise 构造函数: Promise (excutor) {}</li>
-</ol>
-<p>(1) executor 函数: 执行器 (resolve, reject) =&gt; {} </p>
-<p>(2) resolve 函数: 内部定义成功时我们调用的函数 value =&gt; {}</p>
-<p>(3) reject 函数: 内部定义失败时我们调用的函数 reason =&gt; {}</p>
+<li><p>Promise 构造函数: <code>Promise (excutor) &#123;&#125;</code></p>
+<p>(1) executor 函数: 执行器 <code>(resolve, reject) =&gt; &#123;&#125; </code></p>
+<p>(2) resolve 函数: 内部定义成功时我们调用的函数 <code>value =&gt; &#123;&#125;</code></p>
+<p>(3) reject 函数: 内部定义失败时我们调用的函数<code> reason =&gt; &#123;&#125;</code></p>
 <p>说明: executor 会在 Promise 内部立即同步调用,异步操作在执行器中执行</p>
-<ol start="2">
-<li>Promise.prototype.then 方法: (onResolved, onRejected) =&gt; {}</li>
-</ol>
-<p>(1) onResolved 函数: 成功的回调函数 (value) =&gt; {}</p>
-<p>(2) onRejected 函数: 失败的回调函数 (reason) =&gt; {}</p>
+</li>
+<li><p>Promise.prototype.then 方法: <code>(onResolved, onRejected) =&gt; &#123;&#125;</code></p>
+<p>(1) onResolved 函数: 成功的回调函数 <code>(value) =&gt; &#123;&#125;</code></p>
+<p>(2) onRejected 函数: 失败的回调函数 <code>(reason) =&gt; &#123;&#125;</code></p>
 <p>说明: 指定用于得到成功 value 的成功回调和用于得到失败 reason 的失败回调</p>
 <p>返回一个新的 promise 对象</p>
-<ol start="3">
-<li>Promise.prototype.catch 方法: (onRejected) =&gt; {}</li>
-</ol>
-<p>(1) onRejected 函数: 失败的回调函数 (reason) =&gt; {} </p>
+</li>
+<li><p>Promise.prototype.catch 方法:<code> (onRejected) =&gt; &#123;&#125;</code></p>
+<p>(1) onRejected 函数: 失败的回调函数<code>(reason) =&gt; &#123;&#125;</code></p>
 <p> 说明: then()的语法糖, 相当于: then(undefined, onRejected)</p>
-<ol start="4">
-<li>Promise.resolve 方法: (value) =&gt; {}</li>
-</ol>
+</li>
+<li><p>Promise.resolve 方法: <code>(value) =&gt; &#123;&#125;</code></p>
 <p>(1) value: 成功的数据或 promise 对象</p>
 <p>说明: 返回一个成功/失败的 promise 对象</p>
-<ol start="5">
-<li>Promise.reject 方法: (reason) =&gt; {}</li>
-</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p1 = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="number">123</span>)</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p2 = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">resolve</span>(<span class="string">&#x27;ok&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// reject(&#x27;error&#x27;)</span></span></span><br><span class="line"><span class="language-javascript">  &#125;))</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;p1----&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(p1);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;p2----&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(p2);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220304132426355.png" alt="image-20220304132426355"></p>
+</li>
+<li><p>Promise.reject 方法:<code> (reason) =&gt; &#123;&#125;</code></p>
 <p>(1) reason: 失败的原因</p>
 <p>说明: 返回一个失败的 promise 对象</p>
-<ol start="6">
-<li>Promise.all 方法: (promises) =&gt; {}</li>
-</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p1=<span class="title class_">Promise</span>.<span class="title function_">reject</span>(<span class="number">123</span>)</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p2=<span class="title class_">Promise</span>.<span class="title function_">reject</span>(<span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">resolve</span>(<span class="string">&#x27;ok&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">  &#125;))</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;---p1---&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(p1);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;---p2---&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(p2);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220304141656016.png" alt="image-20220304141656016"></p>
+</li>
+<li><p>Promise.all 方法: <code>(promises) =&gt; &#123;&#125;</code></p>
 <p>(1) promises: 包含 n 个 promise 的数组</p>
-<p>说明: 返回一个新的 promise, 只有所有的 promise 都成功才成功, 只要有一个失败了就</p>
-<p>直接失败</p>
-<ol start="7">
-<li>Promise.race 方法: (promises) =&gt; {}</li>
-</ol>
+<p>说明: 返回一个新的 promise, 只有所有的 promise 都成功才成功, 只要有一个失败了就直接失败,并且返回的结果是失败的内容</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p1 = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="number">123</span>)</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p2 = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">resolve</span>(<span class="string">&#x27;ok&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">  &#125;))</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p3 = <span class="title class_">Promise</span>.<span class="title function_">reject</span>(<span class="string">&#x27;error&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> result1 = <span class="title class_">Promise</span>.<span class="title function_">all</span>([p1, p2, p3])</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> result2 = <span class="title class_">Promise</span>.<span class="title function_">all</span>([p1, p2])</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;---result1---&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(result1);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;---result2---&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(result2);</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220304143828094.png" alt="image-20220304143828094"></p>
+<p>如果all里有多个失败的内容，则返回第一个失败的promise对象</p>
+</li>
+<li><p>Promise.race 方法:<code> (promises) =&gt; &#123;&#125;</code></p>
 <p>(1) promises: 包含 n 个 promise 的数组</p>
 <p>说明: 返回一个新的 promise, 第一个完成的 promise 的结果状态就是最终的结果状态</p>
-<script>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p1 = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="number">123</span>)</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p2 = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">resolve</span>(<span class="string">&#x27;ok&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">  &#125;))</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p3 = <span class="title class_">Promise</span>.<span class="title function_">reject</span>(<span class="string">&#x27;error&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p4 = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span> (<span class="title class_">Date</span>.<span class="title function_">now</span>() % <span class="number">2</span> === <span class="number">0</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">resolve</span>(<span class="number">1</span>)</span></span><br><span class="line"><span class="language-javascript">      &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">reject</span>(<span class="number">2</span>)</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;, <span class="number">1000</span>);</span></span><br><span class="line"><span class="language-javascript">  &#125;);</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> result1 = <span class="title class_">Promise</span>.<span class="title function_">race</span>([p4,p3, p1, p2])</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(result1);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-/*
-
- 1. Promise 构造函数: Promise (excutor) {}
-
-excutor 函数: 同步执行 (resolve, reject) => {}
-
-resolve 函数: 内部定义成功时我们调用的函数 value => {}
-
-reject 函数: 内部定义失败时我们调用的函数 reason => {}
-
-说明: excutor 会在 Promise 内部立即同步回调,异步操作在执行器中执行
-
- 2. Promise.prototype.then 方法: (onResolved, onRejected) => {}
-
-onResolved 函数: 成功的回调函数 (value) => {} 
-
-onRejected 函数: 失败的回调函数 (reason) => {}
-
-说明: 指定用于得到成功 value 的成功回调和用于得到失败 reason 的失败回调
-
-返回一个新的 promise 对象
-
- 3. Promise.prototype.catch 方法: (onRejected) => {}
-
-onRejected 函数: 失败的回调函数 (reason) => {}
-
-说明: then()的语法糖, 相当于: then(undefined, onRejected)
-
- 4. Promise.resolve 方法: (value) => {}
-
-value: 成功的数据或 promise 对象
-
-说明: 返回一个成功/失败的 promise 对象
-
- 5. Promise.reject 方法: (reason) => {}
-
-reason: 失败的原因
-
-说明: 返回一个失败的 promise 对象
-
- 6. Promise.all 方法: (promises) => {}
-
-promises: 包含 n 个 promise 的数组
-
-说明: 返回一个新的 promise, 只有所有的 promise 都成功才成功, 只要有一
-
-个失败了就直接失败
-
- 7. Promise.race 方法: (promises) => {}
-
-promises: 包含 n 个 promise 的数组
-
-说明: 返回一个新的 promise, 第一个完成的 promise 的结果状态就是最终的
-
-结果状态
-
-*/
-
-/*
-
-new Promise((resolve, reject) => {
-
-if (Date.now()%2===0) {
-
-resolve(1)
-
-} else {
-
-reject(2)
-
-}
-
-}).then(value => {
-
-console.log('onResolved1()', value)
-
-}).catch(reason => { 
-
- 
-
- 
-
-11
-
- 
-
-console.log('onRejected1()', reason)
-
-})
-
-*/
-
-const p1 = Promise.resolve(1)
-
-const p2 = Promise.resolve(Promise.resolve(3))
-
-const p3 = Promise.resolve(Promise.reject(5))
-
-const p4 = Promise.reject(7)
-
-const p5 = new Promise((resolve, reject) => {
-
-setTimeout(() => {
-
-if (Date.now()%2===0) {
-
-resolve(1) 
-
-} else {
-
-reject(2) 
-
-}
-
-}, 100);
-
-})
-
-const pAll = Promise.all([p1, p2, p5])
-
-pAll.then(
-
-values => {console.log('all 成功了', values)},
-
-reason => {console.log('all 失败了', reason)}
-
-)
-
-// const pRace = Promise.race([p5, p4, p1])
-
-const pRace = Promise.race([p5, p1, p4])
-
-pRace.then(
-
-value => {console.log('race 成功了', value)},
-
-reason => {console.log('race 失败了', reason)}
-
-)
-
-</script> 
-
-<h3 id="1-3-2-promise-的几个关键问题"><a href="#1-3-2-promise-的几个关键问题" class="headerlink" title="1.3.2. promise 的几个关键问题"></a><strong>1.3.2. promise</strong> <strong>的几个关键问题</strong></h3><ol>
-<li>如何改变 promise 的状态?</li>
+<p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220304145219198.png" alt="image-20220304145219198"></p>
+</li>
 </ol>
-<p>(1) resolve(value): 如果当前是 pending 就会变为 resolved</p>
+<h3 id="1-3-2-promise-的几个关键问题"><a href="#1-3-2-promise-的几个关键问题" class="headerlink" title="1.3.2. promise 的几个关键问题"></a><strong>1.3.2. promise</strong> <strong>的几个关键问题</strong></h3><h4 id="1-如何改变-promise-的状态"><a href="#1-如何改变-promise-的状态" class="headerlink" title="1. 如何改变 promise 的状态?"></a>1. 如何改变 promise 的状态?</h4><p>(1) resolve(value): 如果当前是 pending 就会变为 resolved</p>
 <p>(2) reject(reason): 如果当前是 pending 就会变为 rejected</p>
 <p>(3) 抛出异常: 如果当前是 pending 就会变为 rejected</p>
-<ol start="2">
-<li>一个 promise 指定多个成功/失败回调函数, 都会调用吗? </li>
-</ol>
-<p>当 promise 改变为对应状态时都会调用</p>
-<ol start="3">
-<li>改变 promise 状态和指定回调函数谁先谁后?</li>
-</ol>
-<p>(1) 都有可能, 正常情况下是先指定回调再改变状态, 但也可以先改状态再指定回调</p>
+<h4 id="2-一个-promise-指定多个成功-失败回调函数-都会调用吗"><a href="#2-一个-promise-指定多个成功-失败回调函数-都会调用吗" class="headerlink" title="2. 一个 promise 指定多个成功/失败回调函数, 都会调用吗?"></a>2. 一个 promise 指定多个成功/失败回调函数, 都会调用吗?</h4><p>当 promise 改变为对应状态时都会调用</p>
+<h4 id="3-改变-promise-状态和指定回调函数谁先谁后"><a href="#3-改变-promise-状态和指定回调函数谁先谁后" class="headerlink" title="3. 改变 promise 状态和指定回调函数谁先谁后?"></a>3. 改变 promise 状态和指定回调函数谁先谁后?</h4><p>(1) 都有可能, 正常情况下是先指定回调再改变状态, 但也可以先改状态再指定回调</p>
 <p>(2) 如何先改状态再指定回调? </p>
 <p>① 在执行器中直接调用 resolve()/reject()</p>
 <p>② 延迟更长时间才调用 then()</p>
 <p>(3) 什么时候才能得到数据? </p>
 <p>① 如果先指定的回调, 那当状态发生改变时, 回调函数就会调用, 得到数据</p>
-<p>② 如果先改变的状态, 那当指定回调时, 回调函数就会调用, 得到数据</p>
-<ol start="4">
-<li>promise.then()返回的新 promise 的结果状态由什么决定?</li>
-</ol>
-<p>(1) 简单表达: 由 then()指定的回调函数执行的结果决定</p>
+<p>②如果先改变的状态, 那当指定回调时, 回调函数就会调用, 得到数据</p>
+<h4 id="4-promise-then-返回的新-promise-的结果状态由什么决定"><a href="#4-promise-then-返回的新-promise-的结果状态由什么决定" class="headerlink" title="4. promise.then()返回的新 promise 的结果状态由什么决定?"></a>4. promise.then()返回的新 promise 的结果状态由什么决定?</h4><p>(1) 简单表达: 由 then()指定的回调函数执行的结果决定</p>
 <p>(2) 详细表达: </p>
 <p>① 如果抛出异常, 新 promise 变为 rejected, reason 为抛出的异常</p>
 <p>② 如果返回的是非 promise 的任意值, 新 promise 变为 resolved, value 为返回的值</p>
 <p>③ 如果返回的是另一个新 promise, 此 promise 的结果就会成为新 promise 的结果</p>
-<ol start="5">
-<li>promise 如何串连多个操作任务?</li>
-</ol>
-<p>(1) promise 的 then()返回一个新的 promise, 可以开成 then()的链式调用</p>
+<h4 id="5-promise-如何串连多个操作任务"><a href="#5-promise-如何串连多个操作任务" class="headerlink" title="5. promise 如何串连多个操作任务?"></a>5. promise 如何串连多个操作任务?</h4><p>(1) promise 的 then()返回一个新的 promise, 可以开成 then()的链式调用</p>
 <p>(2) 通过 then 的链式调用串连多个同步/异步任务 </p>
-<ol start="6">
-<li>promise 异常传透?</li>
-</ol>
-<p>(1) 当使用 promise 的 then 链式调用时, 可以在最后指定失败的回调, </p>
+<h4 id="6-promise-异常传透"><a href="#6-promise-异常传透" class="headerlink" title="6. promise 异常传透?"></a>6. promise 异常传透?</h4><p>(1) 当使用 promise 的 then 链式调用时, 可以在最后指定失败的回调, </p>
 <p>(2) 前面任何操作出了异常, 都会传到最后失败的回调中处理</p>
-<ol start="7">
-<li>中断 promise 链?</li>
-</ol>
-<p>(1) 当使用 promise 的 then 链式调用时, 在中间中断, 不再调用后面的回调函数</p>
+<h4 id="7-中断-promise-链"><a href="#7-中断-promise-链" class="headerlink" title="7. 中断 promise 链?"></a>7. 中断 promise 链?</h4><p>(1) 当使用 promise 的 then 链式调用时, 在中间中断, 不再调用后面的回调函数</p>
 <p>(2) 办法: 在回调函数中返回一个 pendding 状态的 promise 对象</p>
-<h1 id="第-2-章：自定义-手写-Promise"><a href="#第-2-章：自定义-手写-Promise" class="headerlink" title="第 2 章：自定义(手写****)Promise"></a><strong>第</strong> <strong>2</strong> <strong>章：自定义</strong>(手写****)Promise</h1><h2 id="2-1-定义整体结构"><a href="#2-1-定义整体结构" class="headerlink" title="2.1. 定义整体结构"></a><strong>2.1.</strong> <strong>定义整体结构</strong></h2><p>/*</p>
-<p>自定义 Promise</p>
-<p>*/</p>
-<p>(function (window) {</p>
-<p>/*</p>
-<p>Promise 构造函数</p>
-<p>excutor: 内部同步执行的函数 (resolve, reject) =&gt; {}</p>
-<p>*/</p>
-<p>function Promise(excutor) { </p>
-<p>}</p>
-<p>/*</p>
-<p>为 promise 指定成功/失败的回调函数</p>
-<p>函数的返回值是一个新的 promise 对象</p>
-<p>*/</p>
-<p>Promise.prototype.then = function (onResolved, onRejected) { </p>
-<p>} </p>
-<p>/*</p>
-<p>为 promise 指定失败的回调函数</p>
-<p>是 then(null, onRejected)的语法糖</p>
-<p>*/</p>
-<p>Promise.prototype.catch = function (onRejected) { </p>
-<p>}</p>
-<p>/*</p>
-<p>返回一个指定了成功 value 的 promise 对象</p>
-<p>*/</p>
-<p>Promise.resolve = function (value) { </p>
-<p>}</p>
-<p>/*</p>
-<p>返回一个指定了失败 reason 的 promise 对象</p>
-<p>*/</p>
-<p>Promise.reject = function (reason) { </p>
-<p>}</p>
-<p>/*</p>
-<p>返回一个 promise, 只有 promises 中所有 promise 都成功时, 才最终成功, 只要有一个失败就直接</p>
-<p>失败</p>
-<p>*/</p>
-<p>Promise.all = function (promises) { </p>
-<p>}</p>
-<p>/*</p>
-<p>返回一个 promise， 一旦某个 promise 解决或拒绝， 返回的 promise 就会解决或拒绝。</p>
-<p>*/</p>
-<p>Promise.race = function (promises) { </p>
-<p>} </p>
-<p>// 暴露构造函数</p>
-<p>window.Promise = Promise</p>
-<p>})(window) </p>
-<h2 id="2-2-Promise-构造函数的实现"><a href="#2-2-Promise-构造函数的实现" class="headerlink" title="2.2. Promise 构造函数的实现"></a><strong>2.2. Promise</strong> <strong>构造函数的实现</strong></h2><p>/*</p>
-<p>Promise 构造函数</p>
-<p>excutor: 内部同步执行的函数 (resolve, reject) =&gt; {}</p>
-<p>*/</p>
-<p>function Promise(excutor) {</p>
-<p>const self = this</p>
-<p>self.status = ‘pending’ // 状态值, 初始状态为 pending, 成功了变为</p>
-<p>resolved, 失败了变为 rejected</p>
-<p>self.data = undefined // 用来保存成功 value 或失败 reason 的属性</p>
-<p>self.callbacks = [] // 用来保存所有待调用的包含 onResolved 和 onRejected 回</p>
-<p>调函数的对象的数组</p>
-<p>/*</p>
-<p>异步处理成功后应该调用的函数</p>
-<p>value: 将交给 onResolve()的成功数据</p>
-<p>*/</p>
-<p>function resolve(value) {</p>
-<p>if(self.status!==’pending’) { // 如果当前不是 pending, 直接结束</p>
-<p>return</p>
-<p>}</p>
-<p>// 立即更新状态, 保存数据</p>
-<p>self.status = ‘resolved’</p>
-<p>self.data = value</p>
-<p>// 异步调用所有待处理的 onResolved 成功回调函数</p>
-<p>if (self.callbacks.length&gt;0) { </p>
-<p>setTimeout(() =&gt; {</p>
-<p>self.callbacks.forEach(obj =&gt; {</p>
-<p>obj.onResolved(value)</p>
-<p>})</p>
-<p>})</p>
-<p>} </p>
-<p>}</p>
-<p>/*</p>
-<p>异步处理失败后应该调用的函数</p>
-<p>reason: 将交给 onRejected()的失败数据</p>
-<p>*/</p>
-<p>function reject(reason) {</p>
-<p>if(self.status!==’pending’) { // 如果当前不是 pending, 直接结束</p>
-<p>return</p>
-<p>}</p>
-<p>// 立即更新状态, 保存数据</p>
-<p>self.status = ‘rejected’</p>
-<p>self.data = reason</p>
-<p>// 异步调用所有待处理的 onRejected 回调函数</p>
-<p>setTimeout(() =&gt; {</p>
-<p>self.callbacks.forEach(obj =&gt; {</p>
-<p>obj.onRejected(reason)</p>
-<p>})</p>
-<p>})</p>
-<p>}</p>
-<p>try {</p>
-<p>// 立即同步调用 excutor()处理</p>
-<p>excutor(resolve, reject) </p>
-<p> } catch (error) { // 如果出了异常, 直接失败</p>
-<p>reject(error) </p>
-<p>} </p>
-<p>}</p>
-<h2 id="2-3-promise-then-catch-的实现"><a href="#2-3-promise-then-catch-的实现" class="headerlink" title="2.3. promise.then()/catch()的实现"></a>2.3. promise.then()/catch()的实现</h2><p>/*</p>
-<p>为 promise 指定成功/失败的回调函数</p>
-<p>函数的返回值是一个新的 promise 对象</p>
-<p>*/</p>
-<p>Promise.prototype.then = function (onResolved, onRejected) {</p>
-<p>const self = this</p>
-<p>// 如果 onResolved/onRejected 不是函数, 可它指定一个默认的函数</p>
-<p>onResolved = typeof onResolved===’function’ ? onResolved : value =&gt; v</p>
-<p>alue // 指定返回的 promise 为一个成功状态, 结果值为 value</p>
-<p>onRejected = typeof onRejected === ‘function’ ? onRejected : reason = </p>
-<blockquote>
-<p>{throw reason} // 指定返回的 promise 为一个失败状态, 结果值为 reason</p>
-</blockquote>
-<p>// 返回一个新的 promise 对象</p>
-<p>return new Promise((resolve, reject) =&gt; {</p>
-<p>/*</p>
-<p>专门抽取的用来处理 promise 成功/失败结果的函数</p>
-<p>callback: 成功/失败的回调函数</p>
-<p>*/</p>
-<p>function handle(callback) {</p>
-<p>// 1. 抛出异常 ===&gt; 返回的 promise 变为 rejected</p>
-<p>try {</p>
-<p>const x = callback(self.data)</p>
-<p>// 2. 返回一个新的 promise ===&gt; 得到新的 promise 的结果值作为返回的</p>
-<p>promise 的结果值</p>
-<p>if (x instanceof Promise) { </p>
-<p>x.then(resolve, reject) // 一旦 x 成功了, resolve(value), 一旦 x</p>
-<p>失败了: reject(reason)</p>
-<p>} else {</p>
-<p>// 3. 返回一个一般值(undefined) ===&gt; 将这个值作为返回的 promise 的</p>
-<p>成功值</p>
-<p>resolve(x) </p>
-<p>} </p>
-<p>} catch (error) {</p>
-<p>reject(error) </p>
-<p>} </p>
-<p>}</p>
-<p>if (self.status === ‘resolved’) { // 当前 promise 已经成功了</p>
-<p>setTimeout(() =&gt; {</p>
-<p>handle(onResolved)</p>
-<p>})</p>
-<p>} else if (self.status === ‘rejected’) { // 当前 promise 已经失败了</p>
-<p>setTimeout(() =&gt; {</p>
-<p>handle(onRejected)</p>
-<p>})</p>
-<p>} else { // 当前 promise 还未确定 pending</p>
-<p>// 将 onResolved 和 onRejected 保存起来</p>
-<p>self.callbacks.push({</p>
-<p>onResolved(value) {</p>
-<p>handle(onResolved)</p>
-<p>},</p>
-<p>onRejected(reason) {</p>
-<p>handle(onRejected) </p>
-<p>}</p>
-<p>})</p>
-<p>}</p>
-<p>})</p>
-<p>} </p>
-<p>/*</p>
-<p>为 promise 指定失败的回调函数</p>
-<p>是 then(null, onRejected)的语法糖</p>
-<p>*/</p>
-<p>Promise.prototype.catch = function (onRejected) {</p>
-<p>return this.then(null, onRejected) </p>
-<p>}</p>
-<h2 id="2-4-Promise-resolve-reject-的实现"><a href="#2-4-Promise-resolve-reject-的实现" class="headerlink" title="**2.4. Promise.resolve()/reject()**的实现"></a>**2.4. Promise.resolve()/reject()**的实现</h2><p>/*</p>
-<p>返回一个指定了成功 value 的 promise 对象</p>
-<p>value: 一般数据或 promise</p>
-<p>*/</p>
-<p>Promise.resolve = function (value) {</p>
-<p>return new Promise((resolve, reject) =&gt; {</p>
-<p>if (value instanceof Promise) {</p>
-<p>value.then(resolve, reject) </p>
-<p>} else {</p>
-<p>resolve(value) </p>
-<p>}</p>
-<p>})</p>
-<p>}</p>
-<p>/*</p>
-<p>返回一个指定了失败 reason 的 promise 对象</p>
-<p>reason: 一般数据/error</p>
-<p>*/</p>
-<p>Promise.reject = function (reason) {</p>
-<p>return new Promise((resolve, reject) =&gt; {</p>
-<p>reject(reason)</p>
-<p>})</p>
-<p>} </p>
-<h2 id="2-5-Promise-all-race-的实现"><a href="#2-5-Promise-all-race-的实现" class="headerlink" title="**2.5. Promise.all/race()**的实现"></a>**2.5. Promise.all/race()**的实现</h2><p>/*</p>
-<p>返回一个新的 promise 对象, 只有 promises 中所有 promise 都产生成功 value 时, 才</p>
-<p>最终成功, 只要有一个失败就直接失败</p>
-<p>*/</p>
-<p>Promise.all = function (promises) {</p>
-<p>// 返回一个新的 promise</p>
-<p>return new Promise((resolve, reject) =&gt; {</p>
-<p>// 已成功的数量</p>
-<p>let resolvedCount = 0</p>
-<p>// 待处理的 promises 数组的长度</p>
-<p>const promisesLength = promises.length</p>
-<p>// 准备一个保存成功值的数组</p>
-<p>const values = new Array(promisesLength)</p>
-<p>// 遍历每个待处理的 promise</p>
-<p>for (let i = 0; i &lt; promisesLength; i++) {</p>
-<p>// promises 中元素可能不是一个数组, 需要用 resolve 包装一下</p>
-<p>Promise.resolve(promises[i]).then(</p>
-<p>value =&gt; {</p>
-<p>// 成功当前 promise 成功的值到对应的下标</p>
-<p>values[i] = value</p>
-<p>// 成功的数量加 1</p>
-<p>resolvedCount++</p>
-<p>// 一旦全部成功</p>
-<p>if(resolvedCount===promisesLength) {</p>
-<p>// 将所有成功值的数组作为返回 promise 对象的成功结果值</p>
-<p>resolve(values) </p>
-<p>}</p>
-<p>},</p>
-<p>reason =&gt; { </p>
-<p>// 一旦有一个promise产生了失败结果值, 将其作为返回promise对象的失</p>
-<p>败结果值</p>
-<p>reject(reason) </p>
-<p>} </p>
-<p>) </p>
-<p>}</p>
-<p>})</p>
-<p>}</p>
-<p>/*</p>
-<p>返回一个 promise，一旦某个 promise 解决或拒绝， 返回的 promise 就会解决或拒绝。</p>
-<p>*/</p>
-<p>Promise.race = function (promises) {</p>
-<p>// 返回新的 promise 对象</p>
-<p>return new Promise((resolve, reject) =&gt; {</p>
-<p>// 遍历所有 promise</p>
-<p>for (var i = 0; i &lt; promises.length; i++) {</p>
-<p>Promise.resolve(promises[i]).then( </p>
-<p>(value) =&gt; { // 只要有一个成功了, 返回的 promise 就成功了</p>
-<p>resolve(value)</p>
-<p>},</p>
-<p>(reason) =&gt; { // 只要有一个失败了, 返回的结果就失败了</p>
-<p>reject(reason) </p>
-<p>} </p>
-<p>) </p>
-<p>}</p>
-<p>})</p>
-<p>}</p>
-<h2 id="2-6-Promise-resolveDelay-rejectDelay-的实现"><a href="#2-6-Promise-resolveDelay-rejectDelay-的实现" class="headerlink" title="**2.6. Promise.resolveDelay()/rejectDelay()**的实现"></a>**2.6. Promise.resolveDelay()/rejectDelay()**<strong>的实现</strong></h2><p>/*</p>
-<p>返回一个延迟指定时间才确定结果的 promise 对象 </p>
-<p>*/</p>
-<p>Promise.resolveDelay = function (value, time) {</p>
-<p>return new Promise((resolve, reject) =&gt; {</p>
-<p>setTimeout(() =&gt; {</p>
-<p>if (value instanceof Promise) { // 如果 value 是一个 promise, 取这个</p>
-<p>promise 的结果值作为返回的 promise 的结果值</p>
-<p>value.then(resolve, reject) // 如果 value 成功, 调用</p>
-<p>resolve(val), 如果 value 失败了, 调用 reject(reason)</p>
-<p>} else {</p>
-<p>resolve(value) </p>
-<p>}</p>
-<p>}, time);</p>
-<p>})</p>
-<p>}</p>
-<p>/*</p>
-<p>返回一个延迟指定时间才失败的 Promise 对象。</p>
-<p>*/</p>
-<p>Promise.rejectDelay = function (reason, time) {</p>
-<p>return new Promise((resolve, reject) =&gt; {</p>
-<p>setTimeout(() =&gt; {</p>
-<p>reject(reason)</p>
-<p>}, time)</p>
-<p>})</p>
-<p>}</p>
-<h2 id="2-7-ES5-function-完整版本"><a href="#2-7-ES5-function-完整版本" class="headerlink" title="2.7. ES5 function 完整版本"></a><strong>2.7. ES5 function</strong> <strong>完整版本</strong></h2><p>Promise.js </p>
-<h2 id="2-8-ES6-class-完整版"><a href="#2-8-ES6-class-完整版" class="headerlink" title="2.8. ES6 class 完整版"></a><strong>2.8. ES6 class</strong> <strong>完整版</strong></h2><h1 id="第-3-章：-async-与-await"><a href="#第-3-章：-async-与-await" class="headerlink" title="第 3 章：****async 与 await"></a><strong>第</strong> <strong>3</strong> <strong>章：****async</strong> <strong>与</strong> <strong>await</strong></h1><h2 id="3-1-mdn-文档"><a href="#3-1-mdn-文档" class="headerlink" title="3.1. mdn 文档"></a><strong>3.1. mdn</strong> <strong>文档</strong></h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function</a></p>
+<h1 id="第-2-章：自定义-手写-Promise"><a href="#第-2-章：自定义-手写-Promise" class="headerlink" title="第 2 章：自定义(手写)Promise"></a><strong>第</strong> <strong>2</strong> <strong>章：自定义</strong>(手写)Promise</h1><h2 id="2-1-定义整体结构"><a href="#2-1-定义整体结构" class="headerlink" title="2.1. 定义整体结构"></a><strong>2.1.</strong> <strong>定义整体结构</strong></h2><h2 id="2-2-Promise-构造函数的实现"><a href="#2-2-Promise-构造函数的实现" class="headerlink" title="2.2. Promise 构造函数的实现"></a><strong>2.2. Promise</strong> <strong>构造函数的实现</strong></h2><h2 id="2-3-promise-then-catch-的实现"><a href="#2-3-promise-then-catch-的实现" class="headerlink" title="2.3. promise.then()/catch()的实现"></a>2.3. promise.then()/catch()的实现</h2><h2 id="2-4-Promise-resolve-reject-的实现"><a href="#2-4-Promise-resolve-reject-的实现" class="headerlink" title="**2.4. Promise.resolve()/reject()**的实现"></a>**2.4. Promise.resolve()/reject()**的实现</h2><h2 id="2-5-Promise-all-race-的实现"><a href="#2-5-Promise-all-race-的实现" class="headerlink" title="**2.5. Promise.all/race()**的实现"></a>**2.5. Promise.all/race()**的实现</h2><h2 id="2-6-Promise-resolveDelay-rejectDelay-的实现"><a href="#2-6-Promise-resolveDelay-rejectDelay-的实现" class="headerlink" title="**2.6. Promise.resolveDelay()/rejectDelay()**的实现"></a>**2.6. Promise.resolveDelay()/rejectDelay()**的实现</h2><h2 id="2-7-ES5-function完整版本"><a href="#2-7-ES5-function完整版本" class="headerlink" title="2.7. ES5 function完整版本"></a>2.7. ES5 function<strong>完整版本</strong></h2><p>Promise.js </p>
+<h2 id="2-8-ES6-class-完整版"><a href="#2-8-ES6-class-完整版" class="headerlink" title="2.8. ES6 class 完整版"></a><strong>2.8. ES6 class</strong> <strong>完整版</strong></h2><h1 id="第-3-章：async与await"><a href="#第-3-章：async与await" class="headerlink" title="第 3 章：async与await"></a><strong>第</strong> <strong>3</strong> <strong>章：</strong>async与await</h1><h2 id="3-1-mdn-文档"><a href="#3-1-mdn-文档" class="headerlink" title="3.1. mdn 文档"></a><strong>3.1. mdn</strong> <strong>文档</strong></h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function</a></p>
 <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/await">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/await</a></p>
 <h2 id="3-2-async-函数"><a href="#3-2-async-函数" class="headerlink" title="3.2. async 函数"></a><strong>3.2. async</strong> <strong>函数</strong></h2><ol>
 <li><p>函数的返回值为 promise 对象</p>
@@ -1006,99 +280,13 @@ reason => {console.log('race 失败了', reason)}
 <li><p>如果表达式是其它值, 直接将此值作为 await 的返回值</p>
 </li>
 </ol>
-<h2 id="3-4-注意"><a href="#3-4-注意" class="headerlink" title="3.4. 注意"></a><strong>3.4.</strong> <strong>注意</strong></h2><ol>
+<h2 id="3-4-注意"><a href="#3-4-注意" class="headerlink" title="3.4. 注意"></a>3.4. <strong>注意</strong></h2><ol>
 <li><p>await 必须写在 async 函数中, 但 async 函数中可以没有 await</p>
 </li>
 <li><p>如果 await 的 promise 失败了, 就会抛出异常, 需要通过 try…catch 捕获处理</p>
 </li>
 </ol>
-<script>
-
-Promise_class.js 
-
-function fn1() {
-
-return Promise.resolve(1) 
-
-}
-
-function fn2() {
-
-return 2 
-
-}
-
-function fn3() {
-
-return Promise.reject(3)
-
-// return fn3.test() // 程序运行会抛出异常
-
-}
-
-function fn4() {
-
-return fn3.test() // 程序运行会抛出异常
-
-}
-
-// 没有使用 await 的 async 函数
-
-async function fn5() {
-
-return 4 
-
-}
-
-async function fn() {
-
-// await 右侧是一个成功的 promise
-
-const result = await fn1()
-
-// await 右侧是一个非 promise 的数据
-
-// const result = await fn2()
-
-// await 右侧是一个失败的 promise
-
-// const result = await fn3()
-
-// await 右侧抛出异常
-
-// const result = await fn4()
-
-console.log('result: ', result) ****
-
  
-
-return result+10
-
-}
-
-async function test() {
-
-try {
-
-const result2 = await fn()
-
-console.log('result2', result2) 
-
-} catch (error) {
-
-console.log('error', error) 
-
-}
-
-const result3 = await fn4()
-
-console.log('result4', result3) 
-
-}
-
-// test()
-
-</script> 
       <!-- reward -->
       
     </div>
