@@ -35,21 +35,6 @@
       </tags>
   </entry>
   <entry>
-    <title>算法笔记之字符串篇</title>
-    <url>/2022/03/01/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AF%87/</url>
-    <content><![CDATA[<p>整理在leetcode刷题过程中碰到的字符串涉及的算法知识</p>
-<span id="more"></span>
-
-<p>通过 <code>toString(2)</code> ，我们可以将数字转换为对应的二进制数的字符串。</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法 字符串 leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CSS高级技巧笔记</title>
     <url>/2021/02/09/CSS%E9%AB%98%E7%BA%A7%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="1-精灵图"><a href="#1-精灵图" class="headerlink" title="1.精灵图"></a>1.精灵图</h1><h2 id="精灵图-sprites-的使用"><a href="#精灵图-sprites-的使用" class="headerlink" title="精灵图( sprites )的使用"></a>精灵图( sprites )的使用</h2><p>使用精灵图核心:<br>1.精灵技术主要针对于背景图片使用。就是把多个小背景图片整合到-张大图片中。<br>2.这个大图片也称为sprites精灵图或者雪碧图<br>3.移动背景图片位置，此时可以使用background-position。<br>4.移动的距离就是这个目标图片的x和y坐标。注意网页中的坐标有所不同<span id="more"></span><br>5.因为一般情况下都是往上往左移动,所以数值题值。<br> 千万注意网页中的坐标: x轴右边走是正值,左边走题值，y轴同理。<br>实例</p>
@@ -814,8 +799,216 @@
       </categories>
   </entry>
   <entry>
-    <title>Promise</title>
-    <url>/2022/03/03/Promise/</url>
+    <title>算法笔记之数组篇-未完</title>
+    <url>/2022/03/20/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%95%B0%E7%BB%84%E7%AF%87-%E6%9C%AA%E5%AE%8C/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<h1 id="常用api汇总"><a href="#常用api汇总" class="headerlink" title="常用api汇总"></a>常用api汇总</h1><h2 id="pop"><a href="#pop" class="headerlink" title="pop()"></a>pop()</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/pop">Array.prototype.pop</a><br>pop()方法从数组中删除最后一个元素，并返回该元素的值</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>node.js-未完</title>
+    <url>/2022/03/11/node-js-%E6%9C%AA%E5%AE%8C/</url>
+    <content><![CDATA[<p>为什么js可以在浏览器中被执行？因为浏览器中都有js解析引擎。</p>
+<p>什么是node.js?node.js是基于chrome v8引擎的js运行环境</p>
+<p>为什么js能够被浏览器执行？因为各大浏览器中都内置的有js解析引擎，例如chrome浏览器使用的是v8引擎</p>
+<p>为什么js可以操作dom和bom？因为每个浏览器都内置了dom，bom这样的API函数，因此js可以调用这些web api函数，再被js解析引擎解析，从而在浏览器中被执行</p>
+<p>浏览器是js的前端运行环境，node.js是js的后端运行环境，node.js中无法调用dom和bom等浏览器内置api</p>
+<span id="more"></span>
+
+<h1 id="fs文件系统模块"><a href="#fs文件系统模块" class="headerlink" title="fs文件系统模块"></a>fs文件系统模块</h1><p>要使用fs，首先要导入</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="fs-readFile-读取文件内容"><a href="#fs-readFile-读取文件内容" class="headerlink" title="fs.readFile() 读取文件内容"></a>fs.readFile() 读取文件内容</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fs.<span class="title function_">readFile</span>(path[,options],callback)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>path:必选参数，字符串，表示文件的路径</li>
+<li>options：可选参数，表示以什么编码格式来读取文件</li>
+<li>callback：必选参数，文件读取完成后，通过callback回调函数来拿到读取的结果</li>
+</ul>
+<p>ex：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line">fs.<span class="title function_">readFile</span>(<span class="string">&quot;./files/1.txt&quot;</span>,<span class="string">&quot;utf-8&quot;</span>,<span class="keyword">function</span>(<span class="params">err,dataStr</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(err)<span class="comment">//err对象如果为null，表示读取成功</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(dataStr)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="fs-writeFile-向文件中写入内容"><a href="#fs-writeFile-向文件中写入内容" class="headerlink" title="fs.writeFile() 向文件中写入内容"></a>fs.writeFile() 向文件中写入内容</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fs.<span class="title function_">writeFile</span>(file,data[,option],callback)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>file:必选参数，字符串，表示文件的存放路径</li>
+<li>data:必选参数，表示要写入的内容</li>
+<li>options：可选参数，表示以什么格式写入文件内容，默认是utf-8</li>
+<li>callback:必选参数，文件写入完成后的回调函数</li>
+</ul>
+<p>ex：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line">fs.<span class="title function_">writeFile</span>(<span class="string">&#x27;./files/2.txt&#x27;</span>,<span class="string">&quot;hello node.js&quot;</span>,<span class="keyword">function</span>(<span class="params">err</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(err)<span class="comment">//err如果为null表示写入成功</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="综合练习-考试成绩整理"><a href="#综合练习-考试成绩整理" class="headerlink" title="综合练习-考试成绩整理"></a>综合练习-考试成绩整理</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line">fs.<span class="title function_">readFile</span>(<span class="string">&quot;./files/成绩.txt&quot;</span>, <span class="string">&quot;utf-8&quot;</span>, <span class="keyword">function</span> (<span class="params">err, dataStr</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (err)</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;读取文件失败&quot;</span> + err.<span class="property">message</span>);</span><br><span class="line">  <span class="comment">// 4.1 先把成绩的数据，按照空格进行分割</span></span><br><span class="line">  <span class="keyword">const</span> arr = dataStr.<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">  <span class="comment">// 4.2循环分割后的数组，对每项数据， 进行字符串的替换操作</span></span><br><span class="line">  <span class="keyword">const</span> newarr = []</span><br><span class="line">  arr.<span class="title function_">forEach</span>(<span class="function"><span class="params">item</span> =&gt;</span></span><br><span class="line">    newarr.<span class="title function_">push</span>(item.<span class="title function_">replace</span>(<span class="string">&quot;=&quot;</span>, <span class="string">&quot;:&quot;</span>))</span><br><span class="line">  )</span><br><span class="line">  <span class="comment">// 4.3把新数组中的每一项，进行合并，得到一个新的字符串</span></span><br><span class="line">  <span class="keyword">const</span> lastarr = newarr.<span class="title function_">join</span>(<span class="string">&#x27;\r\n&#x27;</span>)</span><br><span class="line">  <span class="comment">// 5.调用fs.writeFile() 方法，把处理完毕的成绩，写入到新文件中</span></span><br><span class="line">  fs.<span class="title function_">writeFile</span>(<span class="string">&quot;./files/成绩-ok.txt&quot;</span>, lastarr, <span class="keyword">function</span> (<span class="params">err</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="路径动态拼接问题"><a href="#路径动态拼接问题" class="headerlink" title="路径动态拼接问题"></a>路径动态拼接问题</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// __dirname表示当前文件所处的目录</span></span><br><span class="line">fs.<span class="title function_">readFile</span>(__dirname + <span class="string">&#x27;/files/1.txt&#x27;</span>)<span class="string">``</span><span class="string">``</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="path路径模块"><a href="#path路径模块" class="headerlink" title="path路径模块"></a>path路径模块</h1><p>path 模块是 Node.js 官方提供的、用来处理路径的模块。它提供了一系列的方法和属性，用来满足用户对路径的处理需求。</p>
+<ul>
+<li>path.join() 方法，用来将多个路径片段拼接成一个完整的路径字符串</li>
+<li>path.basename() 方法，用来从路径字符串中，将文件名解析出来</li>
+</ul>
+<p>如果要使用path，先用如下方式导入</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="title function_">requie</span>(<span class="string">&#x27;path&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="路径拼接"><a href="#路径拼接" class="headerlink" title="路径拼接"></a>路径拼接</h2><h3 id="path-join"><a href="#path-join" class="headerlink" title="path.join()"></a>path.join()</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">join</span>([...paths])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>…paths<code>&lt;string&gt;</code>路径片段的序列</li>
+<li>返回值：字符串</li>
+</ul>
+<p>ex：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pathStr = path.<span class="title function_">join</span>(<span class="string">&#x27;/a&#x27;</span>,<span class="string">&#x27;/b/c&#x27;</span>,<span class="string">&#x27;../&#x27;</span>,<span class="string">&#x27;/d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(pathStr)<span class="comment">// 输出\a\b\d\e c被../抵消</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pathStr2 = path.<span class="title function_">join</span>(__dirname,<span class="string">&#x27;./files/1.txt&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(pathStr2)<span class="comment">//输出 当前文件所处目录 \files\1.txt</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="获取路径中的文件名"><a href="#获取路径中的文件名" class="headerlink" title="获取路径中的文件名"></a>获取路径中的文件名</h2><h2 id="path-basename"><a href="#path-basename" class="headerlink" title="path.basename()"></a>path.basename()</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">basename</span>(path[,ext])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>path <code>&lt;string&gt;</code>必选参数，表示路径的字符串</li>
+<li>ext<code>&lt;string&gt;</code> 可选参数，表示文件扩展名</li>
+<li>返回：<code>&lt;string&gt;</code>表示路径中的最后一部分</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fpath = <span class="string">&#x27;/a/b/c/index.html&#x27;</span> <span class="comment">//文件的存放路径</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fullname = path.<span class="title function_">basename</span>(fpath)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fullname) <span class="comment">//index.html</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> nameWithoutExt = path.<span class="title function_">basename</span>(fpath,<span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(nameWithoutExt) <span class="comment">//输出index</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="获取路径中的文件扩展名"><a href="#获取路径中的文件扩展名" class="headerlink" title="获取路径中的文件扩展名"></a>获取路径中的文件扩展名</h2><h3 id="path-extname"><a href="#path-extname" class="headerlink" title="path.extname()"></a>path.extname()</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">extname</span>(path)</span><br></pre></td></tr></table></figure>
+
+<p>ex:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> fpath = <span class="string">&#x27;/a/b/c/index.html&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fext = path.<span class="title function_">extname</span>(fpath)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fext) <span class="comment">//输出.html</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="http模块"><a href="#http模块" class="headerlink" title="http模块"></a>http模块</h1><p>什么是客户端？什么是服务器？</p>
+<p>在网络节点中，负责消费资源的电脑，叫做客户端；负责对外提供网络资源的电脑，叫做服务器。</p>
+<p>http 模块是 Node.js 官方提供的、用来创建 web 服务器的模块。通过 http 模块提供的 http.createServer() 方法，就能方便的把一台普通的电脑，变成一台 Web 服务器，从而对外提供 Web 资源服务。</p>
+<h2 id="创建web服务器"><a href="#创建web服务器" class="headerlink" title="创建web服务器"></a>创建web服务器</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>()</span><br><span class="line"><span class="comment">// 为服务器实例绑定 request 事件</span></span><br><span class="line">server.<span class="title function_">on</span>(<span class="string">&#x27;request&#x27;</span>,<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;some vist your web server&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 启动服务器</span></span><br><span class="line">server.<span class="title function_">on</span>(<span class="string">&#x27;request&#x27;</span>,<span class="function">(<span class="params">req</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> str = <span class="string">`您请求的地址是 <span class="subst">$&#123;req.url&#125;</span>, and request method is <span class="subst">$&#123;req.method&#125;</span>`</span></span><br><span class="line">	<span class="comment">//解决中文乱码问题</span></span><br><span class="line">	res.<span class="title function_">setHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>,<span class="string">&#x27;text/html; charset=utf-8&#x27;</span>)</span><br><span class="line">	<span class="comment">//res.end()方法:向客户端发送指定的内容，并结束这次请求的处理过程</span></span><br><span class="line">	req.<span class="title function_">end</span>(str);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="动态响应内容"><a href="#动态响应内容" class="headerlink" title="动态响应内容"></a>动态响应内容</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">server.<span class="title function_">on</span>(<span class="string">&#x27;request&#x27;</span>,<span class="keyword">function</span>(<span class="params">req,res</span>)&#123;</span><br><span class="line">	<span class="keyword">const</span> url = req.<span class="property">url</span></span><br><span class="line">	<span class="keyword">let</span> content = <span class="string">&#x27;&lt;h1&gt;404 Not Found!&lt;/h1&gt;&#x27;</span></span><br><span class="line">	<span class="keyword">if</span>(url === <span class="string">&#x27;/&#x27;</span> || url === <span class="string">&#x27;/index.html&#x27;</span> )&#123;</span><br><span class="line">		content = <span class="string">&#x27;&lt;h1&gt;首页&lt;/h1&gt;&#x27;</span></span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(url === <span class="string">&#x27;/about.html&#x27;</span>)&#123;</span><br><span class="line">		content = <span class="string">&#x27;&lt;h1&gt;关于页面&lt;/h1&gt;&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">	res.<span class="title function_">setHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>,<span class="string">&#x27;text/html;charset=utf-8&#x27;</span>)</span><br><span class="line">	res.<span class="title function_">end</span>(content)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>web前端学习笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Express学习-未完</title>
+    <url>/2022/03/15/Express%E5%AD%A6%E4%B9%A0-%E6%9C%AA%E5%AE%8C/</url>
+    <content><![CDATA[<p>啥是express？<br>是node.js框架，它提供了简单强大的方式来创建web服务器。也就是说，它虽然和node.js内置的http框架作用相似，但它的功能更强大。其本质就是npm的一个第三方包。</p>
+<span id="more"></span>
+
+<h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><p>啥是路由？<br>路由是指路由器从某一接口上收到了数据包后，根据数据包的目的地址进行定向并转发到另一个接口的过程。也就是说，它在收到请求后，需要确定应用程序怎么响应这个请求。所以，路由在响应时要确定收到的请求是get请求还是post请求、收到的请求路径是什么、要执行什么····因此，路由的结构被定义为<code>app.method(path,handler)</code>。(app是express的实例)</p>
+<p>path可以使用正则表达式<br>ex:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/ab*cd&#x27;</span>,<span class="keyword">function</span>(<span class="params">req,res</span>)=&gt;&#123;</span><br><span class="line">	<span class="comment">// 此路径将匹配abcd,abxcd,absjdjcd,ab123cd等等</span></span><br><span class="line">	res.<span class="title function_">send</span>(<span class="string">&#x27;ab*cd&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="Request-properties"><a href="#Request-properties" class="headerlink" title="Request.properties"></a>Request.properties</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>req.query()</td>
+<td>获取客户端发过来的查询参数，默认是一个空对象</td>
+</tr>
+<tr>
+<td>req.params()</td>
+<td>存放着url中通过:匹配到的动态参数，默认是一个空对象</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="req-params"><a href="#req-params" class="headerlink" title="req.params()"></a>req.params()</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/user/:name/:age/:email&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(req.<span class="property">params</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>假如我们访问的url为 <a href="http://127.0.0.1:3000/user/jxx/20/1486564136@qq.com">http://127.0.0.1:3000/user/jxx/20/1486564136@qq.com</a><br>那么将显示 </p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;jxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="string">&quot;20&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1486564136@qq.com&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Response-properties"><a href="#Response-properties" class="headerlink" title="Response.properties"></a>Response.properties</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>res.download()</td>
+<td>提示将要下载文件</td>
+</tr>
+<tr>
+<td>res.end()</td>
+<td>结束响应进程</td>
+</tr>
+<tr>
+<td>res.json()</td>
+<td></td>
+</tr>
+<tr>
+<td>res.jsonp()</td>
+<td></td>
+</tr>
+<tr>
+<td>res.redirect()</td>
+<td></td>
+</tr>
+<tr>
+<td>res.render()</td>
+<td></td>
+</tr>
+<tr>
+<td>res.send()</td>
+<td></td>
+</tr>
+<tr>
+<td>res.sendfile()</td>
+<td></td>
+</tr>
+<tr>
+<td>res.sendStatus()</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="静态资源处理"><a href="#静态资源处理" class="headerlink" title="静态资源处理"></a>静态资源处理</h1><h1 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h1><h2 id="开发中间件"><a href="#开发中间件" class="headerlink" title="开发中间件"></a>开发中间件</h2><h2 id="使用中间件"><a href="#使用中间件" class="headerlink" title="使用中间件"></a>使用中间件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>web前端学习笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>HTML-未完</title>
+    <url>/2022/03/13/HTML-%E6%9C%AA%E5%AE%8C/</url>
+    <content><![CDATA[<p>本篇用于汇总html基础知识。</p>
+<span id="more"></span>
+
+<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><h3 id="lt-audio-gt"><a href="#lt-audio-gt" class="headerlink" title="&lt;audio&gt;"></a><code>&lt;audio&gt;</code></h3><h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><h3 id="lt-canvas-gt"><a href="#lt-canvas-gt" class="headerlink" title="&lt;canvas&gt;"></a><code>&lt;canvas&gt;</code></h3><h2 id="I"><a href="#I" class="headerlink" title="I"></a>I</h2><h3 id="lt-img-gt-图像嵌入元素"><a href="#lt-img-gt-图像嵌入元素" class="headerlink" title="&lt;img&gt;图像嵌入元素"></a><code>&lt;img&gt;</code>图像嵌入元素</h3><h4 id="alt"><a href="#alt" class="headerlink" title="alt"></a><code>alt</code></h4><p>对图像的备用文本描述，虽然不是强制性的，但是对于可访问性而言却很有用。对于盲人使用者，屏幕阅读区会将这些描述读给他们听，以便让他们知道图像的含义.  要知道，浏览器并非总是会显示图像。对于1.有视力障碍的人使用的非可视化浏览器 2.用户选择不显示图像(出于节省带宽等原因) 3. 图像无效。此时该图片就会显示为alt属性里的文本内容</p>
+<h4 id="title"><a href="#title" class="headerlink" title="title"></a><code>title</code></h4><p>光标在图片上停下时显示的文字。但是要注意的是，如果使用者当时没用鼠标的话··所以如果是特别重要的内容，不该用title来显示。</p>
+<p>当alt和title同时设置时，alt作为图片的替代文字出现，title是图片的解释文字</p>
+]]></content>
+      <categories>
+        <category>web前端学习笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Javascript专栏(一)_类型转换-未完</title>
+    <url>/2022/03/20/Javascript%E4%B8%93%E6%A0%8F-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E6%9C%AA%E5%AE%8C/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Promise-未完</title>
+    <url>/2022/03/03/Promise-%E6%9C%AA%E5%AE%8C/</url>
     <content><![CDATA[<h1 id="第-1-章：Promise-的理解和使用"><a href="#第-1-章：Promise-的理解和使用" class="headerlink" title="第 1 章：Promise 的理解和使用"></a><strong>第</strong> <strong>1</strong> <strong>章：</strong>Promise <strong>的理解和使用</strong></h1><h2 id="1-1-Promise-是什么"><a href="#1-1-Promise-是什么" class="headerlink" title="1.1. Promise 是什么?"></a><strong>1.1. Promise</strong> <strong>是什么</strong>?</h2><h3 id="1-1-1-理解"><a href="#1-1-1-理解" class="headerlink" title="1.1.1. 理解"></a><strong>1.1.1.</strong> <strong>理解</strong></h3><ol>
 <li><p>抽象表达: </p>
 <ol>
@@ -885,53 +1078,38 @@
 <p>async/await</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  1. 指定回调函数的方式更加灵活:</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  旧的: 必须在启动异步任务前指定</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  promise: 启动异步任务 =&gt; 返回 promie 对象 =&gt; 给 promise 对象绑定回调函数</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  (甚至可以在异步任务结束后指定)</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  2. 支持链式调用, 可以解决回调地狱问题</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  什么是回调地狱? 回调函数嵌套调用, 外部回调函数异步执行的结果是嵌套的回调函</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  数执行的条件</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  回调地狱的缺点? 不便于阅读 / 不便于异常处理</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  解决方案? promise 链式调用</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  终极解决方案? async/await</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  */</span></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 成功的回调函数</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">function</span> <span class="title function_">successCallback</span>(<span class="params">result</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;声音文件创建成功: &quot;</span> + result);</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 失败的回调函数</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">function</span> <span class="title function_">failureCallback</span>(<span class="params">error</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;声音文件创建失败: &quot;</span> + error);</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">/* 1.1 使用纯回调函数 */</span></span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">createAudioFileAsync</span>(audioSettings, successCallback, failureCallback)</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">/* 1.2. 使用 Promise */</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> promise = <span class="title function_">createAudioFileAsync</span>(audioSettings); <span class="comment">// 2</span></span></span><br><span class="line"><span class="language-javascript">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    promise.<span class="title function_">then</span>(successCallback, failureCallback);</span></span><br><span class="line"><span class="language-javascript">  &#125;, <span class="number">3000</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  2.1. 回调地狱</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  */</span></span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">doSomething</span>(<span class="keyword">function</span> (<span class="params">result</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">doSomethingElse</span>(result, <span class="keyword">function</span> (<span class="params">newResult</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">doThirdThing</span>(newResult, <span class="keyword">function</span> (<span class="params">finalResult</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Got the final result: &#x27;</span> + finalResult)</span></span><br><span class="line"><span class="language-javascript">      &#125;, failureCallback)</span></span><br><span class="line"><span class="language-javascript">    &#125;, failureCallback)</span></span><br><span class="line"><span class="language-javascript">  &#125;, failureCallback)</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  2.2. 使用 promise 的链式调用解决回调地狱</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  */</span></span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">doSomething</span>().<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">result</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">return</span> <span class="title function_">doSomethingElse</span>(result)</span></span><br><span class="line"><span class="language-javascript">  &#125;)</span></span><br><span class="line"><span class="language-javascript">    .<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">newResult</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">return</span> <span class="title function_">doThirdThing</span>(newResult)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">    .<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">finalResult</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Got the final result: &#x27;</span> + finalResult)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">    .<span class="title function_">catch</span>(failureCallback)</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  2.3. async/await: 回调地狱的终极解决方案</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">  */</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">request</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">try</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> result = <span class="keyword">await</span> <span class="title function_">doSomething</span>()</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> newResult = <span class="keyword">await</span> <span class="title function_">doSomethingElse</span>(result)</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> finalResult = <span class="keyword">await</span> <span class="title function_">doThirdThing</span>(newResult)</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Got the final result: &#x27;</span> + finalResult)</span></span><br><span class="line"><span class="language-javascript">    &#125; <span class="keyword">catch</span> (error) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">failureCallback</span>(error)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="1-3-如何使用-Promise"><a href="#1-3-如何使用-Promise" class="headerlink" title="1.3. 如何使用 Promise?"></a><strong>1.3.</strong> <strong>如何使用</strong> <strong>Promise?</strong></h2><h3 id="1-3-1-API"><a href="#1-3-1-API" class="headerlink" title="1.3.1. API"></a><strong>1.3.1. API</strong></h3><ol>
-<li><p>Promise 构造函数: <code>Promise (excutor) &#123;&#125;</code></p>
+<h2 id="1-3-如何使用-Promise"><a href="#1-3-如何使用-Promise" class="headerlink" title="1.3. 如何使用 Promise?"></a><strong>1.3.</strong> <strong>如何使用</strong> <strong>Promise?</strong></h2><h3 id="1-3-1-API"><a href="#1-3-1-API" class="headerlink" title="1.3.1. API"></a><strong>1.3.1. API</strong></h3><h4 id="1-Promise-excutor"><a href="#1-Promise-excutor" class="headerlink" title="1. Promise (excutor) {}"></a>1. <code>Promise (excutor) &#123;&#125;</code></h4><p>Promise 构造函数:</p>
 <p>(1) executor 函数: 执行器 <code>(resolve, reject) =&gt; &#123;&#125; </code></p>
 <p>(2) resolve 函数: 内部定义成功时我们调用的函数 <code>value =&gt; &#123;&#125;</code></p>
 <p>(3) reject 函数: 内部定义失败时我们调用的函数<code> reason =&gt; &#123;&#125;</code></p>
 <p>说明: executor 会在 Promise 内部立即同步调用,异步操作在执行器中执行</p>
-</li>
-<li><p>Promise.prototype.then 方法: <code>(onResolved, onRejected) =&gt; &#123;&#125;</code></p>
-<p>(1) onResolved 函数: 成功的回调函数 <code>(value) =&gt; &#123;&#125;</code></p>
+<h4 id="2-Promise-prototype-then-方法-onResolved-onRejected-gt"><a href="#2-Promise-prototype-then-方法-onResolved-onRejected-gt" class="headerlink" title="2. Promise.prototype.then 方法: (onResolved, onRejected) =&gt; {}"></a>2. Promise.prototype.then 方法: <code>(onResolved, onRejected) =&gt; &#123;&#125;</code></h4><p>(1) onResolved 函数: 成功的回调函数 <code>(value) =&gt; &#123;&#125;</code></p>
 <p>(2) onRejected 函数: 失败的回调函数 <code>(reason) =&gt; &#123;&#125;</code></p>
 <p>说明: 指定用于得到成功 value 的成功回调和用于得到失败 reason 的失败回调</p>
 <p>返回一个新的 promise 对象</p>
-</li>
-<li><p>Promise.prototype.catch 方法:<code> (onRejected) =&gt; &#123;&#125;</code></p>
-<p>(1) onRejected 函数: 失败的回调函数<code>(reason) =&gt; &#123;&#125;</code></p>
+<h4 id="3-Promise-prototype-catch-方法-onRejected-gt"><a href="#3-Promise-prototype-catch-方法-onRejected-gt" class="headerlink" title="3. Promise.prototype.catch 方法: (onRejected) =&gt; {}"></a>3. Promise.prototype.catch 方法:<code> (onRejected) =&gt; &#123;&#125;</code></h4><p>(1) onRejected 函数: 失败的回调函数<code>(reason) =&gt; &#123;&#125;</code></p>
 <p> 说明: then()的语法糖, 相当于: then(undefined, onRejected)</p>
-</li>
-<li><p>Promise.resolve 方法: <code>(value) =&gt; &#123;&#125;</code></p>
-<p>(1) value: 成功的数据或 promise 对象</p>
+<h4 id="4-Promise-resolve-方法-value-gt"><a href="#4-Promise-resolve-方法-value-gt" class="headerlink" title="4. Promise.resolve 方法: (value) =&gt; {}"></a>4. Promise.resolve 方法: <code>(value) =&gt; &#123;&#125;</code></h4><p>(1) value: 成功的数据或 promise 对象</p>
 <p>说明: 返回一个成功/失败的 promise 对象</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p1 = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="number">123</span>)</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p2 = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">resolve</span>(<span class="string">&#x27;ok&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// reject(&#x27;error&#x27;)</span></span></span><br><span class="line"><span class="language-javascript">  &#125;))</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;p1----&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(p1);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;p2----&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(p2);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220304132426355.png" alt="image-20220304132426355"></p>
-</li>
-<li><p>Promise.reject 方法:<code> (reason) =&gt; &#123;&#125;</code></p>
-<p>(1) reason: 失败的原因</p>
+<h4 id="5-Promise-reject-方法-reason-gt"><a href="#5-Promise-reject-方法-reason-gt" class="headerlink" title="5. Promise.reject 方法: (reason) =&gt; {}"></a>5. Promise.reject 方法:<code> (reason) =&gt; &#123;&#125;</code></h4><p>(1) reason: 失败的原因</p>
 <p>说明: 返回一个失败的 promise 对象</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p1=<span class="title class_">Promise</span>.<span class="title function_">reject</span>(<span class="number">123</span>)</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p2=<span class="title class_">Promise</span>.<span class="title function_">reject</span>(<span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">resolve</span>(<span class="string">&#x27;ok&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">  &#125;))</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;---p1---&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(p1);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;---p2---&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(p2);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220304141656016.png" alt="image-20220304141656016"></p>
-</li>
-<li><p>Promise.all 方法: <code>(promises) =&gt; &#123;&#125;</code></p>
-<p>(1) promises: 包含 n 个 promise 的数组</p>
+<h4 id="6-Promise-all-方法-promises-gt"><a href="#6-Promise-all-方法-promises-gt" class="headerlink" title="6. Promise.all 方法: (promises) =&gt; {}"></a>6. Promise.all 方法: <code>(promises) =&gt; &#123;&#125;</code></h4><p>(1) promises: 包含 n 个 promise 的数组</p>
 <p>说明: 返回一个新的 promise, 只有所有的 promise 都成功才成功, 只要有一个失败了就直接失败,并且返回的结果是失败的内容</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p1 = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="number">123</span>)</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p2 = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">resolve</span>(<span class="string">&#x27;ok&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">  &#125;))</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p3 = <span class="title class_">Promise</span>.<span class="title function_">reject</span>(<span class="string">&#x27;error&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> result1 = <span class="title class_">Promise</span>.<span class="title function_">all</span>([p1, p2, p3])</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> result2 = <span class="title class_">Promise</span>.<span class="title function_">all</span>([p1, p2])</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;---result1---&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(result1);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;---result2---&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(result2);</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220304143828094.png" alt="image-20220304143828094"></p>
 <p>如果all里有多个失败的内容，则返回第一个失败的promise对象</p>
-</li>
-<li><p>Promise.race 方法:<code> (promises) =&gt; &#123;&#125;</code></p>
-<p>(1) promises: 包含 n 个 promise 的数组</p>
+<h4 id="7-Promise-race-方法-promises-gt"><a href="#7-Promise-race-方法-promises-gt" class="headerlink" title="7. Promise.race 方法: (promises) =&gt; {}"></a>7. Promise.race 方法:<code> (promises) =&gt; &#123;&#125;</code></h4><p>(1) promises: 包含 n 个 promise 的数组</p>
 <p>说明: 返回一个新的 promise, 第一个完成的 promise 的结果状态就是最终的结果状态</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p1 = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="number">123</span>)</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p2 = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">resolve</span>(<span class="string">&#x27;ok&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">  &#125;))</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p3 = <span class="title class_">Promise</span>.<span class="title function_">reject</span>(<span class="string">&#x27;error&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> p4 = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span> (<span class="title class_">Date</span>.<span class="title function_">now</span>() % <span class="number">2</span> === <span class="number">0</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">resolve</span>(<span class="number">1</span>)</span></span><br><span class="line"><span class="language-javascript">      &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">reject</span>(<span class="number">2</span>)</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;, <span class="number">1000</span>);</span></span><br><span class="line"><span class="language-javascript">  &#125;);</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> result1 = <span class="title class_">Promise</span>.<span class="title function_">race</span>([p4,p3, p1, p2])</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(result1);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/typora_images/image-20220304145219198.png" alt="image-20220304145219198"></p>
-</li>
-</ol>
 <h3 id="1-3-2-promise-的几个关键问题"><a href="#1-3-2-promise-的几个关键问题" class="headerlink" title="1.3.2. promise 的几个关键问题"></a><strong>1.3.2. promise</strong> <strong>的几个关键问题</strong></h3><h4 id="1-如何改变-promise-的状态"><a href="#1-如何改变-promise-的状态" class="headerlink" title="1. 如何改变 promise 的状态?"></a>1. 如何改变 promise 的状态?</h4><p>(1) resolve(value): 如果当前是 pending 就会变为 resolved</p>
 <p>(2) reject(reason): 如果当前是 pending 就会变为 rejected</p>
 <p>(3) 抛出异常: 如果当前是 pending 就会变为 rejected</p>
@@ -954,7 +1132,7 @@
 <p>(2) 前面任何操作出了异常, 都会传到最后失败的回调中处理</p>
 <h4 id="7-中断-promise-链"><a href="#7-中断-promise-链" class="headerlink" title="7. 中断 promise 链?"></a>7. 中断 promise 链?</h4><p>(1) 当使用 promise 的 then 链式调用时, 在中间中断, 不再调用后面的回调函数</p>
 <p>(2) 办法: 在回调函数中返回一个 pendding 状态的 promise 对象</p>
-<h1 id="第-2-章：自定义-手写-Promise"><a href="#第-2-章：自定义-手写-Promise" class="headerlink" title="第 2 章：自定义(手写)Promise"></a><strong>第</strong> <strong>2</strong> <strong>章：自定义</strong>(手写)Promise</h1><h2 id="2-1-定义整体结构"><a href="#2-1-定义整体结构" class="headerlink" title="2.1. 定义整体结构"></a><strong>2.1.</strong> <strong>定义整体结构</strong></h2><h2 id="2-2-Promise-构造函数的实现"><a href="#2-2-Promise-构造函数的实现" class="headerlink" title="2.2. Promise 构造函数的实现"></a><strong>2.2. Promise</strong> <strong>构造函数的实现</strong></h2><h2 id="2-3-promise-then-catch-的实现"><a href="#2-3-promise-then-catch-的实现" class="headerlink" title="2.3. promise.then()/catch()的实现"></a>2.3. promise.then()/catch()的实现</h2><h2 id="2-4-Promise-resolve-reject-的实现"><a href="#2-4-Promise-resolve-reject-的实现" class="headerlink" title="**2.4. Promise.resolve()/reject()**的实现"></a>**2.4. Promise.resolve()/reject()**的实现</h2><h2 id="2-5-Promise-all-race-的实现"><a href="#2-5-Promise-all-race-的实现" class="headerlink" title="**2.5. Promise.all/race()**的实现"></a>**2.5. Promise.all/race()**的实现</h2><h2 id="2-6-Promise-resolveDelay-rejectDelay-的实现"><a href="#2-6-Promise-resolveDelay-rejectDelay-的实现" class="headerlink" title="**2.6. Promise.resolveDelay()/rejectDelay()**的实现"></a>**2.6. Promise.resolveDelay()/rejectDelay()**的实现</h2><h2 id="2-7-ES5-function完整版本"><a href="#2-7-ES5-function完整版本" class="headerlink" title="2.7. ES5 function完整版本"></a>2.7. ES5 function<strong>完整版本</strong></h2><p>Promise.js </p>
+<h1 id="第-2-章：自定义-手写-Promise"><a href="#第-2-章：自定义-手写-Promise" class="headerlink" title="第 2 章：自定义(手写)Promise"></a><strong>第</strong> <strong>2</strong> <strong>章：自定义</strong>(手写)Promise</h1><h2 id="2-1-定义整体结构"><a href="#2-1-定义整体结构" class="headerlink" title="2.1. 定义整体结构"></a><strong>2.1.</strong> <strong>定义整体结构</strong></h2><h2 id="2-2-Promise-构造函数的实现"><a href="#2-2-Promise-构造函数的实现" class="headerlink" title="2.2. Promise 构造函数的实现"></a><strong>2.2. Promise</strong> <strong>构造函数的实现</strong></h2><h2 id="2-3-promise-then-catch-的实现"><a href="#2-3-promise-then-catch-的实现" class="headerlink" title="2.3. promise.then()/catch()的实现"></a>2.3. promise.then()/catch()的实现</h2><h2 id="2-4-Promise-resolve-reject-的实现"><a href="#2-4-Promise-resolve-reject-的实现" class="headerlink" title="2.4. Promise.resolve()/reject()的实现"></a>2.4. Promise.resolve()/reject()的实现</h2><h2 id="2-5-Promise-all-race-的实现"><a href="#2-5-Promise-all-race-的实现" class="headerlink" title="2.5. Promise.all/race()的实现"></a>2.5. Promise.all/race()的实现</h2><h2 id="2-6-Promise-resolveDelay-rejectDelay-的实现"><a href="#2-6-Promise-resolveDelay-rejectDelay-的实现" class="headerlink" title="2.6. Promise.resolveDelay()/rejectDelay()的实现"></a>2.6. Promise.resolveDelay()/rejectDelay()的实现</h2><h2 id="2-7-ES5-function完整版本"><a href="#2-7-ES5-function完整版本" class="headerlink" title="2.7. ES5 function完整版本"></a>2.7. ES5 function<strong>完整版本</strong></h2><p>Promise.js </p>
 <h2 id="2-8-ES6-class-完整版"><a href="#2-8-ES6-class-完整版" class="headerlink" title="2.8. ES6 class 完整版"></a><strong>2.8. ES6 class</strong> <strong>完整版</strong></h2><h1 id="第-3-章：async与await"><a href="#第-3-章：async与await" class="headerlink" title="第 3 章：async与await"></a><strong>第</strong> <strong>3</strong> <strong>章：</strong>async与await</h1><h2 id="3-1-mdn-文档"><a href="#3-1-mdn-文档" class="headerlink" title="3.1. mdn 文档"></a><strong>3.1. mdn</strong> <strong>文档</strong></h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function</a></p>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/await">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/await</a></p>
 <h2 id="3-2-async-函数"><a href="#3-2-async-函数" class="headerlink" title="3.2. async 函数"></a><strong>3.2. async</strong> <strong>函数</strong></h2><ol>
@@ -983,8 +1161,34 @@
       </categories>
   </entry>
   <entry>
+    <title>算法笔记之字符串篇-未完</title>
+    <url>/2022/03/01/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AF%87-%E6%9C%AA%E5%AE%8C/</url>
+    <content><![CDATA[<p>整理在leetcode刷题过程中碰到的字符串涉及的算法知识</p>
+<span id="more"></span>
+
+<p>通过 <code>toString(2)</code> ，我们可以将数字转换为对应的二进制数的字符串。</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法 字符串 leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>校园快递代取项目开发-未完</title>
+    <url>/2022/03/10/%E6%A0%A1%E5%9B%AD%E5%BF%AB%E9%80%92%E4%BB%A3%E5%8F%96%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-%E6%9C%AA%E5%AE%8C/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<p>#1296db</p>
+<h1 id="首页index"><a href="#首页index" class="headerlink" title="首页index"></a>首页index</h1><h1 id="接单take"><a href="#接单take" class="headerlink" title="接单take"></a>接单take</h1><h1 id="订单order"><a href="#订单order" class="headerlink" title="订单order"></a>订单order</h1><h1 id="我的my"><a href="#我的my" class="headerlink" title="我的my"></a>我的my</h1>]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Ajax</title>
-    <url>/2022/03/01/Ajax-1/</url>
+    <url>/2022/03/01/Ajax/</url>
     <content><![CDATA[<h1 id="什么是-AJAX-？"><a href="#什么是-AJAX-？" class="headerlink" title="什么是 AJAX ？"></a>什么是 AJAX ？</h1><p>AJAX = 异步 JavaScript 和 XML。</p>
 <p>AJAX 是一种用于创建快速动态网页的技术。</p>
 <p>通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
