@@ -156,6 +156,125 @@
     
     
     <article
+  id="post-Javascript专栏-得到类型-未完"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/03/24/Javascript%E4%B8%93%E6%A0%8F-%E5%BE%97%E5%88%B0%E7%B1%BB%E5%9E%8B-%E6%9C%AA%E5%AE%8C/"
+    >Javascript专栏(二)_得到类型-未完</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/03/24/Javascript%E4%B8%93%E6%A0%8F-%E5%BE%97%E5%88%B0%E7%B1%BB%E5%9E%8B-%E6%9C%AA%E5%AE%8C/" class="article-date">
+  <time datetime="2022-03-24T12:09:18.000Z" itemprop="datePublished">2022-03-24</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>我们在研究如何得到某个变量的类型之前，先回顾一下JavaScript都有哪些类型呢？</p>
+<h1 id="类型介绍"><a href="#类型介绍" class="headerlink" title="类型介绍"></a>类型介绍</h1><ol>
+<li>Number</li>
+<li>String</li>
+<li>Bollean</li>
+<li>Symbol 符号。ES2015新增</li>
+<li>Object<ul>
+<li>Function</li>
+<li>Array</li>
+<li>Date</li>
+<li>RegExp 正则表达式</li>
+</ul>
+</li>
+<li>null</li>
+<li>undefined 
+      <a class="article-more-link" href="/2022/03/24/Javascript%E4%B8%93%E6%A0%8F-%E5%BE%97%E5%88%B0%E7%B1%BB%E5%9E%8B-%E6%9C%AA%E5%AE%8C/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-React入门"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/03/22/React%E5%85%A5%E9%97%A8/"
+    >React入门</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/03/22/React%E5%85%A5%E9%97%A8/" class="article-date">
+  <time datetime="2022-03-22T08:40:45.000Z" itemprop="datePublished">2022-03-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">web前端学习笔记</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <span id="more"></span>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-Axios笔记"
   class="article article-type-post"
   itemscope
@@ -245,7 +364,20 @@
 
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;1&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> a); <span class="comment">//string</span></span><br><span class="line"><span class="keyword">let</span> b = a * <span class="number">1</span> </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> b); <span class="comment">//number</span></span><br></pre></td></tr></table></figure>
 
- 
+<h1 id="String-gt-Number"><a href="#String-gt-Number" class="headerlink" title="String -&gt; Number"></a>String -&gt; Number</h1><h2 id="parseInt-string-radix"><a href="#parseInt-string-radix" class="headerlink" title="parseInt(string,radix)"></a>parseInt(string,radix)</h2><p>该函数解析一个字符串并返回指定基数的十进制整数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">parse</span>(<span class="string">&#x27;123&#x27;</span>,<span class="number">5</span>))<span class="comment">// 将&#x27;123&#x27;看作5进制数，返回十进制数38 =&gt; 1*5^2 + 2*5^1 + 3*5^0 = 38</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>string 必需<br>radix 可选，表示以几进制来读取字符串，取值范围是2-36。请注意radix的默认值并不是10，并且在使用parseInt()函数时请一定要传入radix参数。在后文中“一些注意的点”中将会解释为什么我们必须这么做。</p>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>解析后的十进制数<br>或者NaN</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseInt</span>(<span class="string">&#x27;321&#x27;</span>,<span class="number">2</span>))<span class="comment">//NaN 因为第一个非空格字符3不可能出现在二进制中，所以无法解析，因此返回NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseInt</span>(<span class="string">&#x27;321&#x27;</span>,<span class="number">37</span>));<span class="comment">//NaN 因为radix此时值为37，不在取值范围2-36之间</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="一些注意的点"><a href="#一些注意的点" class="headerlink" title="一些注意的点"></a>一些注意的点</h3><h4 id="截断解析"><a href="#截断解析" class="headerlink" title="截断解析"></a>截断解析</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseInt</span>(<span class="string">&#x27;1100211&#x27;</span>, <span class="number">2</span>)); <span class="comment">//12 s</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseInt</span>(<span class="string">&#x27;1100&#x27;</span>, <span class="number">2</span>));  <span class="comment">//12</span></span><br><span class="line"><span class="comment">// 2不是二进制中会出现的数，所以parseInt解析到这里时将会忽略该字符以及其后续的所有字符，也就是说第一行的‘211’都被忽略了，所以会和第二行输出相同的结果</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="请一定指定radix"><a href="#请一定指定radix" class="headerlink" title="请一定指定radix"></a>请一定指定radix</h4><p>当radix是undefined、0、或者压根没有的时候，js会假定以下情况。<br>如果string以0x(x无论大小写)开头，那么radix会假定为16。<br>如果string以0开头，那么radix会假定为8/10。。ES5澄清了会假定为10，但是！并不是所有浏览器都支持。因此，<font color='red'>在使用parseInt时，一定要指定一个radix</font></p>
+<h2 id="parseFloat"><a href="#parseFloat" class="headerlink" title="parseFloat()"></a>parseFloat()</h2><p>该函数解析一个字符串并返回一个浮点数</p>
+<h3 id="截断解析-1"><a href="#截断解析-1" class="headerlink" title="截断解析"></a>截断解析</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(<span class="string">&#x27;+3.2+4&#x27;</span>));<span class="comment">//3.2 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(<span class="string">&#x27;-3.2.4&#x27;</span>));<span class="comment">//-3.2 第二个小数点后面的都会被截止</span></span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title="+"></a>+</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="string">&#x27;42&#x27;</span>); <span class="comment">//42 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="string">&#x27;a&#x27;</span>); <span class="comment">//NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="string">&#x27;00100&#x27;</span>); <span class="comment">//100</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="string">&#x27;0x10&#x27;</span>); <span class="comment">//16</span></span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -296,8 +428,14 @@
     <div class="article-entry" itemprop="articleBody">
        
   <span id="more"></span>
+<h1 id="1-双指针"><a href="#1-双指针" class="headerlink" title="1. 双指针"></a>1. 双指针</h1><h2 id="ex1-合并两个有序数组"><a href="#ex1-合并两个有序数组" class="headerlink" title="ex1:合并两个有序数组"></a>ex1:合并两个有序数组</h2><p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/image-20220327131219371.png" alt="image-20220327131219371"><br>看到这道题你可能跟我一样首先想到的是先合并后排序，不过面试的时候要是敢这么写，面试官可能当场就说“好，今天的面试就到这里了”。后来或许我们可以想到再新建一个数组，利用双指针比较nums1和nums2头部的数字，取出比较小的存在新数组里。不过，这种方法还是可以继续优化。因为我们可以看到nums作为结果数组，其本身的长度是足够长的，所以我们可以将指针从右往左倒序遍历，取出比较大的放在nums1的后部。这样空间复杂度便可变为O(1)，因为我们没有占用额外空间</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> merge = <span class="keyword">function</span> (<span class="params">nums1, m, nums2, n</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> p1 = m - <span class="number">1</span>, p2 = n - <span class="number">1</span></span><br><span class="line">  <span class="keyword">var</span> tail = m + n - <span class="number">1</span></span><br><span class="line">  <span class="keyword">var</span> current</span><br><span class="line">  <span class="comment">// </span></span><br><span class="line">  <span class="keyword">while</span> (p1 &gt;= <span class="number">0</span> || p2 &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (p1 === -<span class="number">1</span>)</span><br><span class="line">      current = nums2[p2--]</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (p2 === -<span class="number">1</span>)</span><br><span class="line">      current = nums1[p1--]</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (nums1[p1] &gt; nums2[p2])</span><br><span class="line">      current = nums1[p1--]</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      current = nums2[p2--]</span><br><span class="line">    nums1[tail--] = current</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h1 id="常用api汇总"><a href="#常用api汇总" class="headerlink" title="常用api汇总"></a>常用api汇总</h1><h2 id="pop"><a href="#pop" class="headerlink" title="pop()"></a>pop()</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/pop">Array.prototype.pop</a><br>pop()方法从数组中删除最后一个元素，并返回该元素的值</p>
+<h1 id="数组常用方法"><a href="#数组常用方法" class="headerlink" title="数组常用方法"></a>数组常用方法</h1><h2 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h2><h3 id="Array-prototype-pop"><a href="#Array-prototype-pop" class="headerlink" title="Array.prototype.pop"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/pop">Array.prototype.pop</a></h3><p>pop()方法从数组中删除最后一个元素，并返回该元素的值</p>
+<h2 id="合并数组"><a href="#合并数组" class="headerlink" title="合并数组"></a>合并数组</h2><h3 id="Array-prototype-concat"><a href="#Array-prototype-concat" class="headerlink" title="Array.prototype.concat"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/concat">Array.prototype.concat</a></h3><p>如果想要删除或者替换现有的元素来修改数组的话，那么可以采用splice方法。</p>
+<h3 id="Array-prototype-splice"><a href="#Array-prototype-splice" class="headerlink" title="Array.prototype.splice()"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/splice">Array.prototype.splice()</a></h3><h4 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h4><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/merge-sorted-array/">leetcode88.合并两个有序数组</a></p>
+<p>在本题中，<code> nums1 = [1,2,3,0,0,0]</code>,<code>nums2 = [2,5,6] m+n表示nums1的长度，n表示nums2的长度</code>,如果我们想要用nums2来替换掉nums1中的后三个0，那么我们可以使用<code>nums1.splice(m,n,...nums2)</code>来实现。</p>
+<h2 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h2><h3 id="Array-prototype-sort"><a href="#Array-prototype-sort" class="headerlink" title="Array.prototype.sort()"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">Array.prototype.sort()</a></h3><h4 id="对数字排序"><a href="#对数字排序" class="headerlink" title="对数字排序"></a>对数字排序</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nums.<span class="title function_">sort</span>(<span class="function">(<span class="params">a,b</span>) =&gt;</span> a - b);</span><br></pre></td></tr></table></figure>
  
       <!-- reward -->
       
@@ -308,6 +446,8 @@
     
     <footer class="article-footer">
        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84-%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">数组 双指针</a></li></ul>
+
     </footer>
   </div>
 
@@ -611,117 +751,6 @@
 </article>
 
     
-    <article
-  id="post-Ajax"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/03/01/Ajax/"
-    >Ajax</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/01/Ajax/" class="article-date">
-  <time datetime="2022-03-01T07:27:51.000Z" itemprop="datePublished">2022-03-01</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">web前端学习笔记</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="什么是-AJAX-？"><a href="#什么是-AJAX-？" class="headerlink" title="什么是 AJAX ？"></a>什么是 AJAX ？</h1><p>AJAX = 异步 JavaScript 和 XML。</p>
-<p>AJAX 是一种用于创建快速动态网页的技术。</p>
-<p>通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
-<p>传统的网页（不使用 AJAX）如果需要更新内容，必需重载整个网页面。</p> 
-      <a class="article-more-link" href="/2022/03/01/Ajax/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-计网"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/12/12/%E8%AE%A1%E7%BD%91/"
-    >计网</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/12/12/%E8%AE%A1%E7%BD%91/" class="article-date">
-  <time datetime="2021-12-12T06:47:00.000Z" itemprop="datePublished">2021-12-12</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>讨厌的计网嘤嘤嘤</p> 
-      <a class="article-more-link" href="/2021/12/12/%E8%AE%A1%E7%BD%91/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
   </article>
   
 
@@ -808,7 +837,15 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/categories/web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Web前端知识</a>
+      <a class="nav-item-link" href="/categories/HTML/">HTML</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories/CSS/">CSS</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories/JavaScript/">JavaScript专栏</a>
     </li>
     
     <li class="nav-item">
@@ -816,7 +853,7 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/categories/JavaScript/">JavaScript专栏</a>
+      <a class="nav-item-link" href="/categories/web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Web前端知识</a>
     </li>
     
     <li class="nav-item">

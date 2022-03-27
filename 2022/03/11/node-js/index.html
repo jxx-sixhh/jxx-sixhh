@@ -275,7 +275,7 @@
 <h2 id="静态资源处理"><a href="#静态资源处理" class="headerlink" title="静态资源处理"></a>静态资源处理</h2><p>Express提供了内置的中间件 express.static来设置静态文件，如：图片，css，JavaScript等等</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="string">&#x27;/public&#x27;</span>,express.<span class="title function_">static</span>(<span class="string">&#x27;public&#x27;</span>));</span><br></pre></td></tr></table></figure>
 <p>此时我们就将静态文件都放在了public目录下</p>
-<h1 id="基于Express的综合接口书写练习"><a href="#基于Express的综合接口书写练习" class="headerlink" title="基于Express的综合接口书写练习"></a>基于Express的综合接口书写练习</h1><p><img src="C:\Users\86183\AppData\Roaming\Typora\typora-user-images\image-20220321132408181.png" alt="image-20220321132408181"></p>
+<h1 id="基于Express的综合接口书写练习"><a href="#基于Express的综合接口书写练习" class="headerlink" title="基于Express的综合接口书写练习"></a>基于Express的综合接口书写练习</h1><p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/image-20220321132408181.png" alt="image-20220321132408181"></p>
 <h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><h3 id="mysql数据库文件"><a href="#mysql数据库文件" class="headerlink" title="mysql数据库文件"></a>mysql数据库文件</h3><p><code>db&gt;index.js</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const mysql = require(&#x27;mysql&#x27;)</span><br><span class="line">const db = mysql.createPool(&#123;</span><br><span class="line">  host: &#x27;127.0.0.1&#x27;, // 数据库的ip地址</span><br><span class="line">  user: &#x27;root&#x27;,// 登陆数据库的账号</span><br><span class="line">  password: &#x27;admin123&#x27;,// 登录数据库的密码</span><br><span class="line">  database: &#x27;my_db01&#x27;// 数据库名</span><br><span class="line">&#125;)</span><br><span class="line">module.exports = db</span><br></pre></td></tr></table></figure>
 
@@ -383,10 +383,7 @@
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> router = express.<span class="title class_">Router</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入用户路由处理函数模块</span></span><br><span class="line"><span class="keyword">const</span> userHandler = <span class="built_in">require</span>(<span class="string">&#x27;../router_handler/user&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册新用户</span></span><br><span class="line">router.<span class="title function_">post</span>(<span class="string">&#x27;/reguser&#x27;</span>, userHandler.<span class="property">regUser</span>)</span><br><span class="line"><span class="comment">// 登录</span></span><br><span class="line">router.<span class="title function_">post</span>(<span class="string">&#x27;/login&#x27;</span>, userHandler.<span class="property">login</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = router</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-登录注册"><a href="#2-登录注册" class="headerlink" title="2. 登录注册"></a>2. 登录注册</h3><h4 id="2-1-新建-ev-users-表"><a href="#2-1-新建-ev-users-表" class="headerlink" title="2.1 新建 ev_users 表"></a>2.1 新建 ev_users 表</h4><ol>
-<li>在 <code>my_db_01</code> 数据库中，新建 <code>ev_users</code> 表如下：<br><img src="./images/1.jpg" alt="ev_users表结构"></li>
-</ol>
-<h4 id="2-2-安装并配置-mysql-模块"><a href="#2-2-安装并配置-mysql-模块" class="headerlink" title="2.2 安装并配置 mysql 模块"></a>2.2 安装并配置 mysql 模块</h4><blockquote>
+<h3 id="2-登录注册"><a href="#2-登录注册" class="headerlink" title="2. 登录注册"></a>2. 登录注册</h3><h4 id="2-1-新建-ev-users-表"><a href="#2-1-新建-ev-users-表" class="headerlink" title="2.1 新建 ev_users 表"></a>2.1 新建 ev_users 表</h4><h4 id="2-2-安装并配置-mysql-模块"><a href="#2-2-安装并配置-mysql-模块" class="headerlink" title="2.2 安装并配置 mysql 模块"></a>2.2 安装并配置 mysql 模块</h4><blockquote>
 <p>在 API 接口项目中，需要安装并配置 <code>mysql</code> 这个第三方模块，来连接和操作 MySQL 数据库</p>
 </blockquote>
 <ol>
@@ -972,8 +969,7 @@
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="title function_">query</span>(sql, [req.<span class="property">body</span>, req.<span class="property">body</span>.<span class="property">Id</span>], <span class="function">(<span class="params">err, results</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 执行 SQL 语句失败</span></span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> res.<span class="title function_">cc</span>(err)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// SQL 语句执行成功，但是影响行数不等于 1</span></span><br><span class="line">  <span class="keyword">if</span> (results.<span class="property">affectedRows</span> !== <span class="number">1</span>) <span class="keyword">return</span> res.<span class="title function_">cc</span>(<span class="string">&#x27;更新文章分类失败！&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 更新文章分类成功</span></span><br><span class="line">  res.<span class="title function_">cc</span>(<span class="string">&#x27;更新文章分类成功！&#x27;</span>, <span class="number">0</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h3 id="5-文章管理"><a href="#5-文章管理" class="headerlink" title="5. 文章管理"></a>5. 文章管理</h3><h4 id="5-1-新建-ev-articles-表"><a href="#5-1-新建-ev-articles-表" class="headerlink" title="5.1 新建 ev_articles 表"></a>5.1 新建 ev_articles 表</h4><p><img src="./images/4.jpg" alt="ev_articles表结构"></p>
-<h4 id="5-2-发布新文章"><a href="#5-2-发布新文章" class="headerlink" title="5.2 发布新文章"></a>5.2 发布新文章</h4><h6 id="5-2-0-实现步骤"><a href="#5-2-0-实现步骤" class="headerlink" title="5.2.0 实现步骤"></a>5.2.0 实现步骤</h6><ol>
+<h3 id="5-文章管理"><a href="#5-文章管理" class="headerlink" title="5. 文章管理"></a>5. 文章管理</h3><h4 id="5-1-新建-ev-articles-表"><a href="#5-1-新建-ev-articles-表" class="headerlink" title="5.1 新建 ev_articles 表"></a>5.1 新建 ev_articles 表</h4><h4 id="5-2-发布新文章"><a href="#5-2-发布新文章" class="headerlink" title="5.2 发布新文章"></a>5.2 发布新文章</h4><h6 id="5-2-0-实现步骤"><a href="#5-2-0-实现步骤" class="headerlink" title="5.2.0 实现步骤"></a>5.2.0 实现步骤</h6><ol>
 <li>初始化路由模块</li>
 <li>初始化路由处理函数模块</li>
 <li>使用 multer 解析表单数据</li>
@@ -1243,7 +1239,15 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/categories/web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Web前端知识</a>
+      <a class="nav-item-link" href="/categories/HTML/">HTML</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories/CSS/">CSS</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories/JavaScript/">JavaScript专栏</a>
     </li>
     
     <li class="nav-item">
@@ -1251,7 +1255,7 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/categories/JavaScript/">JavaScript专栏</a>
+      <a class="nav-item-link" href="/categories/web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Web前端知识</a>
     </li>
     
     <li class="nav-item">

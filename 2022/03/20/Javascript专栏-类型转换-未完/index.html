@@ -99,7 +99,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">18</span>
+            <span class="post-count">506</span>
         </span>
     </span>
 
@@ -108,13 +108,15 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">2 分钟</span>
         </span>
     </span>
 </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
@@ -125,7 +127,20 @@
 
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;1&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> a); <span class="comment">//string</span></span><br><span class="line"><span class="keyword">let</span> b = a * <span class="number">1</span> </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> b); <span class="comment">//number</span></span><br></pre></td></tr></table></figure>
 
- 
+<h1 id="String-gt-Number"><a href="#String-gt-Number" class="headerlink" title="String -&gt; Number"></a>String -&gt; Number</h1><h2 id="parseInt-string-radix"><a href="#parseInt-string-radix" class="headerlink" title="parseInt(string,radix)"></a>parseInt(string,radix)</h2><p>该函数解析一个字符串并返回指定基数的十进制整数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">parse</span>(<span class="string">&#x27;123&#x27;</span>,<span class="number">5</span>))<span class="comment">// 将&#x27;123&#x27;看作5进制数，返回十进制数38 =&gt; 1*5^2 + 2*5^1 + 3*5^0 = 38</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>string 必需<br>radix 可选，表示以几进制来读取字符串，取值范围是2-36。请注意radix的默认值并不是10，并且在使用parseInt()函数时请一定要传入radix参数。在后文中“一些注意的点”中将会解释为什么我们必须这么做。</p>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>解析后的十进制数<br>或者NaN</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseInt</span>(<span class="string">&#x27;321&#x27;</span>,<span class="number">2</span>))<span class="comment">//NaN 因为第一个非空格字符3不可能出现在二进制中，所以无法解析，因此返回NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseInt</span>(<span class="string">&#x27;321&#x27;</span>,<span class="number">37</span>));<span class="comment">//NaN 因为radix此时值为37，不在取值范围2-36之间</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="一些注意的点"><a href="#一些注意的点" class="headerlink" title="一些注意的点"></a>一些注意的点</h3><h4 id="截断解析"><a href="#截断解析" class="headerlink" title="截断解析"></a>截断解析</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseInt</span>(<span class="string">&#x27;1100211&#x27;</span>, <span class="number">2</span>)); <span class="comment">//12 s</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseInt</span>(<span class="string">&#x27;1100&#x27;</span>, <span class="number">2</span>));  <span class="comment">//12</span></span><br><span class="line"><span class="comment">// 2不是二进制中会出现的数，所以parseInt解析到这里时将会忽略该字符以及其后续的所有字符，也就是说第一行的‘211’都被忽略了，所以会和第二行输出相同的结果</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="请一定指定radix"><a href="#请一定指定radix" class="headerlink" title="请一定指定radix"></a>请一定指定radix</h4><p>当radix是undefined、0、或者压根没有的时候，js会假定以下情况。<br>如果string以0x(x无论大小写)开头，那么radix会假定为16。<br>如果string以0开头，那么radix会假定为8/10。。ES5澄清了会假定为10，但是！并不是所有浏览器都支持。因此，<font color='red'>在使用parseInt时，一定要指定一个radix</font></p>
+<h2 id="parseFloat"><a href="#parseFloat" class="headerlink" title="parseFloat()"></a>parseFloat()</h2><p>该函数解析一个字符串并返回一个浮点数</p>
+<h3 id="截断解析-1"><a href="#截断解析-1" class="headerlink" title="截断解析"></a>截断解析</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(<span class="string">&#x27;+3.2+4&#x27;</span>));<span class="comment">//3.2 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(<span class="string">&#x27;-3.2.4&#x27;</span>));<span class="comment">//-3.2 第二个小数点后面的都会被截止</span></span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title="+"></a>+</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="string">&#x27;42&#x27;</span>); <span class="comment">//42 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="string">&#x27;a&#x27;</span>); <span class="comment">//NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="string">&#x27;00100&#x27;</span>); <span class="comment">//100</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="string">&#x27;0x10&#x27;</span>); <span class="comment">//16</span></span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -305,7 +320,15 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/categories/web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Web前端知识</a>
+      <a class="nav-item-link" href="/categories/HTML/">HTML</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories/CSS/">CSS</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories/JavaScript/">JavaScript专栏</a>
     </li>
     
     <li class="nav-item">
@@ -313,7 +336,7 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/categories/JavaScript/">JavaScript专栏</a>
+      <a class="nav-item-link" href="/categories/web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Web前端知识</a>
     </li>
     
     <li class="nav-item">
