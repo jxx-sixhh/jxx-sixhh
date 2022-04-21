@@ -99,7 +99,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">0</span>
+            <span class="post-count">1.2k</span>
         </span>
     </span>
 
@@ -108,13 +108,15 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">5 分钟</span>
         </span>
     </span>
 </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
@@ -122,6 +124,75 @@
     <div class="article-entry" itemprop="articleBody">
        
   <span id="more"></span>
+
+<h1 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h1><ol>
+<li><p>react介绍JSX  </p>
+<blockquote>
+<p> JSX是JS的一个语法扩展，是React.createElement函数的语法糖</p>
+</blockquote>
+</li>
+<li><p>react里面JSX直接绑定事件有啥缺点</p>
+<blockquote>
+<p>⭐第一种：<code>onClick = &#123;this.yourEvent&#125;</code> 需要在<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0&spm=1001.2101.3001.7020">构造函数</a>中绑定this</p>
+<pre><code> 第二种：`onClick = &#123;this.yourEvent.bind(this)&#125;` //每次render,都会重新生成一个函数
+ 第三种：`onClick = &#123;() =&gt; this.yourEvent()&#125;` //每次render，都会执行一遍方法
+</code></pre>
+</blockquote>
+</li>
+<li><p>JSX的本质;</p>
+<blockquote>
+<p>实际上JSX是<code>React.createElement(component,props,...children)</code>函数的语法糖</p>
+</blockquote>
+</li>
+<li><p>为什么在JSX里循环生成DOM需要添加key</p>
+<blockquote>
+<p>在进行diff算法时，如果没有key的话，在列表数据渲染过程中，如果我后来又在前面又添加了一条数据，那么所有他后面的数据都要被修改。如果有key的话，react将根据key属性匹配原有树上的子元素以及最新树上的子元素，这样的话只需要把最新的那个元素插入到最前面位置即可。</p>
+</blockquote>
+</li>
+<li><p>浏览器怎么识别JSX的语法 </p>
+<blockquote>
+<p> 浏览器是无法识别JSX的，所以我们需要依靠babel或者ts来将JSX转换为JS。在react17之前，都是把他转换成react.createElement()函数，在react17后，它是自动从 React 的 package 中引入新的入口函数并调用。</p>
+</blockquote>
+</li>
+<li><p>浏览器不能识别JSX文件，需要怎么办？</p>
+<blockquote>
+<p>配置@bebel/preset-react,用于处理JSX类型的文件，将其转换为JS文件</p>
+</blockquote>
+</li>
+<li><p>JSX怎么转成原生JS。JSX怎么用React.createElement创建?</p>
+<p>  <a target="_blank" rel="noopener" href="https://babeljs.io/repl/#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&coreJS=3.21&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=react&prettier=false&targets=&version=7.17.8&externalPlugins=&assumptions=%7B%7D">JSX与JS在线转换器</a></p>
+</li>
+<li><p>项目中为什么要用JSX语法</p>
+</li>
+</ol>
+<p>用户定义的组件必须以大写字母开头,如果使用了小写开头，那么React会错误的认为这个组件是一个原生dom标签。例如，<code>&lt;div /&gt;</code> 代表 HTML 的 div 标签，而 <code>&lt;Welcome /&gt;</code> 则代表一个组件，并且需在作用域内使用 <code>Welcome</code>。</p>
+<h1 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h1><p><code>&lt;Input style=&#123;&#123;width:"200px",marginTop:"10px"&#125;&#125;&gt;&lt;/Input&gt;</code></p>
+<h1 id="元素渲染"><a href="#元素渲染" class="headerlink" title="元素渲染"></a>元素渲染</h1><ol>
+<li>React代码如何变成真实dom的?</li>
+</ol>
+<p>构造函数是唯一可以给 <code>this.state</code> 赋值的地方。</p>
+<h1 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a>状态提升</h1><p>在 React 中，将多个组件中需要共享的 state 向上移动到它们的最近共同父组件中，便可实现共享 state。这就是所谓的“状态提升”</p>
+<h1 id="片段fragments"><a href="#片段fragments" class="headerlink" title="片段fragments"></a>片段fragments</h1><p><code>&lt;React.fragments&gt;&lt;/React.fragments&gt;</code><br>官网对fragments的定义是</p>
+<blockquote>
+<p>片段可以让你将子元素列表添加到一个分组中，并且不会在DOM中增加额外节点。</p>
+</blockquote>
+<p>只看这段文字可能对他没什么感觉。我们看一个案例</p>
+<h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Table</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">Columns</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了渲染出正确的UI结构，我们的Columns组件需要返回多个td,那该怎么搞呢，多个组件返回，通常我们都会在外面套个div，但是你在tr里面套div，这肯定是不正确的，没办法生成正确的HTML</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误示范</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Columns</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>World<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这时的table组件</span></span><br><span class="line">&lt;table&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>World<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span></span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>那该怎么解决呢，我们就用到了片段组件</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Columns</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>World<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这时的table组件</span></span><br><span class="line">&lt;table&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>World<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span></span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="带key的片段"><a href="#带key的片段" class="headerlink" title="带key的片段"></a>带key的片段</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Glossary</span>(<span class="params">props</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">dl</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;props.items.map(item =&gt; (</span></span><br><span class="line"><span class="language-xml">        // 没有`key`，将会触发一个key警告</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">React.Fragment</span> <span class="attr">key</span>=<span class="string">&#123;item.id&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">dt</span>&gt;</span>&#123;item.term&#125;<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">dd</span>&gt;</span>&#123;item.description&#125;<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      ))&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>目前key是唯一可以传递给Fragment的属性。</p>
+<h1 id="严格模式Strict-Mode"><a href="#严格模式Strict-Mode" class="headerlink" title="严格模式Strict Mode"></a>严格模式Strict Mode</h1><p>当我们使用create-react-app创建一个react工程时，我们点开index.js，会发现里面的代码是这样的。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ReactDOM</span> <span class="keyword">from</span> <span class="string">&#x27;react-dom/client&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./index.css&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> reportWebVitals <span class="keyword">from</span> <span class="string">&#x27;./reportWebVitals&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>));</span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">React.StrictMode</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">React.StrictMode</span>&gt;</span></span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// If you want to start measuring performance in your app, pass a function</span></span><br><span class="line"><span class="comment">// to log results (for example: reportWebVitals(console.log))</span></span><br><span class="line"><span class="comment">// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals</span></span><br><span class="line"><span class="title function_">reportWebVitals</span>();</span><br></pre></td></tr></table></figure>
+
+<p>我们发现App组件被<strong>React.StrictMode</strong>组件包裹着。根据它的名字可以猜出它的意思是严格模式，那么StrictMode到底是什么东东呢？<br>在React官网对它的定义是 </p>
+<blockquote>
+<p>StrictMode 是一个用以标记出应用中潜在问题的工具,就像Fragment,StrictMode不会渲染任何真实的UI。它为其后代元素触发额外的检查和警告。</p>
+</blockquote>
+<p>由此我们可以得出：被StrictMode包裹的元素，将被检查。</p>
  
       <!-- reward -->
       

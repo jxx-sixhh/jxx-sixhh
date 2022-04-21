@@ -15,7 +15,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>算法 |  Welcome to jxx&#39;s blog</title>
+      <title>Javascript专栏-js对象-未完 |  Welcome to jxx&#39;s blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -67,112 +67,196 @@
       
     <main class="content on">
       <section class="outer">
-  
-  
-  <article class="articles">
+  <article
+  id="post-Javascript专栏-js对象-未完"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">算法</h1>
-    
-    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Javascript专栏-js对象-未完
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/04/18/Javascript%E4%B8%93%E6%A0%8F-js%E5%AF%B9%E8%B1%A1-%E6%9C%AA%E5%AE%8C/" class="article-date">
+  <time datetime="2022-04-18T02:33:35.000Z" itemprop="datePublished">2022-04-18</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">web前端学习笔记</a>
+  </div>
   
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2022" class="archive-year">2022</a>
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">415</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1 分钟</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
-    <div class="archives">
       
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/04/12/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%A0%88&&%E9%98%9F%E5%88%97%E7%AF%87/" class="archive-article-date">
-  <time datetime="2022-04-12T04:14:14.000Z" itemprop="datePublished">04/12</time>
-</a>
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/04/12/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%A0%88&&%E9%98%9F%E5%88%97%E7%AF%87/"
-    >算法笔记之栈&amp;&amp;队列篇</a> 
-</h2>
+  <span id="more"></span>
+
+<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><blockquote>
+<p><strong><code>Map</code></strong> 对象保存键值对，并且能够记住键的原始插入顺序。任何值(对象或者<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Primitive">原始值</a>) 都可以作为一个键或一个值。</p>
+</blockquote>
+<h2 id="Map-1"><a href="#Map-1" class="headerlink" title="Map()"></a>Map()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> kvArray = [[<span class="string">&quot;key1&quot;</span>, <span class="string">&quot;value1&quot;</span>], [<span class="string">&quot;key2&quot;</span>, <span class="string">&quot;value2&quot;</span>]];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用常规的Map构造函数可以将一个二维键值对数组转换成一个Map对象</span></span><br><span class="line"><span class="keyword">let</span> myMap = <span class="keyword">new</span> <span class="title class_">Map</span>(kvArray);</span><br><span class="line"></span><br><span class="line">myMap.<span class="title function_">get</span>(<span class="string">&quot;key1&quot;</span>); <span class="comment">// 返回值为 &quot;value1&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Map-prototype-set"><a href="#Map-prototype-set" class="headerlink" title="Map.prototype.set()"></a>Map.prototype.set()</h2><blockquote>
+<p><code>set()</code> 方法为 <code>Map</code> 对象添加或更新一个指定了键（<code>key</code>）和值（<code>value</code>）的（新）键值对。</p>
+</blockquote>
+<p><code>myMap.set(key,value);</code></p>
+<p>返回一个<code>Map</code> 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myMap = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将一个新元素添加到 Map 对象</span></span><br><span class="line">myMap.<span class="title function_">set</span>(<span class="string">&quot;bar&quot;</span>, <span class="string">&quot;foo&quot;</span>);</span><br><span class="line">myMap.<span class="title function_">set</span>(<span class="number">1</span>, <span class="string">&quot;foobar&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在Map对象中更新某个元素的值</span></span><br><span class="line">myMap.<span class="title function_">set</span>(<span class="string">&quot;bar&quot;</span>, <span class="string">&quot;baz&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ----链式使用set方法----</span></span><br><span class="line"><span class="comment">// 因为 Set() 方法返回 Map 对象本身，所以你可以像下面这样链式调用它:</span></span><br><span class="line"><span class="comment">// Add new elements to the map with chaining.</span></span><br><span class="line">myMap.<span class="title function_">set</span>(<span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;foo&#x27;</span>)</span><br><span class="line">     .<span class="title function_">set</span>(<span class="number">1</span>, <span class="string">&#x27;foobar&#x27;</span>)</span><br><span class="line">     .<span class="title function_">set</span>(<span class="number">2</span>, <span class="string">&#x27;baz&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Map-prototype-get"><a href="#Map-prototype-get" class="headerlink" title="Map.prototype.get()"></a>Map.prototype.get()</h2><blockquote>
+<p><code>get()</code> 方法返回某个 <code>Map</code> 对象中的一个指定元素</p>
+</blockquote>
+<p><code>myMap.get(key);</code></p>
+<p>返回一个 <code>Map</code> 对象中与指定键相关联的值，如果找不到这个键则返回 <code>undefined</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myMap = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line">myMap.<span class="title function_">set</span>(<span class="string">&quot;bar&quot;</span>, <span class="string">&quot;foo&quot;</span>);</span><br><span class="line"></span><br><span class="line">myMap.<span class="title function_">get</span>(<span class="string">&quot;bar&quot;</span>);  <span class="comment">// 返回 &quot;foo&quot;</span></span><br><span class="line">myMap.<span class="title function_">get</span>(<span class="string">&quot;baz&quot;</span>);  <span class="comment">// 返回 undefined</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Map-prototype-has"><a href="#Map-prototype-has" class="headerlink" title="Map.prototype.has()"></a>Map.prototype.has()</h2><blockquote>
+<p>方法<code>has()</code> 返回一个bool值，用来表明map 中是否存在指定元素.</p>
+</blockquote>
+<p><code>myMap.has(key);</code></p>
+<p>如果指定元素存在于Map中，则返回true。其他情况返回false</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myMap = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line">myMap.<span class="title function_">set</span>(<span class="string">&quot;bar&quot;</span>, <span class="string">&quot;foo&quot;</span>);</span><br><span class="line"></span><br><span class="line">myMap.<span class="title function_">has</span>(<span class="string">&quot;bar&quot;</span>);  <span class="comment">// returns true</span></span><br><span class="line">myMap.<span class="title function_">has</span>(<span class="string">&quot;baz&quot;</span>);  <span class="comment">// returns false</span></span><br></pre></td></tr></table></figure>
+
  
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/03/20/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%95%B0%E7%BB%84%E7%AF%87-%E6%9C%AA%E5%AE%8C/" class="archive-article-date">
-  <time datetime="2022-03-20T01:42:08.000Z" itemprop="datePublished">03/20</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/03/20/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%95%B0%E7%BB%84%E7%AF%87-%E6%9C%AA%E5%AE%8C/"
-    >算法笔记之数组篇-未完</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/03/01/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AF%87-%E6%9C%AA%E5%AE%8C/" class="archive-article-date">
-  <time datetime="2022-03-01T13:39:34.000Z" itemprop="datePublished">03/01</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/03/01/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AF%87-%E6%9C%AA%E5%AE%8C/"
-    >算法笔记之字符串篇-未完</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
+      <!-- reward -->
       
     </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/04/18/Javascript%E4%B8%93%E6%A0%8F-js%E5%AF%B9%E8%B1%A1-%E6%9C%AA%E5%AE%8C/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
   </div>
-  
-  
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2022/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            操作系统-未完
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/04/13/Redux/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Redux</div>
+      </a>
+    
+  </nav>
 
   
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -323,6 +407,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

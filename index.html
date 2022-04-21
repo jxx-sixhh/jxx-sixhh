@@ -156,6 +156,351 @@
     
     
     <article
+  id="post-操作系统"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
+    >操作系统-未完</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="article-date">
+  <time datetime="2022-04-20T02:25:19.000Z" itemprop="datePublished">2022-04-20</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <span id="more"></span>
+
+<p>最佳适应:空闲区按容量大小递增<br>最差适应:空闲区按容量大小递减<br>最先/首次适应:空闲区按地址大小递增</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-Javascript专栏-js对象-未完"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/04/18/Javascript%E4%B8%93%E6%A0%8F-js%E5%AF%B9%E8%B1%A1-%E6%9C%AA%E5%AE%8C/"
+    >Javascript专栏-js对象-未完</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/04/18/Javascript%E4%B8%93%E6%A0%8F-js%E5%AF%B9%E8%B1%A1-%E6%9C%AA%E5%AE%8C/" class="article-date">
+  <time datetime="2022-04-18T02:33:35.000Z" itemprop="datePublished">2022-04-18</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">web前端学习笔记</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <span id="more"></span>
+
+<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><blockquote>
+<p><strong><code>Map</code></strong> 对象保存键值对，并且能够记住键的原始插入顺序。任何值(对象或者<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Primitive">原始值</a>) 都可以作为一个键或一个值。</p>
+</blockquote>
+<h2 id="Map-1"><a href="#Map-1" class="headerlink" title="Map()"></a>Map()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> kvArray = [[<span class="string">&quot;key1&quot;</span>, <span class="string">&quot;value1&quot;</span>], [<span class="string">&quot;key2&quot;</span>, <span class="string">&quot;value2&quot;</span>]];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用常规的Map构造函数可以将一个二维键值对数组转换成一个Map对象</span></span><br><span class="line"><span class="keyword">let</span> myMap = <span class="keyword">new</span> <span class="title class_">Map</span>(kvArray);</span><br><span class="line"></span><br><span class="line">myMap.<span class="title function_">get</span>(<span class="string">&quot;key1&quot;</span>); <span class="comment">// 返回值为 &quot;value1&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Map-prototype-set"><a href="#Map-prototype-set" class="headerlink" title="Map.prototype.set()"></a>Map.prototype.set()</h2><blockquote>
+<p><code>set()</code> 方法为 <code>Map</code> 对象添加或更新一个指定了键（<code>key</code>）和值（<code>value</code>）的（新）键值对。</p>
+</blockquote>
+<p><code>myMap.set(key,value);</code></p>
+<p>返回一个<code>Map</code> 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myMap = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将一个新元素添加到 Map 对象</span></span><br><span class="line">myMap.<span class="title function_">set</span>(<span class="string">&quot;bar&quot;</span>, <span class="string">&quot;foo&quot;</span>);</span><br><span class="line">myMap.<span class="title function_">set</span>(<span class="number">1</span>, <span class="string">&quot;foobar&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在Map对象中更新某个元素的值</span></span><br><span class="line">myMap.<span class="title function_">set</span>(<span class="string">&quot;bar&quot;</span>, <span class="string">&quot;baz&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ----链式使用set方法----</span></span><br><span class="line"><span class="comment">// 因为 Set() 方法返回 Map 对象本身，所以你可以像下面这样链式调用它:</span></span><br><span class="line"><span class="comment">// Add new elements to the map with chaining.</span></span><br><span class="line">myMap.<span class="title function_">set</span>(<span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;foo&#x27;</span>)</span><br><span class="line">     .<span class="title function_">set</span>(<span class="number">1</span>, <span class="string">&#x27;foobar&#x27;</span>)</span><br><span class="line">     .<span class="title function_">set</span>(<span class="number">2</span>, <span class="string">&#x27;baz&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Map-prototype-get"><a href="#Map-prototype-get" class="headerlink" title="Map.prototype.get()"></a>Map.prototype.get()</h2><blockquote>
+<p><code>get()</code> 方法返回某个 <code>Map</code> 对象中的一个指定元素</p>
+</blockquote>
+<p><code>myMap.get(key);</code></p>
+<p>返回一个 <code>Map</code> 对象中与指定键相关联的值，如果找不到这个键则返回 <code>undefined</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myMap = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line">myMap.<span class="title function_">set</span>(<span class="string">&quot;bar&quot;</span>, <span class="string">&quot;foo&quot;</span>);</span><br><span class="line"></span><br><span class="line">myMap.<span class="title function_">get</span>(<span class="string">&quot;bar&quot;</span>);  <span class="comment">// 返回 &quot;foo&quot;</span></span><br><span class="line">myMap.<span class="title function_">get</span>(<span class="string">&quot;baz&quot;</span>);  <span class="comment">// 返回 undefined</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Map-prototype-has"><a href="#Map-prototype-has" class="headerlink" title="Map.prototype.has()"></a>Map.prototype.has()</h2><blockquote>
+<p>方法<code>has()</code> 返回一个bool值，用来表明map 中是否存在指定元素.</p>
+</blockquote>
+<p><code>myMap.has(key);</code></p>
+<p>如果指定元素存在于Map中，则返回true。其他情况返回false</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myMap = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line">myMap.<span class="title function_">set</span>(<span class="string">&quot;bar&quot;</span>, <span class="string">&quot;foo&quot;</span>);</span><br><span class="line"></span><br><span class="line">myMap.<span class="title function_">has</span>(<span class="string">&quot;bar&quot;</span>);  <span class="comment">// returns true</span></span><br><span class="line">myMap.<span class="title function_">has</span>(<span class="string">&quot;baz&quot;</span>);  <span class="comment">// returns false</span></span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-Redux"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/04/13/Redux/"
+    >Redux</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/04/13/Redux/" class="article-date">
+  <time datetime="2022-04-13T12:29:49.000Z" itemprop="datePublished">2022-04-13</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">web前端学习笔记</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <span id="more"></span>
+
+<h1 id="什么是Redux？"><a href="#什么是Redux？" class="headerlink" title="什么是Redux？"></a>什么是Redux？</h1><p>Redux是一个使用叫做’action’的事件来管理和更新应用状态的模式和工具库。它以集中式Store的方式<strong>对整个应用中使用的状态进行集中管理。</strong></p>
+<h2 id="为什么要使用它"><a href="#为什么要使用它" class="headerlink" title="为什么要使用它"></a>为什么要使用它</h2><p>Redux可以帮我们管理‘全局’状态 也就是应用程序共同需要的状态<br>Redux提供的模式和工具让我们更容易理解应用程序中的状态何时、何地、为什么以及如何更新，以及当这些状态更新时，我们的应用程序逻辑将如何表现。</p>
+<h2 id="应该在什么时候使用它？"><a href="#应该在什么时候使用它？" class="headerlink" title="应该在什么时候使用它？"></a>应该在什么时候使用它？</h2><ul>
+<li>在应用的大量地方，都存在大量的状态</li>
+<li>应用状态会随着时间的推移而频繁更新</li>
+<li>更新该状态的逻辑可能很复杂</li>
+<li>中型和大型代码量的应用，很多人协同开发</li>
+</ul>
+<h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><p>action是把数据从应用传到store的有效载荷，action内会包含一个type字段，来表示将要执行的动作。我们应该尽量减少在action中传递的数据。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> action = &#123;<span class="attr">type</span>:<span class="string">&quot;add_item&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="action创建函数"><a href="#action创建函数" class="headerlink" title="action创建函数"></a>action创建函数</h3><p>Action 创建函数 就是生成 action 的方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">addTodo</span>(<span class="params">text</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&quot;ADD_TODO&quot;</span>,</span><br><span class="line">    text</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h2><blockquote>
+<p>Reducers 指定了应用状态的变化如何响应 actions 并发送到 store 的，记住 actions 只是描述了有事情发生了这一事实，并没有描述应用如何更新 state。</p>
+</blockquote>
+<p>reducer 就是一个纯函数，接收旧的 state 和 action，返回新的 state。</p>
+<p><code>(previousState,action) =&gt; newState</code></p>
+<p><strong>保持reducer纯净非常重要</strong>,不要在reducr中做以下这些事</p>
+<ul>
+<li>修改传入参数</li>
+<li>执行有副作用的操作，如api请求和路由跳转</li>
+<li>调用非纯函数，如Date.now()或者Math.random()</li>
+</ul>
+<p>谨记 reducer 一定要保持纯净。<strong>只要传入参数相同，返回计算得到的下一个 state 就一定相同。没有特殊情况、没有副作用，没有 API 请求、没有变量修改，单纯执行计算。</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> defaultState = &#123;</span><br><span class="line">  <span class="attr">inputValue</span>: <span class="string">&#x27;Write Something...&#x27;</span>,</span><br><span class="line">  <span class="attr">list</span>: [<span class="string">&#x27;测试&#x27;</span>, <span class="string">&#x27;事件1&#x27;</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">reducer</span> = (<span class="params">state = defaultState, action</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (action.<span class="property">type</span> === <span class="string">&#x27;change_input&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> newState = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(state))</span><br><span class="line">    newState.<span class="property">inputValue</span> = action.<span class="property">value</span></span><br><span class="line">    <span class="keyword">return</span> newState</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> state <span class="comment">//在default情况下返回旧的state</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> reducer</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><h3 id="store必须是唯一的，只能有一个store空间"><a href="#store必须是唯一的，只能有一个store空间" class="headerlink" title="store必须是唯一的，只能有一个store空间"></a>store必须是唯一的，只能有一个store空间</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span>  <span class="comment">//  引入createStore方法</span></span><br><span class="line">  <span class="keyword">import</span> reducer <span class="keyword">from</span> <span class="string">&#x27;./reducer&#x27;</span>    </span><br><span class="line">  <span class="comment">// 我们在这里创造了一个store空间，之后整个应用都在用这个store</span></span><br><span class="line">  <span class="keyword">const</span> store = <span class="title function_">createStore</span>(</span><br><span class="line">      reducer,</span><br><span class="line">      <span class="variable language_">window</span>.<span class="property">__REDUX_DEVTOOLS_EXTENSION__</span> &amp;&amp; <span class="variable language_">window</span>.<span class="title function_">__REDUX_DEVTOOLS_EXTENSION__</span>()) <span class="comment">// 创建数据存储仓库</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> store   <span class="comment">//暴露出去</span></span><br></pre></td></tr></table></figure>
+<h3 id="只有store能改变自己的内容，reducer不能改变"><a href="#只有store能改变自己的内容，reducer不能改变" class="headerlink" title="只有store能改变自己的内容，reducer不能改变"></a>只有store能改变自己的内容，reducer不能改变</h3><p><code>Reudcer</code>只是返回了更改的数据，但是并没有更改<code>store</code>中的数据，<code>store</code>拿到了<code>Reducer</code>的数据，自己对自己进行了更新。</p>
+<h3 id="reducer必须是纯函数"><a href="#reducer必须是纯函数" class="headerlink" title="reducer必须是纯函数"></a>reducer必须是纯函数</h3><p>什么是纯函数？                                       </p>
+<blockquote>
+<p>如果函数的调用参数相同，则永远返回相同的结果。它不依赖于程序执行期间函数外部任何状态或数据的变化，必须只依赖于其输入参数。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">reducer</span> = (<span class="params">state = defaultState, action</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (action.<span class="property">type</span> === <span class="variable constant_">CHANGE_INPUT</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> newState = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(state)); <span class="comment">//深度拷贝state</span></span><br><span class="line">    newState.<span class="property">inputValue</span> = action.<span class="property">value</span>;</span><br><span class="line">    <span class="keyword">return</span> newState;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (action.<span class="property">type</span> === <span class="variable constant_">ADD_ITEM</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> newState = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(state)); <span class="comment">//深度拷贝state</span></span><br><span class="line">    newState.<span class="property">List</span>.<span class="title function_">push</span>(newState.<span class="property">inputValue</span>);</span><br><span class="line">    newState.<span class="property">inputValue</span> = <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> newState;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (action.<span class="property">type</span> === <span class="variable constant_">DELETE_ITEM</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> newState = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(state));</span><br><span class="line">    newState.<span class="property">List</span>.<span class="title function_">splice</span>(action.<span class="property">index</span>, <span class="number">1</span>); <span class="comment">//删除数组中对应的值</span></span><br><span class="line">    <span class="keyword">return</span> newState;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> state;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> reducer;</span><br></pre></td></tr></table></figure>
+<p>比方说在我们写的这段reducer代码中，reducer的返回结果，完全是由传入的参数state和action决定的，这就是一个纯函数</p>
+<h1 id="React-redux"><a href="#React-redux" class="headerlink" title="React-redux"></a>React-redux</h1><h2 id="Provier组件"><a href="#Provier组件" class="headerlink" title="Provier组件"></a>Provier组件</h2><p><Provider store> 使组件层级中的 connect() 方法都能够获得 Redux store</p>
+<h2 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h2> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-算法笔记之栈&amp;&amp;队列篇"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/04/12/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%A0%88&&%E9%98%9F%E5%88%97%E7%AF%87/"
+    >算法笔记之栈&amp;&amp;队列篇</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/04/12/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%A0%88&&%E9%98%9F%E5%88%97%E7%AF%87/" class="article-date">
+  <time datetime="2022-04-12T04:14:14.000Z" itemprop="datePublished">2022-04-12</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <span id="more"></span>
+
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>“所有的递归都可以用栈来改写”</p>
+<p> 栈的特点是先进后出，后进先出。一般我们用它来解决</p>
+<ol>
+<li><strong>对称性问题</strong></li>
+<li><strong>表达式的计算</strong></li>
+<li><strong>以及二叉树的遍历</strong>  </li>
+<li><strong>单调栈也是常考点</strong></li>
+</ol>
+<h3 id="对称性问题"><a href="#对称性问题" class="headerlink" title="对称性问题"></a>对称性问题</h3><h4 id="demo01-有效的括号"><a href="#demo01-有效的括号" class="headerlink" title="demo01.有效的括号"></a>demo01.<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/valid-parentheses/">有效的括号</a></h4><p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/image-20220418102638101.png" alt="image-20220418102638101"><br>本题为对称性问题，我们直接考虑用栈来解决。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isValid = <span class="keyword">function</span> (<span class="params">s</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (s.<span class="property">length</span> % <span class="number">2</span> === <span class="number">1</span>) <span class="comment">//是奇数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  <span class="keyword">let</span> stack = []</span><br><span class="line">  <span class="comment">// 我们应该先把左括号都进栈，然后如果是右括号的话，再判断栈顶是不是它匹配的左括号，如果匹配就弹栈。</span></span><br><span class="line">               </span><br><span class="line">  <span class="keyword">let</span> match = <span class="keyword">new</span> <span class="title class_">Map</span>([</span><br><span class="line">    [<span class="string">&#x27;)&#x27;</span>, <span class="string">&#x27;(&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;&#125;&#x27;</span>, <span class="string">&#x27;&#123;&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;]&#x27;</span>, <span class="string">&#x27;[&#x27;</span>]</span><br><span class="line">  ])</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> char <span class="keyword">of</span> s) &#123;</span><br><span class="line">    <span class="comment">// match 中 有 这个 键值，代表当前是右括号，开始判断</span></span><br><span class="line">    <span class="keyword">if</span> (match.<span class="title function_">has</span>(char)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (stack.<span class="property">length</span> &amp;&amp; stack[stack.<span class="property">length</span> - <span class="number">1</span>] === match.<span class="title function_">get</span>(char))</span><br><span class="line">        stack.<span class="title function_">pop</span>()</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 没有这个键值，代表是左括号，直接进栈</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="comment">// 判断当前栈顶元素是不是与他匹配的左括号</span></span><br><span class="line">      stack.<span class="title function_">push</span>(char)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 如果为空则为true，不为空则为false</span></span><br><span class="line">  <span class="keyword">return</span> !stack.<span class="property">length</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><h4 id="demo01-字符串解码"><a href="#demo01-字符串解码" class="headerlink" title="demo01.字符串解码"></a>demo01.<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/decode-string/">字符串解码</a></h4><p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/image-20220418114203570.png" alt="image-20220418114203570"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> decodeString = <span class="keyword">function</span> (<span class="params">s</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> numStack = [] <span class="comment">//倍数</span></span><br><span class="line">  <span class="keyword">let</span> strStack = [] <span class="comment">//等着拼接</span></span><br><span class="line">  <span class="keyword">let</span> res = <span class="string">&#x27;&#x27;</span> <span class="comment">//结果</span></span><br><span class="line">  <span class="keyword">let</span> num = <span class="number">0</span> <span class="comment">//为了算出来倍数</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> char <span class="keyword">of</span> s) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">isNaN</span>(char)) &#123;</span><br><span class="line">      num = num * <span class="number">10</span> + <span class="title class_">Number</span>(char)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">&#x27;[&#x27;</span>) &#123;</span><br><span class="line">      strStack.<span class="title function_">push</span>(res)</span><br><span class="line">      res = <span class="string">&#x27;&#x27;</span> <span class="comment">//入栈后清零</span></span><br><span class="line">      numStack.<span class="title function_">push</span>(num)</span><br><span class="line">      num = <span class="number">0</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">&#x27;]&#x27;</span>) &#123;</span><br><span class="line">      <span class="keyword">let</span> repeattimes = numStack.<span class="title function_">pop</span>()</span><br><span class="line">      res = strStack.<span class="title function_">pop</span>() + res.<span class="title function_">repeat</span>(repeattimes)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      res += char</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h4 id="demo02-基本计算器-II"><a href="#demo02-基本计算器-II" class="headerlink" title="demo02.基本计算器 II"></a>demo02.<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/basic-calculator-ii/">基本计算器 II</a></h4><p><img src="https://gitee.com/jin-xiaoxin/typora-img/raw/master/image-20220418115135025.png" alt="image-20220418115135025"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> calculate = <span class="keyword">function</span> (<span class="params">s</span>) &#123;</span><br><span class="line">  s = s.<span class="title function_">trim</span>() <span class="comment">//去除空格</span></span><br><span class="line">  <span class="keyword">const</span> stack = []</span><br><span class="line">  <span class="keyword">let</span> preSign = <span class="string">&#x27;+&#x27;</span></span><br><span class="line">  <span class="keyword">let</span> num = <span class="number">0</span> <span class="comment">//存倍数。</span></span><br><span class="line">  <span class="keyword">let</span> len = s.<span class="property">length</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="comment">// 1.是数字</span></span><br><span class="line">    <span class="keyword">if</span> (s[i] &gt;= <span class="string">&#x27;0&#x27;</span>) &#123;</span><br><span class="line">      num = num * <span class="number">10</span> + (s[i] - <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 是字符</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isNaN</span>(<span class="title class_">Number</span>(s[i])) || i == len - <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="comment">// 对字符进行 判断</span></span><br><span class="line">      <span class="keyword">switch</span> (preSign) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;+&#x27;</span>:</span><br><span class="line">          stack.<span class="title function_">push</span>(num)</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;-&#x27;</span>:</span><br><span class="line">          stack.<span class="title function_">push</span>(-num)</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;*&#x27;</span>:</span><br><span class="line">          stack.<span class="title function_">push</span>(stack.<span class="title function_">pop</span>() * num)</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="attr">default</span>:</span><br><span class="line">          stack.<span class="title function_">push</span>(stack.<span class="title function_">pop</span>() / num | <span class="number">0</span>)</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      preSign = s[i]</span><br><span class="line">      num = <span class="number">0</span> <span class="comment">// 对当前的数字归0</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//0作为第一次调用 callback 函数时参数 a 的值。若指定了初始值 initialValue，则 b 则将使用数组第一个元素；否则 a 将使用数组第一个元素，而 b 将使用数组第二个元素。</span></span><br><span class="line">  <span class="keyword">return</span> stack.<span class="title function_">reduce</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line">  &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二叉树遍历"><a href="#二叉树遍历" class="headerlink" title="二叉树遍历"></a>二叉树遍历</h3><p>也验证了我们开篇说的，所有递归都可以用栈来解决。</p>
+<h4 id="demo01-中序遍历"><a href="#demo01-中序遍历" class="headerlink" title="demo01.中序遍历"></a>demo01.中序遍历</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> inorderTraversal = <span class="keyword">function</span> (<span class="params">root</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> res = []</span><br><span class="line">  <span class="keyword">const</span> stack = []</span><br><span class="line">  <span class="keyword">while</span> (root || stack.<span class="property">length</span>) &#123;</span><br><span class="line">    <span class="keyword">while</span> (root) &#123;</span><br><span class="line">      stack.<span class="title function_">push</span>(root)</span><br><span class="line">      root = root.<span class="property">left</span></span><br><span class="line">    &#125;</span><br><span class="line">    root = stack.<span class="title function_">pop</span>()</span><br><span class="line">    res.<span class="title function_">push</span>(root.<span class="property">val</span>)</span><br><span class="line">    root = root.<span class="property">right</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="demo02-前序遍历"><a href="#demo02-前序遍历" class="headerlink" title="demo02.前序遍历"></a>demo02.前序遍历</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> preorderTraversal = <span class="keyword">function</span>(<span class="params">root</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> res = []</span><br><span class="line">    <span class="keyword">const</span> stack = []</span><br><span class="line">    <span class="keyword">if</span>(root)</span><br><span class="line">    stack.<span class="title function_">push</span>(root)</span><br><span class="line">    <span class="keyword">while</span>(stack.<span class="property">length</span>)&#123;</span><br><span class="line">        <span class="keyword">const</span> n = stack.<span class="title function_">pop</span>()</span><br><span class="line">        res.<span class="title function_">push</span>(n.<span class="property">val</span>)</span><br><span class="line">        <span class="keyword">if</span>(n.<span class="property">right</span>) stack.<span class="title function_">push</span>(n.<span class="property">right</span>)</span><br><span class="line">        <span class="keyword">if</span>(n.<span class="property">left</span>)  stack.<span class="title function_">push</span>(n.<span class="property">left</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="单调栈–还没研究-未完"><a href="#单调栈–还没研究-未完" class="headerlink" title="单调栈–还没研究-未完"></a>单调栈–还没研究-未完</h3> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-算法笔记之二叉树篇-未完"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/03/28/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%A0%91%E7%AF%87-%E6%9C%AA%E5%AE%8C/"
+    >算法笔记之二叉树篇</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/03/28/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%A0%91%E7%AF%87-%E6%9C%AA%E5%AE%8C/" class="article-date">
+  <time datetime="2022-03-28T08:28:07.000Z" itemprop="datePublished">2022-03-28</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">web前端学习笔记</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <span id="more"></span>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-Javascript专栏-得到类型-未完"
   class="article article-type-post"
   itemscope
@@ -256,6 +601,75 @@
     <div class="article-entry" itemprop="articleBody">
        
   <span id="more"></span>
+
+<h1 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h1><ol>
+<li><p>react介绍JSX  </p>
+<blockquote>
+<p> JSX是JS的一个语法扩展，是React.createElement函数的语法糖</p>
+</blockquote>
+</li>
+<li><p>react里面JSX直接绑定事件有啥缺点</p>
+<blockquote>
+<p>⭐第一种：<code>onClick = &#123;this.yourEvent&#125;</code> 需要在<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0&spm=1001.2101.3001.7020">构造函数</a>中绑定this</p>
+<pre><code> 第二种：`onClick = &#123;this.yourEvent.bind(this)&#125;` //每次render,都会重新生成一个函数
+ 第三种：`onClick = &#123;() =&gt; this.yourEvent()&#125;` //每次render，都会执行一遍方法
+</code></pre>
+</blockquote>
+</li>
+<li><p>JSX的本质;</p>
+<blockquote>
+<p>实际上JSX是<code>React.createElement(component,props,...children)</code>函数的语法糖</p>
+</blockquote>
+</li>
+<li><p>为什么在JSX里循环生成DOM需要添加key</p>
+<blockquote>
+<p>在进行diff算法时，如果没有key的话，在列表数据渲染过程中，如果我后来又在前面又添加了一条数据，那么所有他后面的数据都要被修改。如果有key的话，react将根据key属性匹配原有树上的子元素以及最新树上的子元素，这样的话只需要把最新的那个元素插入到最前面位置即可。</p>
+</blockquote>
+</li>
+<li><p>浏览器怎么识别JSX的语法 </p>
+<blockquote>
+<p> 浏览器是无法识别JSX的，所以我们需要依靠babel或者ts来将JSX转换为JS。在react17之前，都是把他转换成react.createElement()函数，在react17后，它是自动从 React 的 package 中引入新的入口函数并调用。</p>
+</blockquote>
+</li>
+<li><p>浏览器不能识别JSX文件，需要怎么办？</p>
+<blockquote>
+<p>配置@bebel/preset-react,用于处理JSX类型的文件，将其转换为JS文件</p>
+</blockquote>
+</li>
+<li><p>JSX怎么转成原生JS。JSX怎么用React.createElement创建?</p>
+<p>  <a target="_blank" rel="noopener" href="https://babeljs.io/repl/#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&coreJS=3.21&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=react&prettier=false&targets=&version=7.17.8&externalPlugins=&assumptions=%7B%7D">JSX与JS在线转换器</a></p>
+</li>
+<li><p>项目中为什么要用JSX语法</p>
+</li>
+</ol>
+<p>用户定义的组件必须以大写字母开头,如果使用了小写开头，那么React会错误的认为这个组件是一个原生dom标签。例如，<code>&lt;div /&gt;</code> 代表 HTML 的 div 标签，而 <code>&lt;Welcome /&gt;</code> 则代表一个组件，并且需在作用域内使用 <code>Welcome</code>。</p>
+<h1 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h1><p><code>&lt;Input style=&#123;&#123;width:"200px",marginTop:"10px"&#125;&#125;&gt;&lt;/Input&gt;</code></p>
+<h1 id="元素渲染"><a href="#元素渲染" class="headerlink" title="元素渲染"></a>元素渲染</h1><ol>
+<li>React代码如何变成真实dom的?</li>
+</ol>
+<p>构造函数是唯一可以给 <code>this.state</code> 赋值的地方。</p>
+<h1 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a>状态提升</h1><p>在 React 中，将多个组件中需要共享的 state 向上移动到它们的最近共同父组件中，便可实现共享 state。这就是所谓的“状态提升”</p>
+<h1 id="片段fragments"><a href="#片段fragments" class="headerlink" title="片段fragments"></a>片段fragments</h1><p><code>&lt;React.fragments&gt;&lt;/React.fragments&gt;</code><br>官网对fragments的定义是</p>
+<blockquote>
+<p>片段可以让你将子元素列表添加到一个分组中，并且不会在DOM中增加额外节点。</p>
+</blockquote>
+<p>只看这段文字可能对他没什么感觉。我们看一个案例</p>
+<h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Table</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">Columns</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了渲染出正确的UI结构，我们的Columns组件需要返回多个td,那该怎么搞呢，多个组件返回，通常我们都会在外面套个div，但是你在tr里面套div，这肯定是不正确的，没办法生成正确的HTML</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误示范</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Columns</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>World<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这时的table组件</span></span><br><span class="line">&lt;table&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>World<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span></span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>那该怎么解决呢，我们就用到了片段组件</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Columns</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>World<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这时的table组件</span></span><br><span class="line">&lt;table&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>World<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span></span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="带key的片段"><a href="#带key的片段" class="headerlink" title="带key的片段"></a>带key的片段</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Glossary</span>(<span class="params">props</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">dl</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;props.items.map(item =&gt; (</span></span><br><span class="line"><span class="language-xml">        // 没有`key`，将会触发一个key警告</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">React.Fragment</span> <span class="attr">key</span>=<span class="string">&#123;item.id&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">dt</span>&gt;</span>&#123;item.term&#125;<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">dd</span>&gt;</span>&#123;item.description&#125;<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      ))&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>目前key是唯一可以传递给Fragment的属性。</p>
+<h1 id="严格模式Strict-Mode"><a href="#严格模式Strict-Mode" class="headerlink" title="严格模式Strict Mode"></a>严格模式Strict Mode</h1><p>当我们使用create-react-app创建一个react工程时，我们点开index.js，会发现里面的代码是这样的。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ReactDOM</span> <span class="keyword">from</span> <span class="string">&#x27;react-dom/client&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./index.css&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> reportWebVitals <span class="keyword">from</span> <span class="string">&#x27;./reportWebVitals&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>));</span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">React.StrictMode</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">React.StrictMode</span>&gt;</span></span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// If you want to start measuring performance in your app, pass a function</span></span><br><span class="line"><span class="comment">// to log results (for example: reportWebVitals(console.log))</span></span><br><span class="line"><span class="comment">// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals</span></span><br><span class="line"><span class="title function_">reportWebVitals</span>();</span><br></pre></td></tr></table></figure>
+
+<p>我们发现App组件被<strong>React.StrictMode</strong>组件包裹着。根据它的名字可以猜出它的意思是严格模式，那么StrictMode到底是什么东东呢？<br>在React官网对它的定义是 </p>
+<blockquote>
+<p>StrictMode 是一个用以标记出应用中潜在问题的工具,就像Fragment,StrictMode不会渲染任何真实的UI。它为其后代元素触发额外的检查和警告。</p>
+</blockquote>
+<p>由此我们可以得出：被StrictMode包裹的元素，将被检查。</p>
  
       <!-- reward -->
       
@@ -447,301 +861,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84-%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">数组 双指针</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-node-js"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/03/11/node-js/"
-    >node.js</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/11/node-js/" class="article-date">
-  <time datetime="2022-03-11T06:31:35.000Z" itemprop="datePublished">2022-03-11</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">web前端学习笔记</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>为什么js可以在浏览器中被执行？因为浏览器中都有js解析引擎。</p>
-<p>什么是node.js?node.js是基于chrome v8引擎的js运行环境</p>
-<p>为什么js能够被浏览器执行？因为各大浏览器中都内置的有js解析引擎，例如chrome浏览器使用的是v8引擎</p>
-<p>为什么js可以操作dom和bom？因为每个浏览器都内置了dom，bom这样的API函数，因此js可以调用这些web api函数，再被js解析引擎解析，从而在浏览器中被执行</p>
-<p>浏览器是js的前端运行环境，node.js是js的后端运行环境，node.js中无法调用dom和bom等浏览器内置api</p> 
-      <a class="article-more-link" href="/2022/03/11/node-js/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-校园快递代取项目开发-未完"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/03/10/%E6%A0%A1%E5%9B%AD%E5%BF%AB%E9%80%92%E4%BB%A3%E5%8F%96%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-%E6%9C%AA%E5%AE%8C/"
-    >校园快递代取项目开发-未完</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/10/%E6%A0%A1%E5%9B%AD%E5%BF%AB%E9%80%92%E4%BB%A3%E5%8F%96%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-%E6%9C%AA%E5%AE%8C/" class="article-date">
-  <time datetime="2022-03-10T03:32:01.000Z" itemprop="datePublished">2022-03-10</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <span id="more"></span>
-
-<p>#1296db</p>
-<h1 id="首页index"><a href="#首页index" class="headerlink" title="首页index"></a>首页index</h1><h1 id="接单take"><a href="#接单take" class="headerlink" title="接单take"></a>接单take</h1><h1 id="订单order"><a href="#订单order" class="headerlink" title="订单order"></a>订单order</h1><h1 id="我的my"><a href="#我的my" class="headerlink" title="我的my"></a>我的my</h1> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-Promise-未完"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/03/03/Promise-%E6%9C%AA%E5%AE%8C/"
-    >Promise-未完</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/03/Promise-%E6%9C%AA%E5%AE%8C/" class="article-date">
-  <time datetime="2022-03-03T06:11:53.000Z" itemprop="datePublished">2022-03-03</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">web前端学习笔记</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="第-1-章：Promise-的理解和使用"><a href="#第-1-章：Promise-的理解和使用" class="headerlink" title="第 1 章：Promise 的理解和使用"></a><strong>第</strong> <strong>1</strong> <strong>章：</strong>Promise <strong>的理解和使用</strong></h1><h2 id="1-1-Promise-是什么"><a href="#1-1-Promise-是什么" class="headerlink" title="1.1. Promise 是什么?"></a><strong>1.1. Promise</strong> <strong>是什么</strong>?</h2><h3 id="1-1-1-理解"><a href="#1-1-1-理解" class="headerlink" title="1.1.1. 理解"></a><strong>1.1.1.</strong> <strong>理解</strong></h3><ol>
-<li><p>抽象表达: </p>
-<ol>
-<li><p>Promise 是一门新的技术(ES6 规范)</p>
-</li>
-<li><p>Promise 是 JS 中进行异步编程的新解决方案</p>
-</li>
-</ol>
-<p>备注：旧方案是单纯使用回调函数</p>
-</li>
-<li><p>具体表达:</p>
-<ol>
-<li><p>从语法上来说: Promise 是一个构造函数</p>
-</li>
-<li><p>从功能上来说: promise 对象用来封装一个异步操作并可以获取其成功/失败的结果值</p>
-</li>
-</ol>
-</li>
-</ol> 
-      <a class="article-more-link" href="/2022/03/03/Promise-%E6%9C%AA%E5%AE%8C/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-算法笔记之字符串篇-未完"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/03/01/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AF%87-%E6%9C%AA%E5%AE%8C/"
-    >算法笔记之字符串篇-未完</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/01/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AF%87-%E6%9C%AA%E5%AE%8C/" class="article-date">
-  <time datetime="2022-03-01T13:39:34.000Z" itemprop="datePublished">2022-03-01</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>整理在leetcode刷题过程中碰到的字符串涉及的算法知识</p> 
-      <a class="article-more-link" href="/2022/03/01/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AF%87-%E6%9C%AA%E5%AE%8C/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2-leetcode/" rel="tag">算法 字符串 leetcode</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-git常用操作"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/03/01/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/"
-    >git常用操作</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/01/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" class="article-date">
-  <time datetime="2022-03-01T12:44:21.000Z" itemprop="datePublished">2022-03-01</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">web前端学习笔记</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>本篇博客用于汇总git的常见操作以及相关知识</p> 
-      <a class="article-more-link" href="/2022/03/01/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
 
     </footer>
   </div>

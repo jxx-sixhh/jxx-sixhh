@@ -15,7 +15,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Javascript专栏(二)_得到类型-未完 |  Welcome to jxx&#39;s blog</title>
+      <title>Redux |  Welcome to jxx&#39;s blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -68,7 +68,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-Javascript专栏-得到类型-未完"
+  id="post-Redux"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -79,7 +79,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Javascript专栏(二)_得到类型-未完
+  Redux
 </h1>
  
 
@@ -87,11 +87,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/03/24/Javascript%E4%B8%93%E6%A0%8F-%E5%BE%97%E5%88%B0%E7%B1%BB%E5%9E%8B-%E6%9C%AA%E5%AE%8C/" class="article-date">
-  <time datetime="2022-03-24T12:09:18.000Z" itemprop="datePublished">2022-03-24</time>
+      <a href="/2022/04/13/Redux/" class="article-date">
+  <time datetime="2022-04-13T12:29:49.000Z" itemprop="datePublished">2022-04-13</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">web前端学习笔记</a>
   </div>
   
 <div class="word_count">
@@ -99,7 +99,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">56</span>
+            <span class="post-count">945</span>
         </span>
     </span>
 
@@ -108,7 +108,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
@@ -123,23 +123,44 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>我们在研究如何得到某个变量的类型之前，先回顾一下JavaScript都有哪些类型呢？</p>
-<h1 id="类型介绍"><a href="#类型介绍" class="headerlink" title="类型介绍"></a>类型介绍</h1><ol>
-<li>Number</li>
-<li>String</li>
-<li>Bollean</li>
-<li>Symbol 符号。ES2015新增</li>
-<li>Object<ul>
-<li>Function</li>
-<li>Array</li>
-<li>Date</li>
-<li>RegExp 正则表达式</li>
+  <span id="more"></span>
+
+<h1 id="什么是Redux？"><a href="#什么是Redux？" class="headerlink" title="什么是Redux？"></a>什么是Redux？</h1><p>Redux是一个使用叫做’action’的事件来管理和更新应用状态的模式和工具库。它以集中式Store的方式<strong>对整个应用中使用的状态进行集中管理。</strong></p>
+<h2 id="为什么要使用它"><a href="#为什么要使用它" class="headerlink" title="为什么要使用它"></a>为什么要使用它</h2><p>Redux可以帮我们管理‘全局’状态 也就是应用程序共同需要的状态<br>Redux提供的模式和工具让我们更容易理解应用程序中的状态何时、何地、为什么以及如何更新，以及当这些状态更新时，我们的应用程序逻辑将如何表现。</p>
+<h2 id="应该在什么时候使用它？"><a href="#应该在什么时候使用它？" class="headerlink" title="应该在什么时候使用它？"></a>应该在什么时候使用它？</h2><ul>
+<li>在应用的大量地方，都存在大量的状态</li>
+<li>应用状态会随着时间的推移而频繁更新</li>
+<li>更新该状态的逻辑可能很复杂</li>
+<li>中型和大型代码量的应用，很多人协同开发</li>
 </ul>
-</li>
-<li>null</li>
-<li>undefined<span id="more"></span></li>
-</ol>
- 
+<h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><p>action是把数据从应用传到store的有效载荷，action内会包含一个type字段，来表示将要执行的动作。我们应该尽量减少在action中传递的数据。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> action = &#123;<span class="attr">type</span>:<span class="string">&quot;add_item&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="action创建函数"><a href="#action创建函数" class="headerlink" title="action创建函数"></a>action创建函数</h3><p>Action 创建函数 就是生成 action 的方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">addTodo</span>(<span class="params">text</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&quot;ADD_TODO&quot;</span>,</span><br><span class="line">    text</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h2><blockquote>
+<p>Reducers 指定了应用状态的变化如何响应 actions 并发送到 store 的，记住 actions 只是描述了有事情发生了这一事实，并没有描述应用如何更新 state。</p>
+</blockquote>
+<p>reducer 就是一个纯函数，接收旧的 state 和 action，返回新的 state。</p>
+<p><code>(previousState,action) =&gt; newState</code></p>
+<p><strong>保持reducer纯净非常重要</strong>,不要在reducr中做以下这些事</p>
+<ul>
+<li>修改传入参数</li>
+<li>执行有副作用的操作，如api请求和路由跳转</li>
+<li>调用非纯函数，如Date.now()或者Math.random()</li>
+</ul>
+<p>谨记 reducer 一定要保持纯净。<strong>只要传入参数相同，返回计算得到的下一个 state 就一定相同。没有特殊情况、没有副作用，没有 API 请求、没有变量修改，单纯执行计算。</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> defaultState = &#123;</span><br><span class="line">  <span class="attr">inputValue</span>: <span class="string">&#x27;Write Something...&#x27;</span>,</span><br><span class="line">  <span class="attr">list</span>: [<span class="string">&#x27;测试&#x27;</span>, <span class="string">&#x27;事件1&#x27;</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">reducer</span> = (<span class="params">state = defaultState, action</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (action.<span class="property">type</span> === <span class="string">&#x27;change_input&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> newState = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(state))</span><br><span class="line">    newState.<span class="property">inputValue</span> = action.<span class="property">value</span></span><br><span class="line">    <span class="keyword">return</span> newState</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> state <span class="comment">//在default情况下返回旧的state</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> reducer</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><h3 id="store必须是唯一的，只能有一个store空间"><a href="#store必须是唯一的，只能有一个store空间" class="headerlink" title="store必须是唯一的，只能有一个store空间"></a>store必须是唯一的，只能有一个store空间</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span>  <span class="comment">//  引入createStore方法</span></span><br><span class="line">  <span class="keyword">import</span> reducer <span class="keyword">from</span> <span class="string">&#x27;./reducer&#x27;</span>    </span><br><span class="line">  <span class="comment">// 我们在这里创造了一个store空间，之后整个应用都在用这个store</span></span><br><span class="line">  <span class="keyword">const</span> store = <span class="title function_">createStore</span>(</span><br><span class="line">      reducer,</span><br><span class="line">      <span class="variable language_">window</span>.<span class="property">__REDUX_DEVTOOLS_EXTENSION__</span> &amp;&amp; <span class="variable language_">window</span>.<span class="title function_">__REDUX_DEVTOOLS_EXTENSION__</span>()) <span class="comment">// 创建数据存储仓库</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> store   <span class="comment">//暴露出去</span></span><br></pre></td></tr></table></figure>
+<h3 id="只有store能改变自己的内容，reducer不能改变"><a href="#只有store能改变自己的内容，reducer不能改变" class="headerlink" title="只有store能改变自己的内容，reducer不能改变"></a>只有store能改变自己的内容，reducer不能改变</h3><p><code>Reudcer</code>只是返回了更改的数据，但是并没有更改<code>store</code>中的数据，<code>store</code>拿到了<code>Reducer</code>的数据，自己对自己进行了更新。</p>
+<h3 id="reducer必须是纯函数"><a href="#reducer必须是纯函数" class="headerlink" title="reducer必须是纯函数"></a>reducer必须是纯函数</h3><p>什么是纯函数？                                       </p>
+<blockquote>
+<p>如果函数的调用参数相同，则永远返回相同的结果。它不依赖于程序执行期间函数外部任何状态或数据的变化，必须只依赖于其输入参数。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">reducer</span> = (<span class="params">state = defaultState, action</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (action.<span class="property">type</span> === <span class="variable constant_">CHANGE_INPUT</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> newState = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(state)); <span class="comment">//深度拷贝state</span></span><br><span class="line">    newState.<span class="property">inputValue</span> = action.<span class="property">value</span>;</span><br><span class="line">    <span class="keyword">return</span> newState;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (action.<span class="property">type</span> === <span class="variable constant_">ADD_ITEM</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> newState = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(state)); <span class="comment">//深度拷贝state</span></span><br><span class="line">    newState.<span class="property">List</span>.<span class="title function_">push</span>(newState.<span class="property">inputValue</span>);</span><br><span class="line">    newState.<span class="property">inputValue</span> = <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> newState;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (action.<span class="property">type</span> === <span class="variable constant_">DELETE_ITEM</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> newState = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(state));</span><br><span class="line">    newState.<span class="property">List</span>.<span class="title function_">splice</span>(action.<span class="property">index</span>, <span class="number">1</span>); <span class="comment">//删除数组中对应的值</span></span><br><span class="line">    <span class="keyword">return</span> newState;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> state;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> reducer;</span><br></pre></td></tr></table></figure>
+<p>比方说在我们写的这段reducer代码中，reducer的返回结果，完全是由传入的参数state和action决定的，这就是一个纯函数</p>
+<h1 id="React-redux"><a href="#React-redux" class="headerlink" title="React-redux"></a>React-redux</h1><h2 id="Provier组件"><a href="#Provier组件" class="headerlink" title="Provier组件"></a>Provier组件</h2><p><Provider store> 使组件层级中的 connect() 方法都能够获得 Redux store</p>
+<h2 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h2> 
       <!-- reward -->
       
     </div>
@@ -203,7 +224,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/03/24/Javascript%E4%B8%93%E6%A0%8F-%E5%BE%97%E5%88%B0%E7%B1%BB%E5%9E%8B-%E6%9C%AA%E5%AE%8C/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/04/13/Redux/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -214,19 +235,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2022/03/28/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%A0%91%E7%AF%87-%E6%9C%AA%E5%AE%8C/" class="article-nav-link">
+      <a href="/2022/04/18/Javascript%E4%B8%93%E6%A0%8F-js%E5%AF%B9%E8%B1%A1-%E6%9C%AA%E5%AE%8C/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            算法笔记之二叉树篇
+            Javascript专栏-js对象-未完
           
         </div>
       </a>
     
     
-      <a href="/2022/03/22/React%E5%85%A5%E9%97%A8/" class="article-nav-link">
+      <a href="/2022/04/12/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%A0%88&&%E9%98%9F%E5%88%97%E7%AF%87/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">React入门</div>
+        <div class="article-nav-title">算法笔记之栈&amp;&amp;队列篇</div>
       </a>
     
   </nav>
